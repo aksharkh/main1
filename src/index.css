@@ -1,0 +1,40 @@
+
+@import "tailwindcss";
+
+@theme {
+  --color-neon-lime: #CCFF00;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    cursor: none; /* Hide default cursor to show custom one */
+  }
+
+  body {
+    @apply bg-black text-white antialiased;
+    overflow-x: hidden;
+  }
+  
+  /* Restore default cursor on touch devices */
+  @media (pointer: coarse) {
+    html {
+      cursor: auto;
+    }
+  }
+}
+
+@layer utilities {
+  .text-stroke-2 {
+    -webkit-text-stroke: 2px currentColor;
+  }
+  
+  .text-stroke-white {
+    -webkit-text-stroke-color: white;
+  }
+  
+  .text-stroke-lime {
+    -webkit-text-stroke-color: #CCFF00;
+  }
+}
