@@ -35,10 +35,10 @@ const Hero: React.FC<HeroProps> = ({ loading }) => {
           transition={{ duration: 1, delay: 0.2, ease: premiumEase }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 border-b border-white/20 pb-8 mb-12 text-xs md:text-sm text-gray-400 font-mono uppercase tracking-widest"
         >
-          <div>Based in<br/><span className="text-white">Bengaluru, IN</span></div>
+          <div>Based in<br/><span className="text-white"><ScrambleText text="Bengaluru, IN" /></span></div>
           <div>Status<br/><span className="text-[#CCFF00] animate-pulse"><ScrambleText text="Taking Projects" /></span></div>
           <div className="hidden md:block">Local Time<br/><span className="text-white">{localTime}</span></div>
-          <div className="hidden md:block text-right">Est<br/><span className="text-white">2026</span></div>
+          <div className="hidden md:block text-right">Est<br/><span className="text-white"><ScrambleText text="2026" /></span></div>
         </motion.div>
 
         <h1 className="text-[16vw] md:text-[13vw] leading-[0.8] font-bold tracking-tighter uppercase mb-12 flex flex-col mix-blend-difference text-white">

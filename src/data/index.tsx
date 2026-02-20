@@ -1,44 +1,214 @@
 
-
 import { Search, PenTool, Code2, Rocket } from 'lucide-react';
 import type { Project, ProcessStep, ExpertiseItem, TeamMember } from '../types';
+import main2 from '../assets/main2.png';
+import main3 from '../assets/main3.png';
+import main4 from '../assets/main4.png';
+
+import cafe1 from '../assets/cafe1.png';
+import cafe2 from '../assets/cafe2.png';
+import cafe3 from '../assets/cafe3.png';
+import cafe4 from '../assets/cafe4.png';
+import cafe5 from '../assets/cafe5.png';
+import cafe6 from '../assets/cafe6.png';
+
+import soft1 from '../assets/soft1.png';
+import soft2 from '../assets/soft2.png';
+import soft3 from '../assets/soft3.png';
+import soft4 from '../assets/soft4.png';
+import soft5 from '../assets/soft5.png';
+
+import port1 from '../assets/port1.png';
+import port2 from '../assets/port2.png';
+import port3 from '../assets/port3.png';
+
+import akshar from '../assets/akshar.jpeg';
+import abhinav from '../assets/abhinav.jpeg';
+import adnaan from '../assets/adnaan.jpeg';
+import chandan from '../assets/chandan.jpeg';
+import bhuvan from '../assets/bhuvan.jpeg';
+
+
+
+
 
 export const projects: Project[] = [
+  // Company Portfolios
   {
     id: 1,
-    title: 'Aura Brew',
-    category: 'E-Commerce / 3D',
-    image: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=1200',
-    aspect: 'aspect-[4/5]',
-    col: 'md:col-span-5',
-    tags: ['WebGL', 'React', 'Shopify Plus']
+    title: 'Main2 Portfolio',
+    category: 'Company Portfolio',
+    image: main2,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://main2-nu.vercel.app/',
+    tags: ['Next.js', 'TailwindCSS', 'Framer Motion']
   },
   {
     id: 2,
-    title: 'Nexus SaaS',
-    category: 'Web Application',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
-    aspect: 'aspect-[16/10]',
-    col: 'md:col-span-7',
-    tags: ['Next.js', 'PostgreSQL', 'AWS']
+    title: 'Main3 Ruby',
+    category: 'Company Portfolio',
+    image: main3,
+    aspect: 'aspect-[4/5]',
+    col: 'md:col-span-5',
+    link: 'https://main3-ruby.vercel.app/',
+    tags: ['React', 'Vite', 'GSAP']
   },
   {
     id: 3,
-    title: 'Lumina',
-    category: 'Brand Identity / Web',
-    image: 'https://images.unsplash.com/photo-1600607688969-a5bfcd64bd28?auto=format&fit=crop&q=80&w=1200',
+    title: 'Business Energy',
+    category: 'Company Portfolio',
+    image: main4,
     aspect: 'aspect-[16/10]',
     col: 'md:col-span-7',
-    tags: ['Vue.js', 'GSAP', 'Figma']
+    link: 'https://business-c-nergy-grow-movement-2026-lyart.vercel.app/',
+    tags: ['TypeScript', 'Node.js', 'PostgreSQL']
   },
+
+  // Cafe Websites
   {
     id: 4,
-    title: 'FinEdge',
-    category: 'Fintech Dashboard',
-    image: 'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?auto=format&fit=crop&q=80&w=1200',
+    title: 'Cafe Five',
+    category: 'Cafe Website',
+    image: cafe1,
     aspect: 'aspect-[4/5]',
     col: 'md:col-span-5',
-    tags: ['React', 'TypeScript', 'Node.js']
+    link: 'https://ca3-five.vercel.app/',
+    tags: ['Next.js', 'MongoDB', 'Vercel']
+  },
+  {
+    id: 5,
+    title: 'Cafe Opal',
+    category: 'Cafe Website',
+    image: cafe2,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://ca2-opal.vercel.app/',
+    tags: ['React', 'Redux', 'AntD']
+  },
+  {
+    id: 6,
+    title: 'Cafe Pi',
+    category: 'Cafe Website',
+    image: cafe3,
+    aspect: 'aspect-[4/5]',
+    col: 'md:col-span-5',
+    link: 'https://ca1-pi.vercel.app/',
+    tags: ['Vue.js', 'TailwindCSS', 'Firebase']
+  },
+   {
+    id: 7,
+    title: 'Ojas Theta',
+    category: 'Cafe Website',
+    image: cafe4,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://ojas-theta.vercel.app/',
+    tags: ['Svelte', 'Node.js', 'MySQL']
+  },
+  {
+    id: 8,
+    title: 'Masala Modern',
+    category: 'Cafe Website',
+    image: cafe5,
+    aspect: 'aspect-[4/5]',
+    col: 'md:col-span-5',
+    link: 'https://masala-modern.vercel.app/',
+    tags: ['Next.js', 'Prisma', 'PostgreSQL']
+  },
+  {
+    id: 9,
+    title: 'Steel Cafe',
+    category: 'Cafe Website',
+    image: cafe6,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://new-folder-two-steel.vercel.app/',
+    tags: ['React', 'Framer Motion', 'Viter']
+  },
+
+  // Internal Softwares
+  {
+    id: 10,
+    title: 'F-Mine Demo',
+    category: 'Internal Software',
+    image: soft1,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://f-mine-demo.vercel.app/',
+    tags: ['React', 'TypeScript', 'Dashboard']
+  },
+  {
+    id: 11,
+    title: 'AI Test Propter',
+    category: 'Internal Software',
+    image: soft2,
+    aspect: 'aspect-[4/5]',
+    col: 'md:col-span-5',
+    link: 'https://ai-test-propter.vercel.app',
+    tags: ['Python', 'FastAPI', 'React']
+  },
+  {
+    id: 12,
+    title: 'Sparkonomy',
+    category: 'Internal Software',
+    image: soft3,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://sparkonomy-eta.vercel.app/',
+    tags: ['Next.js', 'Redis', 'TailwindCSS']
+  },
+  {
+    id: 13,
+    title: 'Flam Five',
+    category: 'Internal Software',
+    image: soft4,
+    aspect: 'aspect-[4/5]',
+    col: 'md:col-span-5',
+    link: 'https://flam-five.vercel.app/',
+    tags: ['Angular', 'RxJS', 'Node.js']
+  },
+  {
+    id: 14,
+    title: 'Smart Home Dash',
+    category: 'Internal Software',
+    image: soft5,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://aksharkh.github.io/Smart-home-dashboard-/',
+    tags: ['IoT', 'React', 'MQTT']
+  },
+
+  // Personal Portfolios
+  {
+    id: 15,
+    title: 'Bhuvan MH',
+    category: 'Personal Portfolio',
+    image: port1,
+    aspect: 'aspect-[4/5]',
+    col: 'md:col-span-5',
+    link: 'https://bhuvanmh.pages.dev/',
+    tags: ['HTML', 'CSS', 'JavaScript']
+  },
+  {
+    id: 16,
+    title: 'Ashy Portfolio',
+    category: 'Personal Portfolio',
+    image: port2,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://my-portfoilo-ashy.vercel.app/',
+    tags: ['React', 'Three.js', 'Vercel']
+  },
+  {
+    id: 17,
+    title: 'Akshar KH',
+    category: 'Personal Portfolio',
+    image: port3,
+    aspect: 'aspect-[4/5]',
+    col: 'md:col-span-5',
+    link: 'https://aksharkh.vercel.app/',
+    tags: ['Next.js', 'Sanity', 'TailwindCSS']
   }
 ];
 
@@ -72,11 +242,11 @@ export const processSteps: ProcessStep[] = [
 export const expertise: ExpertiseItem[] = [
   {
     title: "Frontend Engineering",
-    content: "We push the boundaries of the browser. Using React, Next.js, and WebGL, we build buttery-smooth, award-winning interfaces that captivate users and drive engagement."
+    content: "We push the boundaries of the browser. Using React, Vite, Next.js, and WebGL, we build buttery-smooth, award-winning interfaces that captivate users and drive engagement."
   },
   {
     title: "Backend Architecture",
-    content: "Rock-solid, scalable systems. We design APIs and microservices using Node.js, Go, and PostgreSQL that can handle millions of requests without breaking a sweat."
+    content: "Rock-solid, scalable systems. We design APIs and microservices using Java, Node.js, Go, and PostgreSQL that can handle millions of requests without breaking a sweat."
   },
   {
     title: "Cloud Infrastructure",
@@ -85,7 +255,9 @@ export const expertise: ExpertiseItem[] = [
 ];
 
 export const team: TeamMember[] = [
-  { id: 1, name: 'Akshar', role: 'Frontend & Creative Dev', link: '#', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600' },
-  { id: 2, name: 'Sarah', role: 'Backend Architecture', link: '#', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=600' },
-  { id: 3, name: 'David', role: 'DevOps & Infrastructure', link: '#', image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600' }
+  { id: 1, name: 'Akshar ', role: 'Lead Software Developer', link: '#', image: akshar },
+  { id: 2, name: 'Abhinav ', role: 'Software Engineer', link: '#', image: abhinav },
+  { id: 3, name: 'Adnaan ', role: 'FullStack Developer', link: '#', image: adnaan },
+  { id: 4, name: 'Chandan', role: 'Lead Cyber Security Engineer', link: '#', image: chandan },
+  { id: 5, name: 'Bhuvan', role: 'Java FullStack Developer', link: '#', image: bhuvan },
 ];

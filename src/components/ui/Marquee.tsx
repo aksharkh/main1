@@ -18,11 +18,11 @@ const Marquee: React.FC = () => {
       >
         <div className="flex items-center text-black font-bold text-3xl md:text-5xl tracking-tighter uppercase">
           <span className="mx-8">AVAILABLE FOR FREELANCE</span> <SparkleIcon />
-          <span className="mx-8">AWARD WINNING COLLECTIVE</span> <SparkleIcon />
           <span className="mx-8">AVAILABLE FOR FREELANCE</span> <SparkleIcon />
-          <span className="mx-8">AWARD WINNING COLLECTIVE</span> <SparkleIcon />
           <span className="mx-8">AVAILABLE FOR FREELANCE</span> <SparkleIcon />
-          <span className="mx-8">AWARD WINNING COLLECTIVE</span> <SparkleIcon />
+          <span className="mx-8">AVAILABLE FOR FREELANCE</span> <SparkleIcon />
+          <span className="mx-8">AVAILABLE FOR FREELANCE</span> <SparkleIcon />
+          <span className="mx-8">AVAILABLE FOR FREELANCE</span> <SparkleIcon />
         </div>
       </motion.div>
     </div>

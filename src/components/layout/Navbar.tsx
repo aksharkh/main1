@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
       <nav className="fixed top-0 w-full z-40 mix-blend-difference px-6 md:px-12 py-8 flex justify-between items-center pointer-events-none">
         <Magnetic strength={0.1}>
           <a href="#" className="text-2xl font-bold tracking-tighter pointer-events-auto hover:text-[#CCFF00] transition-colors p-2 -m-2 text-white">
-            COLLECTIVE©
+            AXORAA©
           </a>
         </Magnetic>
         

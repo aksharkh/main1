@@ -8,6 +8,7 @@ export interface Project {
   image: string;
   aspect: string;
   col: string;
+  link: string;
   tags: string[];
 }
 
