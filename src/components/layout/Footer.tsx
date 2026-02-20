@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
           </motion.h2>
 
           <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 100, delay: 0.2 }}>
-            
+            <Magnetic strength={0.2}>
             <a 
               href="mailto:aksharkh04@gmail.com"
                 className="group flex flex-col items-center justify-center w-48 h-48 md:w-64 md:h-64 bg-black text-white rounded-full hover:scale-105 hover:shadow-2xl transition-all duration-500 shrink-0"
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
                   <span className="text-sm md:text-lg font-bold uppercase tracking-widest mb-2 group-hover:-translate-y-2 transition-transform">Email Us</span>
                   <ArrowUpRight size={36} className="group-hover:rotate-45 transition-transform duration-300" />
             </a>
-            
+            </Magnetic>
           </motion.div>
         </div>
 
