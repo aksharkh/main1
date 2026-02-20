@@ -28,7 +28,8 @@ export interface TeamMember {
   id: number;
   name: string;
   role: string;
-  link: string;
+  github: string;
+  linkedin: string;
   image: string;
 }
 

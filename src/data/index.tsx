@@ -36,7 +36,7 @@ export const projects: Project[] = [
   // Company Portfolios
   {
     id: 1,
-    title: 'Main2 Portfolio',
+    title: 'DevStudio',
     category: 'Company Portfolio',
     image: main2,
     aspect: 'aspect-[16/10]',
@@ -46,7 +46,7 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: 'Main3 Ruby',
+    title: 'DevCollective',
     category: 'Company Portfolio',
     image: main3,
     aspect: 'aspect-[4/5]',
@@ -68,7 +68,7 @@ export const projects: Project[] = [
   // Cafe Websites
   {
     id: 4,
-    title: 'Cafe Five',
+    title: 'SABLE',
     category: 'Cafe Website',
     image: cafe1,
     aspect: 'aspect-[4/5]',
@@ -78,7 +78,7 @@ export const projects: Project[] = [
   },
   {
     id: 5,
-    title: 'Cafe Opal',
+    title: 'TERRA',
     category: 'Cafe Website',
     image: cafe2,
     aspect: 'aspect-[16/10]',
@@ -88,7 +88,7 @@ export const projects: Project[] = [
   },
   {
     id: 6,
-    title: 'Cafe Pi',
+    title: 'LUMINA',
     category: 'Cafe Website',
     image: cafe3,
     aspect: 'aspect-[4/5]',
@@ -118,7 +118,7 @@ export const projects: Project[] = [
   },
   {
     id: 9,
-    title: 'Steel Cafe',
+    title: 'Lumière',
     category: 'Cafe Website',
     image: cafe6,
     aspect: 'aspect-[16/10]',
@@ -130,7 +130,7 @@ export const projects: Project[] = [
   // Internal Softwares
   {
     id: 10,
-    title: 'F-Mine Demo',
+    title: 'F-Mine ',
     category: 'Internal Software',
     image: soft1,
     aspect: 'aspect-[16/10]',
@@ -182,7 +182,7 @@ export const projects: Project[] = [
   // Personal Portfolios
   {
     id: 15,
-    title: 'Bhuvan MH',
+    title: 'Bhuvan ',
     category: 'Personal Portfolio',
     image: port1,
     aspect: 'aspect-[4/5]',
@@ -192,7 +192,7 @@ export const projects: Project[] = [
   },
   {
     id: 16,
-    title: 'Ashy Portfolio',
+    title: 'Abhinav R',
     category: 'Personal Portfolio',
     image: port2,
     aspect: 'aspect-[16/10]',
@@ -202,7 +202,7 @@ export const projects: Project[] = [
   },
   {
     id: 17,
-    title: 'Akshar KH',
+    title: 'Akshar ',
     category: 'Personal Portfolio',
     image: port3,
     aspect: 'aspect-[4/5]',
@@ -255,9 +255,9 @@ export const expertise: ExpertiseItem[] = [
 ];
 
 export const team: TeamMember[] = [
-  { id: 1, name: 'Akshar ', role: 'Lead Software Developer', link: '#', image: akshar },
-  { id: 2, name: 'Abhinav ', role: 'Software Engineer', link: '#', image: abhinav },
-  { id: 3, name: 'Adnaan ', role: 'FullStack Developer', link: '#', image: adnaan },
-  { id: 4, name: 'Chandan', role: 'Lead Cyber Security Engineer', link: '#', image: chandan },
-  { id: 5, name: 'Bhuvan', role: 'Java FullStack Developer', link: '#', image: bhuvan },
+  { id: 1, name: 'Akshar ', role: 'Lead Software Developer', github: 'https://github.com/aksharkh', linkedin: 'https://www.linkedin.com/in/akshar-k-h-1b404521b/', image: akshar },
+  { id: 2, name: 'Abhinav ', role: 'Software Engineer', github: 'https://github.com/abhinavrbharadwaj7', linkedin: 'https://www.linkedin.com/in/abhinavrbharadwaj/', image: abhinav },
+  { id: 3, name: 'Adnaan ', role: 'FullStack Developer', github: 'https://github.com/Khan012003', linkedin: 'https://www.linkedin.com/in/adnaan-khan-153042319/', image: adnaan },
+  { id: 4, name: 'Chandan', role: 'Lead Cyber Security Engineer', github: 'https://github.com/chandantm2002', linkedin: 'https://www.linkedin.com/in/chandan-t-m-691851235/', image: chandan },
+  { id: 5, name: 'Bhuvan', role: 'Java FullStack Developer', github: 'https://github.com/AKlRA', linkedin: 'https://www.linkedin.com/in/bhuvan-mh-0144492a8/', image: bhuvan },
 ];

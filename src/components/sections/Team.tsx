@@ -66,8 +66,8 @@ const Team: React.FC<TeamProps> = ({ mousePosition }) => {
               <div className="flex items-center gap-8 w-full md:w-auto justify-between md:justify-end relative z-10">
                 <span className="text-lg font-mono text-gray-500 uppercase tracking-widest group-hover:text-white transition-colors">{member.role}</span>
                 <div className="flex gap-4">
-                  <a href={member.link} className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300"><Github size={20}/></a>
-                  <a href={member.link} className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[#CCFF00] group-hover:border-[#CCFF00] group-hover:text-black transition-all duration-300"><Linkedin size={20}/></a>
+                  <a href={member.github} target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300"><Github size={20}/></a>
+                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[#CCFF00] group-hover:border-[#CCFF00] group-hover:text-black transition-all duration-300"><Linkedin size={20}/></a>
                 </div>
               </div>
             </motion.div>

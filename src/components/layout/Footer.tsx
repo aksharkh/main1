@@ -52,10 +52,13 @@ const Footer: React.FC = () => {
             </div>
             
             <div className="flex gap-8 md:items-end">
-              {['Instagram', 'Twitter', 'LinkedIn'].map((social) => (
-                <a key={social} href="#" className="relative group overflow-hidden">
-                  <span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">{social}</span>
-                  <span className="block absolute top-full text-white group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">{social}</span>
+              {[
+                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/akshar-k-h-1b404521b/' },
+                { name: 'GitHub', url: 'https://github.com/aksharkh' }
+              ].map((social) => (
+                <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden hover:text-[#CCFF00] transition-colors">
+                  <span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">{social.name}</span>
+                  <span className="block absolute top-full group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">{social.name}</span>
                 </a>
               ))}
             </div>
