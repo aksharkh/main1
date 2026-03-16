@@ -25,7 +25,7 @@ import port3 from '../assets/port3.png';
 import akshar from '../assets/akshar.jpeg';
 import abhinav from '../assets/abhinav.jpeg';
 import adnaan from '../assets/adnaan.jpeg';
-import chandan from '../assets/chandan.jpeg';
+// import chandan from '../assets/chandan.jpeg';
 import bhuvan from '../assets/bhuvan.jpeg';
 
 
