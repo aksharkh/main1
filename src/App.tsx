@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import Preloader from './components/ui/Preloader';
 import CustomCursor from './components/ui/CustomCursor';
 import GlowOrb from './components/ui/GlowOrb';
+import MobileWarning from './components/ui/MobileWarning';
 import CinematicNoise from './components/ui/CinematicNoise';
 import ScrollProgress from './components/ui/ScrollProgress';
 import Navbar from './components/layout/Navbar';
@@ -14,6 +15,8 @@ import Work from './components/sections/Work';
 import Process from './components/sections/Process';
 import Expertise from './components/sections/Expertise';
 import Team from './components/sections/Team';
+import Testimonials from './components/sections/Testimonials';
+import Pricing from './components/sections/Pricing';
 import Footer from './components/layout/Footer';
 
 function App() {
@@ -45,6 +48,8 @@ function App() {
         {loading && <Preloader onComplete={() => setLoading(false)} />}
       </AnimatePresence>
 
+      <MobileWarning />
+
       <CustomCursor globalMouse={mousePosition} isHovering={isHoveringGlobal} />
       <CinematicNoise />
       <GlowOrb mousePosition={mousePosition} />
@@ -60,6 +65,8 @@ function App() {
         <Process />
         <Expertise />
         <Team mousePosition={mousePosition} />
+        <Testimonials />
+        <Pricing />
       </main>
 
       <Footer />

@@ -1,0 +1,123 @@
+import React from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Quote, ArrowRight, TrendingUp } from 'lucide-react';
+import { testimonials } from '../../data';
+import { premiumEase } from '../../lib/utils';
+import ParallaxImage from '../ui/ParallaxImage';
+
+const Testimonials: React.FC = () => {
+  const { scrollYProgress } = useScroll();
+  const rotateVal = useTransform(scrollYProgress, [0, 1], [-10, 10]);
+
+  return (
+    <section id="testimonials" className="py-20 md:py-32 px-6 md:px-12 bg-zinc-900 text-white relative z-10 overflow-hidden">
+      <div className="max-w-[1400px] mx-auto">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          transition={{ ease: premiumEase, duration: 1 }}
+          className="mb-20 text-center"
+        >
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase mb-6">
+            Real <span className="text-[#CCFF00]">Impact</span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
+            We don't just build websites; we engineer business growth. See the transformation for yourself.
+          </p>
+        </motion.div>
+
+        {testimonials.map((testimonial) => (
+          <div key={testimonial.id} className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
+            
+            {/* Before and After Visuals */}
+            <div className="w-full lg:w-1/2 flex flex-col md:flex-row gap-4 relative">
+              <motion.div 
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: premiumEase }}
+                className="w-full relative group"
+              >
+                <div className="absolute top-4 left-4 z-20 bg-black/80 px-4 py-1.5 uppercase font-mono text-xs tracking-widest text-red-500 border border-red-500/50 backdrop-blur-md rounded-full">
+                  Before
+                </div>
+                <div className="aspect-[4/5] rounded-xl overflow-hidden grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 bg-zinc-800">
+                  {testimonial.beforeImage && <ParallaxImage src={testimonial.beforeImage} alt="Before Website" />}
+                </div>
+              </motion.div>
+
+              <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-16 h-16 bg-[#CCFF00] rounded-full items-center justify-center text-black shadow-[0_0_30px_rgba(204,255,0,0.5)]">
+                <ArrowRight size={24} className="animate-pulse" />
+              </div>
+
+              <motion.div 
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2, ease: premiumEase }}
+                className="w-full relative"
+              >
+                <div className="absolute top-4 right-4 z-20 bg-[#CCFF00]/90 px-4 py-1.5 uppercase font-mono text-xs tracking-widest text-black shadow-lg backdrop-blur-md rounded-full">
+                  After
+                </div>
+                <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl shadow-[#CCFF00]/10 bg-zinc-800 border border-white/10 relative">
+                  {testimonial.afterImage && <ParallaxImage src={testimonial.afterImage} alt="After Website" />}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Content & Stats */}
+            <div className="w-full lg:w-1/2 flex flex-col justify-center">
+              <motion.div style={{ rotate: rotateVal }} className="text-[#CCFF00] mb-8 opacity-50">
+                <Quote size={64} />
+              </motion.div>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: premiumEase }}
+                className="text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed mb-10 text-gray-200"
+              >
+                "{testimonial.content}"
+              </motion.p>
+              
+              <motion.div 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.3 }}
+                className="mb-12 border-l-4 border-[#CCFF00] pl-6"
+              >
+                <h4 className="text-xl font-bold uppercase tracking-widest">{testimonial.clientName}</h4>
+                <p className="text-gray-400 font-mono text-sm">{testimonial.clientRole}, {testimonial.companyName}</p>
+              </motion.div>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                {testimonial.growthStats.map((stat, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 + (i * 0.1), ease: premiumEase }}
+                    className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#CCFF00]/30 hover:bg-white/10 transition-colors flex flex-col justify-center items-center text-center gap-2"
+                  >
+                    <TrendingUp className="w-6 h-6 text-[#CCFF00] mb-2" />
+                    <span className="text-3xl md:text-4xl font-bold text-white">{stat.value}</span>
+                    <span className="text-xs uppercase font-mono tracking-widest text-gray-400">{stat.label}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default Testimonials;

@@ -6,7 +6,7 @@ import { premiumEase } from '../../lib/utils';
 
 const Process: React.FC = () => {
   return (
-    <section id="process" className="py-32 px-6 md:px-12 bg-zinc-950 relative z-10">
+    <section id="process" className="py-12 md:py-32 px-5 md:px-12 bg-zinc-950 relative z-10">
       <div className="max-w-[1400px] mx-auto">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
           
@@ -27,7 +27,7 @@ const Process: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-full lg:w-2/3 flex flex-col gap-24 lg:gap-40 pt-10">
+          <div className="w-full lg:w-2/3 flex flex-col gap-12 lg:gap-40 pt-10">
             {processSteps.map((step) => (
               <motion.div 
                 key={step.id}

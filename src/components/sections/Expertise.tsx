@@ -7,7 +7,7 @@ const Expertise: React.FC = () => {
   const [openAccordion, setOpenAccordion] = useState<number>(0);
 
   return (
-    <section id="expertise" className="py-32 px-6 md:px-12 relative z-10 bg-transparent mix-blend-difference text-white">
+    <section id="expertise" className="py-16 md:py-32 px-6 md:px-12 relative z-10 bg-transparent mix-blend-difference text-white">
       <div className="max-w-[1400px] mx-auto">
         <div className="grid md:grid-cols-12 gap-16">
           <div className="md:col-span-5">

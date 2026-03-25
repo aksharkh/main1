@@ -22,7 +22,7 @@ const Hero: React.FC<HeroProps> = ({ loading }) => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-end pb-16 pt-40 px-6 md:px-12 relative z-10 bg-gradient-to-b from-transparent to-black overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-end pb-12 pt-28 md:pt-40 px-5 md:px-12 relative z-10 bg-gradient-to-b from-transparent to-black overflow-hidden">
       
       {/* Animated Grid Background */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#CCFF00 1px, transparent 1px)', backgroundSize: '40px 40px', maskImage: 'linear-gradient(to bottom, black 20%, transparent 100%)' }}></div>
@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ loading }) => {
           <div className="hidden md:block text-right">Est<br/><span className="text-white"><ScrambleText text="2026" /></span></div>
         </motion.div>
 
-        <h1 className="text-[16vw] md:text-[13vw] leading-[0.8] font-bold tracking-tighter uppercase mb-12 flex flex-col mix-blend-difference text-white">
+        <h1 className="text-[17vw] md:text-[13vw] leading-[0.8] md:leading-[0.8] font-bold tracking-tighter uppercase mb-8 md:mb-12 flex flex-col mix-blend-difference text-white">
           <div className="overflow-hidden py-2">
             <motion.div initial="hidden" animate={loading ? "hidden" : "visible"} variants={textReveal} transition={{ delay: 0.2 }}>
               Digital

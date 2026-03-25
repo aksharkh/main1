@@ -39,3 +39,24 @@ export interface AccordionProps {
   isOpen: boolean;
   onClick: () => void;
 }
+
+export interface PricingPlan {
+  id: string;
+  name: string;
+  price: string;
+  originalPrice?: string;
+  description: string;
+  features: string[];
+  recommended?: boolean;
+}
+
+export interface Testimonial {
+  id: string;
+  clientName: string;
+  clientRole: string;
+  companyName: string;
+  content: string;
+  growthStats: { label: string; value: string }[];
+  beforeImage?: string;
+  afterImage?: string;
+}
