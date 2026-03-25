@@ -13,7 +13,7 @@ const Work: React.FC = () => {
   const categories = Array.from(new Set(projects.map(p => p.category)));
 
   return (
-    <section id="work" className="py-12 md:py-32 px-5 md:px-12 bg-zinc-50 text-black relative z-10">
+    <section id="work" className="py-12 md:py-32 px-5 md:px-12 bg-zinc-50 text-black relative z-10" style={{ backgroundColor: '#fafafa', color: '#000000' }}>
       <div className="max-w-[1400px] mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ ease: premiumEase, duration: 1 }}
