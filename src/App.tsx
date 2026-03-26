@@ -19,6 +19,8 @@ import Testimonials from './components/sections/Testimonials';
 import Pricing from './components/sections/Pricing';
 import Footer from './components/layout/Footer';
 
+import { Analytics } from '@vercel/analytics/react';
+
 function App() {
   const [loading, setLoading] = useState(true);
   
@@ -43,6 +45,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-[#CCFF00] selection:text-black relative overflow-x-hidden">
+      <Analytics />
       
       <AnimatePresence mode="wait">
         {loading && <Preloader onComplete={() => setLoading(false)} />}
