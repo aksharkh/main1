@@ -25,7 +25,7 @@ import port3 from '../assets/port3.png';
 import akshar from '../assets/akshar.jpeg';
 import abhinav from '../assets/abhinav.jpeg';
 import adnaan from '../assets/adnaan.jpeg';
-import chandan from '../assets/chandan.jpeg';
+// import chandan from '../assets/chandan.jpeg';
 import bhuvan from '../assets/bhuvan.jpeg';
 
 import zoviq from '../assets/zoviq.png';
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     image: main4,
     aspect: 'aspect-[16/10]',
     col: 'md:col-span-7',
-    link: 'https://business-c-nergy-grow-movement-2026-lyart.vercel.app/',
+    link: 'https://shinegoglobal.com/',
     tags: ['TypeScript', 'Node.js', 'PostgreSQL']
   },
 
@@ -262,7 +262,7 @@ export const team: TeamMember[] = [
   { id: 2, name: 'Abhinav ', role: 'Software Engineer', github: 'https://github.com/abhinavrbharadwaj7', linkedin: 'https://www.linkedin.com/in/abhinavrbharadwaj/', image: abhinav },
   { id: 3, name: 'Adnaan ', role: 'FullStack Developer', github: 'https://github.com/Khan012003', linkedin: 'https://www.linkedin.com/in/adnaan-khan-153042319/', image: adnaan },
   { id: 4, name: 'Bhuvan', role: 'Java FullStack Developer', github: 'https://github.com/AKlRA', linkedin: 'https://www.linkedin.com/in/bhuvan-mh-0144492a8/', image: bhuvan },
-  { id: 4, name: 'Chandan', role: 'Lead Cyber Security Engineer', github: 'https://github.com/chandantm2002', linkedin: 'https://www.linkedin.com/in/chandan-t-m-691851235/', image: chandan },
+  // { id: 4, name: 'Chandan', role: 'Lead Cyber Security Engineer', github: 'https://github.com/chandantm2002', linkedin: 'https://www.linkedin.com/in/chandan-t-m-691851235/', image: chandan },
 
 ];
 
