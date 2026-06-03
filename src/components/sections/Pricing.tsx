@@ -31,6 +31,10 @@ const Pricing: React.FC = () => {
           transition={{ ease: premiumEase, duration: 1 }}
           className="text-center mb-20"
         >
+          <div className="inline-flex items-center gap-2 bg-[#CCFF00]/10 border border-[#CCFF00]/30 text-[#CCFF00] px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest mb-8">
+            <Zap className="w-3 h-3" />
+            Plans Starting From ₹10,000
+          </div>
           <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase mb-6">
             Investment <span className="font-serif italic text-transparent normal-case" style={{ WebkitTextStroke: '2px white' }}>Plans</span>
           </h2>
@@ -63,11 +67,14 @@ const Pricing: React.FC = () => {
                     <p className="text-gray-400 text-sm h-12">{plan.description}</p>
                   </div>
 
-                  <div className="mb-8 flex items-end gap-3 border-b border-white/10 pb-8">
-                    <span className="text-5xl font-bold tracking-tighter">{plan.price}</span>
-                    {plan.originalPrice && (
-                      <span className="text-xl text-gray-500 line-through mb-1 uppercase font-mono">{plan.originalPrice}</span>
-                    )}
+                  <div className="mb-8 flex flex-col gap-1 border-b border-white/10 pb-8">
+                    <span className="text-xs font-mono uppercase tracking-widest text-gray-500">Starting from</span>
+                    <div className="flex items-end gap-3">
+                      <span className="text-5xl font-bold tracking-tighter">{plan.price}</span>
+                      {plan.originalPrice && (
+                        <span className="text-xl text-gray-500 line-through mb-1 uppercase font-mono">{plan.originalPrice}</span>
+                      )}
+                    </div>
                   </div>
 
                   <ul className="flex-1 flex flex-col gap-4 mb-10">
@@ -79,9 +86,15 @@ const Pricing: React.FC = () => {
                     ))}
                   </ul>
 
-                  <button className={`w-full py-4 rounded-full font-bold uppercase tracking-widest text-sm transition-all duration-300 ${plan.recommended ? 'bg-[#CCFF00] text-black hover:bg-white hover:scale-105' : 'bg-white/10 text-white hover:bg-white hover:text-black hover:scale-105'}`}>
+                  <a
+                    href={`https://wa.me/919353443100?text=${encodeURIComponent(`Hi Axoraa! I'm interested in the ${plan.name} plan (${plan.price}). Can we discuss?`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    id={`pricing-cta-${plan.id}`}
+                    className={`w-full py-4 rounded-full font-bold uppercase tracking-widest text-sm transition-all duration-300 text-center block ${plan.recommended ? 'bg-[#CCFF00] text-black hover:bg-white hover:scale-105' : 'bg-white/10 text-white hover:bg-white hover:text-black hover:scale-105'}`}
+                  >
                     Get Started
-                  </button>
+                  </a>
                 </div>
               </TiltCard>
             </motion.div>

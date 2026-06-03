@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Calendar } from 'lucide-react';
 import Magnetic from '../ui/Magnetic';
 import ScrambleText from '../ui/ScrambleText';
 import { useLocalTime } from '../../hooks/useLocalTime';
@@ -41,44 +41,76 @@ const Hero: React.FC<HeroProps> = ({ loading }) => {
           <div className="hidden md:block text-right">Est<br/><span className="text-white"><ScrambleText text="2026" /></span></div>
         </motion.div>
 
-        <h1 className="text-[17vw] md:text-[13vw] leading-[0.8] md:leading-[0.8] font-bold tracking-tighter uppercase mb-8 md:mb-12 flex flex-col mix-blend-difference text-white">
-          <div className="overflow-hidden py-2">
-            <motion.div initial="hidden" animate={loading ? "hidden" : "visible"} variants={textReveal} transition={{ delay: 0.2 }}>
-              Digital
-            </motion.div>
-          </div>
-          <div className="overflow-hidden flex items-center gap-4 md:gap-8 py-2">
-            <motion.div 
-              initial="hidden" animate={loading ? "hidden" : "visible"} variants={textReveal} transition={{ delay: 0.35 }}
-              className="text-transparent italic font-serif origin-left"
-              style={{ WebkitTextStroke: '2px white' }}
-            >
-              Excellence
-            </motion.div>
-            <motion.div 
-              style={{ rotate: rotateHeroElement }}
-              className="hidden md:flex w-[10vw] h-[10vw] bg-[#CCFF00] rounded-full text-black items-center justify-center -mb-4 shrink-0"
-            >
-              <ArrowDown className="w-1/3 h-1/3" />
-            </motion.div>
-          </div>
-        </h1>
+        <div className="mb-8 md:mb-12">
+          <h1 className="text-[9vw] md:text-[7vw] leading-[0.9] font-bold tracking-tighter uppercase flex flex-col mix-blend-difference text-white">
+            <div className="overflow-hidden py-2">
+              <motion.div initial="hidden" animate={loading ? "hidden" : "visible"} variants={textReveal} transition={{ delay: 0.2 }}>
+                Websites & Apps
+              </motion.div>
+            </div>
+            <div className="overflow-hidden py-2">
+              <motion.div initial="hidden" animate={loading ? "hidden" : "visible"} variants={textReveal} transition={{ delay: 0.3 }}>
+                That Bring
+              </motion.div>
+            </div>
+            <div className="overflow-hidden flex items-center gap-4 md:gap-8 py-2">
+              <motion.div 
+                initial="hidden" animate={loading ? "hidden" : "visible"} variants={textReveal} transition={{ delay: 0.45 }}
+                className="text-transparent italic font-serif origin-left"
+                style={{ WebkitTextStroke: '2px white' }}
+              >
+                Business,
+              </motion.div>
+              <motion.div 
+                style={{ rotate: rotateHeroElement }}
+                className="hidden md:flex w-[7vw] h-[7vw] bg-[#CCFF00] rounded-full text-black items-center justify-center shrink-0"
+              >
+                <ArrowDown className="w-1/3 h-1/3" />
+              </motion.div>
+            </div>
+            <div className="overflow-hidden py-2">
+              <motion.div initial="hidden" animate={loading ? "hidden" : "visible"} variants={textReveal} transition={{ delay: 0.55 }}>
+                Not Just Beauty
+              </motion.div>
+            </div>
+          </h1>
+        </div>
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
           <motion.p 
             initial={{ opacity: 0 }} animate={{ opacity: loading ? 0 : 1 }} transition={{ delay: 0.8, duration: 1 }}
-            className="text-xl md:text-3xl max-w-2xl font-light leading-snug text-gray-300"
+            className="text-xl md:text-2xl max-w-xl font-light leading-snug text-gray-300"
           >
-            We are a collective of senior developers building high-performance websites and platforms for industry leaders.
+            We are a collective of senior developers building high-performance websites and apps that generate real revenue — not just pretty pixels.
           </motion.p>
           
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: loading ? 0 : 1, scale: loading ? 0.8 : 1 }} transition={{ delay: 1, duration: 0.8, ease: premiumEase }}>
-            <Magnetic strength={0.2}>
-              <a href="#contact" className="group flex items-center gap-6 text-lg font-bold uppercase tracking-widest p-4 mix-blend-difference text-white">
-                Let's Talk 
-                <span className="w-20 h-20 rounded-full border border-white flex items-center justify-center group-hover:bg-[#CCFF00] group-hover:border-[#CCFF00] group-hover:text-black transition-all duration-300 group-hover:scale-110">
-                  <ArrowUpRight size={28} className="group-hover:rotate-45 transition-transform duration-300" />
-                </span>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: loading ? 0 : 1, y: loading ? 20 : 0 }} 
+            transition={{ delay: 1, duration: 0.8, ease: premiumEase }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            {/* Primary CTA */}
+            <Magnetic strength={0.15}>
+              <a
+                href="#contact"
+                id="hero-book-consultation-btn"
+                className="group flex items-center gap-3 bg-[#CCFF00] text-black px-7 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(204,255,0,0.3)] hover:shadow-[0_0_60px_rgba(204,255,0,0.5)]"
+              >
+                <Calendar size={18} />
+                Book Free Consultation
+              </a>
+            </Magnetic>
+
+            {/* Secondary CTA */}
+            <Magnetic strength={0.15}>
+              <a
+                href="#audit"
+                id="hero-free-audit-btn"
+                className="group flex items-center gap-3 border border-white/30 text-white px-7 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:border-[#CCFF00] hover:text-[#CCFF00] hover:scale-105 transition-all duration-300"
+              >
+                Free Website Audit
+                <ArrowUpRight size={16} className="group-hover:rotate-45 transition-transform duration-300" />
               </a>
             </Magnetic>
           </motion.div>

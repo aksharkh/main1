@@ -20,6 +20,7 @@ import Pricing from './components/sections/Pricing';
 import Footer from './components/layout/Footer';
 
 import { Analytics } from '@vercel/analytics/react';
+import WhatsAppButton from './components/ui/WhatsAppButton';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -73,6 +74,9 @@ function App() {
       </main>
 
       <Footer />
+
+      {/* Floating WhatsApp button — always visible */}
+      {!loading && <WhatsAppButton />}
 
     </div>
   );
