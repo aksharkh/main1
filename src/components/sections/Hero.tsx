@@ -22,10 +22,24 @@ const Hero: React.FC<HeroProps> = ({ loading }) => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-end pb-12 pt-28 md:pt-40 px-5 md:px-12 relative z-10 bg-gradient-to-b from-transparent to-black overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-end pb-12 pt-28 md:pt-40 px-5 md:px-12 relative z-10 overflow-hidden bg-black">
       
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 z-0 object-cover w-full h-full pointer-events-none"
+      >
+        <source src="/hero-video.mp4" type="video/mp4" />
+      </video>
+      
+      {/* Subtle bottom gradient to blend with next section */}
+      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black to-transparent z-0 pointer-events-none"></div>
+
       {/* Animated Grid Background */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#CCFF00 1px, transparent 1px)', backgroundSize: '40px 40px', maskImage: 'linear-gradient(to bottom, black 20%, transparent 100%)' }}></div>
+      <div className="absolute inset-0 z-0 opacity-15 mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
 
       <div className="max-w-[1400px] w-full mx-auto relative z-10">
         
@@ -33,7 +47,7 @@ const Hero: React.FC<HeroProps> = ({ loading }) => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: loading ? 0 : 1, y: loading ? -20 : 0 }}
           transition={{ duration: 1, delay: 0.2, ease: premiumEase }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 border-b border-white/20 pb-8 mb-12 text-xs md:text-sm text-gray-400 font-mono uppercase tracking-widest"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 border-b border-white/30 pb-8 mb-12 text-xs md:text-sm text-white/90 font-mono uppercase tracking-widest drop-shadow-md"
         >
           <div>Based in<br/><span className="text-white"><ScrambleText text="Bengaluru, IN" /></span></div>
           <div>Status<br/><span className="text-[#CCFF00] animate-pulse"><ScrambleText text="Taking Projects" /></span></div>
@@ -42,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ loading }) => {
         </motion.div>
 
         <div className="mb-8 md:mb-12">
-          <h1 className="text-[9vw] md:text-[7vw] leading-[0.9] font-bold tracking-tighter uppercase flex flex-col mix-blend-difference text-white">
+          <h1 className="text-[9vw] md:text-[7vw] leading-[0.9] font-bold tracking-tighter uppercase flex flex-col text-white drop-shadow-[0_4px_32px_rgba(0,0,0,0.5)]">
             <div className="overflow-hidden py-2">
               <motion.div initial="hidden" animate={loading ? "hidden" : "visible"} variants={textReveal} transition={{ delay: 0.2 }}>
                 Websites & Apps
@@ -57,7 +71,7 @@ const Hero: React.FC<HeroProps> = ({ loading }) => {
               <motion.div 
                 initial="hidden" animate={loading ? "hidden" : "visible"} variants={textReveal} transition={{ delay: 0.45 }}
                 className="text-transparent italic font-serif origin-left"
-                style={{ WebkitTextStroke: '2px white' }}
+                style={{ WebkitTextStroke: '2px white', filter: 'drop-shadow(0px 4px 16px rgba(0,0,0,0.4))' }}
               >
                 Business,
               </motion.div>
@@ -79,7 +93,7 @@ const Hero: React.FC<HeroProps> = ({ loading }) => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
           <motion.p 
             initial={{ opacity: 0 }} animate={{ opacity: loading ? 0 : 1 }} transition={{ delay: 0.8, duration: 1 }}
-            className="text-xl md:text-2xl max-w-xl font-light leading-snug text-gray-300"
+            className="text-xl md:text-2xl max-w-xl font-medium leading-snug text-white drop-shadow-md"
           >
             We are a collective of senior developers building high-performance websites and apps that generate real revenue — not just pretty pixels.
           </motion.p>

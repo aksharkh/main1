@@ -20,7 +20,6 @@ import Pricing from './components/sections/Pricing';
 import Footer from './components/layout/Footer';
 
 import { Analytics } from '@vercel/analytics/react';
-import WhatsAppButton from './components/ui/WhatsAppButton';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -75,8 +74,8 @@ function App() {
 
       <Footer />
 
-      {/* Floating WhatsApp button — always visible */}
-      {!loading && <WhatsAppButton />}
+      {/* Mobile Phone Screen Bezel Overlay (Top and Sides Only) */}
+      <div className="fixed top-0 left-0 right-0 -bottom-10 z-[100] pointer-events-none border-x-[12px] border-t-[12px] md:border-x-[24px] md:border-t-[24px] border-b-0 border-black rounded-t-[2rem] md:rounded-t-[3.5rem] shadow-[0_0_0_30px_black]"></div>
 
     </div>
   );

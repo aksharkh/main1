@@ -167,16 +167,6 @@ const StoryPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               >
                 Work With Us
               </a>
-              <a
-                href="https://wa.me/919353443100?text=Hi%20Akshar!%20Saw%20your%20story%20on%20Axoraa.%20I'd%20like%20to%20chat."
-                target="_blank"
-                rel="noopener noreferrer"
-                id="story-panel-whatsapp"
-                className="flex items-center justify-center gap-2 border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:border-[#25D366] hover:text-[#25D366] hover:scale-105 transition-all duration-300"
-              >
-                <MessageCircle className="w-4 h-4" />
-                Chat on WhatsApp
-              </a>
             </div>
           </motion.div>
 
@@ -496,89 +486,88 @@ const Navbar: React.FC = () => {
     <>
       {/* ── Desktop / Mobile bar ─────────────────────────────────────────────── */}
       <motion.nav
-        className="fixed top-0 w-full z-40 px-6 md:px-12 flex justify-between items-center pointer-events-none"
-        animate={{
-          paddingTop: scrolled ? '16px' : '32px',
-          paddingBottom: scrolled ? '16px' : '32px',
-        }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
-        style={{
-          background: scrolled
-            ? 'rgba(5, 5, 5, 0.88)'
-            : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : '1px solid transparent',
-          mixBlendMode: scrolled ? 'normal' : 'difference',
-          boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.4)' : 'none',
-        }}
+        className="fixed top-0 left-0 w-full z-40 pointer-events-none"
       >
-        <Magnetic strength={0.1}>
-          <a href="#" className="text-2xl font-bold tracking-tighter pointer-events-auto hover:text-[#CCFF00] transition-colors p-2 -m-2 text-white">
-            AXORAA©
-          </a>
-        </Magnetic>
-
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-6 font-medium tracking-wide pointer-events-auto text-sm uppercase text-white">
-          {['Work', 'Process', 'Team'].map((item) => (
-            <Magnetic key={item} strength={0.3}>
-              <a href={`#${item.toLowerCase()}`} className="relative group overflow-hidden block p-2 -m-2">
-                <span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">{item}</span>
-                <span className="block absolute top-2 text-[#CCFF00] group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">{item}</span>
+        <motion.div
+          layout
+          transition={{ duration: 0.8, ease: premiumEase }}
+          className={`mx-auto flex items-center pointer-events-auto transition-all duration-500 ${
+            scrolled
+              ? 'w-full px-6 md:px-12 py-3 md:py-4 justify-between bg-black md:rounded-b-[2.5rem] rounded-b-[1.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
+              : 'w-full md:w-max px-6 md:px-10 pt-5 pb-5 justify-between md:justify-center md:gap-12 bg-black md:rounded-b-[2.5rem] rounded-b-[1.5rem] shadow-[0_20px_40px_rgba(0,0,0,0.5)]'
+          }`}
+        >
+          <motion.div layout className="shrink-0 md:flex-1 flex justify-start">
+            <Magnetic strength={0.1}>
+              <a href="#" className="text-2xl font-bold tracking-tighter hover:text-[#CCFF00] transition-colors block text-white w-max">
+                AXORAA©
               </a>
             </Magnetic>
-          ))}
+          </motion.div>
 
-          {/* Divider */}
-          <div className="w-px h-4 bg-white/20" />
+          {/* Desktop links */}
+          <motion.div layout className="hidden md:flex items-center justify-center gap-6 font-medium tracking-wide text-sm uppercase text-white shrink-0">
+            {['Work', 'Process', 'Team'].map((item) => (
+              <Magnetic key={item} strength={0.3}>
+                <a href={`#${item.toLowerCase()}`} className="relative group overflow-hidden block p-2 -m-2">
+                  <span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">{item}</span>
+                  <span className="block absolute top-2 text-[#CCFF00] group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">{item}</span>
+                </a>
+              </Magnetic>
+            ))}
 
-          {/* Our Story panel trigger */}
-          <Magnetic strength={0.3}>
-            <button
-              id="navbar-story-btn"
-              onClick={() => openPanel('story')}
-              className="relative group overflow-hidden block p-2 -m-2 cursor-pointer"
-            >
-              <span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">Our Story</span>
-              <span className="block absolute top-2 text-[#CCFF00] group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">Our Story</span>
-            </button>
-          </Magnetic>
+            {/* Divider */}
+            <div className="w-px h-4 bg-white/20" />
 
-          {/* Free Audit panel trigger */}
-          <Magnetic strength={0.3}>
-            <button
-              id="navbar-audit-btn"
-              onClick={() => openPanel('audit')}
-              className="relative group overflow-hidden block p-2 -m-2 cursor-pointer"
-            >
-              <span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">Free Audit</span>
-              <span className="block absolute top-2 text-[#CCFF00] group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">Free Audit</span>
-            </button>
-          </Magnetic>
+            {/* Our Story panel trigger */}
+            <Magnetic strength={0.3}>
+              <button
+                id="navbar-story-btn"
+                onClick={() => openPanel('story')}
+                className="relative group overflow-hidden block p-2 -m-2 cursor-pointer"
+              >
+                <span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">Our Story</span>
+                <span className="block absolute top-2 text-[#CCFF00] group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">Our Story</span>
+              </button>
+            </Magnetic>
 
-          <div className="w-px h-4 bg-white/20" />
+            {/* Free Audit panel trigger */}
+            <Magnetic strength={0.3}>
+              <button
+                id="navbar-audit-btn"
+                onClick={() => openPanel('audit')}
+                className="relative group overflow-hidden block p-2 -m-2 cursor-pointer"
+              >
+                <span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">Free Audit</span>
+                <span className="block absolute top-2 text-[#CCFF00] group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">Free Audit</span>
+              </button>
+            </Magnetic>
+          </motion.div>
 
           {/* Book Free Call CTA */}
-          <Magnetic strength={0.2}>
-            <a
-              href="#contact"
-              id="navbar-book-consultation-btn"
-              className="flex items-center gap-2 bg-[#CCFF00] text-black px-5 py-2.5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(204,255,0,0.3)]"
-            >
-              <Calendar size={13} />
-              Book Free Call
-            </a>
-          </Magnetic>
-        </div>
+          <motion.div layout className="hidden md:flex items-center justify-end shrink-0 md:flex-1">
+            <Magnetic strength={0.2}>
+              <a
+                href="#contact"
+                id="navbar-book-consultation-btn"
+                className="flex items-center gap-2 bg-[#CCFF00] text-black px-5 py-2.5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(204,255,0,0.3)]"
+              >
+                <Calendar size={13} />
+                Book Free Call
+              </a>
+            </Magnetic>
+          </motion.div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="pointer-events-auto md:hidden bg-white/10 p-2 rounded-full backdrop-blur-md text-white"
-          onClick={() => setMobileMenuOpen(true)}
-        >
-          <Menu size={24} />
-        </button>
+          {/* Mobile hamburger */}
+          <motion.div layout className="md:hidden shrink-0 flex items-center justify-end flex-1">
+            <button
+              className="bg-white/10 p-2 rounded-full backdrop-blur-md text-white pointer-events-auto"
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <Menu size={24} />
+            </button>
+          </motion.div>
+        </motion.div>
       </motion.nav>
 
       {/* ── Mobile fullscreen menu ────────────────────────────────────────────── */}
@@ -634,18 +623,6 @@ const Navbar: React.FC = () => {
                 BOOK FREE CALL <ArrowRight className="inline w-10 h-10" />
               </a>
 
-              <a
-                href="https://wa.me/919353443100?text=Hi%20Axoraa!%20I'd%20like%20to%20discuss%20a%20project."
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 text-xl font-bold tracking-wider mt-2 text-black/70 hover:text-white transition-all"
-              >
-                <span className="w-9 h-9 bg-[#25D366] rounded-full flex items-center justify-center shrink-0">
-                  <MessageCircle size={18} className="text-white" fill="white" />
-                </span>
-                WHATSAPP US
-              </a>
             </div>
           </motion.div>
         )}
