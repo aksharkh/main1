@@ -1,22 +1,18 @@
 
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { Routes, Route } from 'react-router-dom';
 import Preloader from './components/ui/Preloader';
 import CustomCursor from './components/ui/CustomCursor';
 import GlowOrb from './components/ui/GlowOrb';
 import MobileWarning from './components/ui/MobileWarning';
 import CinematicNoise from './components/ui/CinematicNoise';
 import ScrollProgress from './components/ui/ScrollProgress';
+import ContactWidget from './components/ui/ContactWidget';
 import Navbar from './components/layout/Navbar';
-import Hero from './components/sections/Hero';
-import Philosophy from './components/sections/Philosophy';
-import Marquee from './components/ui/Marquee';
-import Work from './components/sections/Work';
-import Process from './components/sections/Process';
-import Expertise from './components/sections/Expertise';
-import Team from './components/sections/Team';
-import Testimonials from './components/sections/Testimonials';
-import Pricing from './components/sections/Pricing';
+import Home from './pages/Home';
+import TeamPage from './pages/TeamPage';
+import PricingPage from './pages/PricingPage';
 import Footer from './components/layout/Footer';
 
 import { Analytics } from '@vercel/analytics/react';
@@ -57,19 +53,16 @@ function App() {
       <CinematicNoise />
       <GlowOrb mousePosition={mousePosition} />
       {!loading && <ScrollProgress />}
+      <ContactWidget />
 
       <Navbar />
 
       <main>
-        <Hero loading={loading} />
-        <Philosophy />
-        <Marquee />
-        <Work />
-        <Process />
-        <Expertise />
-        <Team mousePosition={mousePosition} />
-        <Testimonials />
-        <Pricing />
+        <Routes>
+          <Route path="/" element={<Home loading={loading} />} />
+          <Route path="/team" element={<TeamPage mousePosition={mousePosition} />} />
+          <Route path="/pricing" element={<PricingPage />} />
+        </Routes>
       </main>
 
       <Footer />

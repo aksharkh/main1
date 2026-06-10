@@ -1,14 +1,14 @@
-
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '../../data';
-import TiltCard from '../ui/TiltCard';
-import ParallaxImage from '../ui/ParallaxImage';
+import ProjectCard from '../ui/ProjectCard';
+import ProjectDetailsModal from '../ui/ProjectDetailsModal';
+import type { Project } from '../../types';
 import { premiumEase } from '../../lib/utils';
 
 const Work: React.FC = () => {
   const [expandedCats, setExpandedCats] = useState<Record<string, boolean>>({});
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const categories = Array.from(new Set(projects.map(p => p.category)));
 
@@ -49,34 +49,19 @@ const Work: React.FC = () => {
                       initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 1, ease: premiumEase, delay: index * 0.1 }}
                       className={`md:col-span-6 flex flex-col ${index % 2 !== 0 ? 'mt-4 md:mt-32' : ''}`}
                     >
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex flex-col w-full h-full group cursor-pointer">
+                      <div className="flex flex-col w-full h-full group">
                         <div className="w-full mb-6 md:mb-8">
-                          <TiltCard>
-                            <div className="w-full aspect-[16/10] bg-black relative rounded-xl shadow-2xl overflow-hidden">
-                              <ParallaxImage src={project.image} alt={project.title} />
-                              
-                              {/* Advanced Hover State Overlay */}
-                              <div className="absolute inset-0 z-10 flex flex-col justify-between p-8 md:p-12 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-[0.76,0,0.24,1] pointer-events-none">
-                                 <div className="flex gap-3 flex-wrap">
-                                    {project.tags.map(tag => (
-                                      <span key={tag} className="px-5 py-2.5 bg-[#CCFF00] text-black font-bold text-xs uppercase tracking-widest rounded-full transform -translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-[0.76,0,0.24,1] shadow-xl">
-                                        {tag}
-                                      </span>
-                                    ))}
-                                 </div>
-                                 <div className="self-end w-20 h-20 bg-white text-black rounded-full flex items-center justify-center transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-[0.76,0,0.24,1]">
-                                   <ArrowUpRight size={32} />
-                                 </div>
-                              </div>
-                            </div>
-                          </TiltCard>
+                          <ProjectCard 
+                            project={project} 
+                            onOpenDetails={() => setSelectedProject(project)} 
+                          />
                         </div>
                         
                         <div className="flex justify-between items-start border-t border-black/10 pt-6 mt-auto">
                           <h3 className="text-3xl md:text-4xl font-bold tracking-tight uppercase group-hover:text-gray-500 transition-colors">{project.title}</h3>
                           <span className="text-sm font-mono uppercase tracking-widest text-gray-500">{project.category}</span>
                         </div>
-                      </a>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
@@ -113,6 +98,15 @@ const Work: React.FC = () => {
           })}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectDetailsModal 
+            project={selectedProject} 
+            onClose={() => setSelectedProject(null)} 
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };

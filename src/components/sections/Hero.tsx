@@ -64,12 +64,12 @@ const Hero: React.FC<HeroProps> = ({ loading }) => {
           </div>
         </h1>
 
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mr-10">
           <motion.p 
             initial={{ opacity: 0 }} animate={{ opacity: loading ? 0 : 1 }} transition={{ delay: 0.8, duration: 1 }}
             className="text-xl md:text-3xl max-w-2xl font-light leading-snug text-gray-300"
           >
-            We are a collective of senior developers building high-performance websites and platforms for industry leaders.
+            We are a premier digital agency providing high-performance software solutions and services for industry leaders.
           </motion.p>
           
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: loading ? 0 : 1, scale: loading ? 0.8 : 1 }} transition={{ delay: 1, duration: 0.8, ease: premiumEase }}>
