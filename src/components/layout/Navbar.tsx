@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, Calendar, MessageCircle, Rocket, Target, Users, Trophy, Zap, TrendingUp, Shield, Search, CheckCircle2, ArrowUpRight, BarChart3, Smartphone, Globe } from 'lucide-react';
+import { Menu, X, ArrowRight, Calendar, Rocket, Target, Users, Trophy, Zap, TrendingUp, Shield, Search, CheckCircle2, ArrowUpRight, BarChart3, Smartphone, Globe } from 'lucide-react';
 import Magnetic from '../ui/Magnetic';
 import { premiumEase } from '../../lib/utils';
 import akshar from '../../assets/akshar.jpeg';
