@@ -23,7 +23,7 @@ const Process: React.FC = () => {
         <div className="w-px h-full bg-white/5"></div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto relative z-10 px-6 md:px-12">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
           
           {/* Left Column (Sticky) */}

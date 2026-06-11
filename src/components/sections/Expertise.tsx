@@ -25,7 +25,7 @@ const Expertise: React.FC = () => {
         <div className="w-px h-full bg-white/5"></div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto relative z-10 px-6 md:px-12">
         <div className="grid md:grid-cols-12 gap-16 items-center">
           
           {/* Left Column (Sticky Title & Rotating Wireframe Node Graphic) */}

@@ -22,12 +22,25 @@ const Hero: React.FC<HeroProps> = ({ loading }) => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-end pb-12 pt-28 md:pt-40 px-5 md:px-12 relative z-10 bg-gradient-to-b from-transparent to-black overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-end pb-12 pt-28 md:pt-40 px-5 md:px-12 relative z-10 bg-transparent overflow-hidden">
       
-      {/* Animated Grid Background */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#CCFF00 1px, transparent 1px)', backgroundSize: '40px 40px', maskImage: 'linear-gradient(to bottom, black 20%, transparent 100%)' }}></div>
+      {/* Background Video Loop */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover opacity-35"
+        >
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-digital-technology-background-loop-42220-large.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Dark vignette overlay for premium contrast and readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black" />
+      </div>
 
-      <div className="max-w-[1400px] w-full mx-auto relative z-10">
+      <div className="max-w-5xl w-full mx-auto relative z-10 px-6 md:px-12">
         
         <motion.div 
           initial={{ opacity: 0, y: -20 }}

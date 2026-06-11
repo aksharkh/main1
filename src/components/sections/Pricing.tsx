@@ -23,7 +23,7 @@ const Pricing: React.FC = () => {
         </motion.div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto mt-16 md:mt-24">
+      <div className="max-w-5xl mx-auto mt-16 md:mt-24 px-6 md:px-12">
         <motion.div 
           initial={{ opacity: 0, y: 50 }} 
           whileInView={{ opacity: 1, y: 0 }} 

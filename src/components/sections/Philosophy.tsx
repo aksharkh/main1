@@ -41,7 +41,7 @@ const Philosophy: React.FC = () => {
         PHILOSOPHY
       </div>
 
-      <div className="max-w-[1400px] mx-auto flex justify-center relative z-10">
+      <div className="max-w-5xl mx-auto flex justify-center relative z-10 px-6 md:px-12">
         <div className="max-w-5xl text-center md:text-left">
           {/* Section Indicator */}
           <div className="flex items-center gap-3 mb-8 justify-center md:justify-start">
