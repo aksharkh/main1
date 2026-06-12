@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
         {/* Left: Logo */}
         <Magnetic strength={0.1}>
           <Link to="/" className="flex items-center gap-2 pointer-events-auto hover:text-[#CCFF00] transition-colors p-2 -m-2 text-white">
-            <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-white block"></span>
+            {/* <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-white block"></span> */}
             <span className="text-base md:text-lg font-bold tracking-tighter uppercase">AXORAA©</span>
           </Link>
         </Magnetic>
@@ -63,9 +63,9 @@ const Navbar: React.FC = () => {
 
         {/* Right: Actions */}
         <div className="hidden md:flex items-center gap-6 pointer-events-auto">
-          <a href="#contact" className="text-xs font-semibold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest">
+          {/* <a href="#contact" className="text-xs font-semibold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest">
             Sign In
-          </a>
+          </a> */}
           <Magnetic strength={0.15}>
             <div className="flex items-center">
               <a href="#contact" className="bg-white text-black px-4 py-2 rounded-l-xl text-[10px] font-bold uppercase tracking-widest hover:bg-zinc-200 transition-colors h-9 flex items-center">

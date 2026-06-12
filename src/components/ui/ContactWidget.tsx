@@ -48,7 +48,7 @@ const ContactWidget: React.FC = () => {
       {/* Floating Pulsing Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#CCFF00] rounded-full flex items-center justify-center text-black shadow-[0_0_20px_rgba(204,255,0,0.4)] hover:scale-110 transition-transform duration-300 group"
+        className="fixed bottom-6 right-8 z-50 w-16 h-16 bg-[#CCFF00] rounded-full flex items-center justify-center text-black shadow-[0_0_20px_rgba(204,255,0,0.4)] hover:scale-110 transition-transform duration-300 group"
       >
         <div className="absolute inset-0 rounded-full bg-[#CCFF00] animate-ping opacity-75"></div>
         <MessageSquare size={28} className="relative z-10 group-hover:-rotate-12 transition-transform duration-300" />

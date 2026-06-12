@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Quote, ArrowRight, TrendingUp } from 'lucide-react';
+import { Quote, ArrowLeftRight, TrendingUp } from 'lucide-react';
 import { testimonials } from '../../data';
 import { premiumEase } from '../../lib/utils';
-import ParallaxImage from '../ui/ParallaxImage';
 
 const Testimonials: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const rotateVal = useTransform(scrollYProgress, [0, 1], [-10, 10]);
+
+  // Track slider position state (percentage 0 to 100)
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!sliderRef.current) return;
+    const rect = sliderRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left; // x position within the element
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPosition(percentage);
+  };
+
+  const handleMouseLeave = () => {
+    // Return to middle position smoothly when mouse leaves
+    setSliderPosition(50);
+  };
 
   return (
     <section id="testimonials" className="py-24 md:py-48 px-6 md:px-12 bg-zinc-950 text-white relative z-10 overflow-hidden border-b border-white/5">
@@ -54,43 +70,75 @@ const Testimonials: React.FC = () => {
         {testimonials.map((testimonial) => (
           <div key={testimonial.id} className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
             
-            {/* Before and After Visuals */}
-            <div className="w-full lg:w-1/2 flex flex-col md:flex-row gap-4 relative">
+            {/* Interactive Before/After Split-Screen Slider Showcase */}
+            <div className="w-full lg:w-1/2 flex flex-col gap-4 relative">
               {/* Decorative Background Ambient Glow */}
               <div className="absolute inset-0 bg-[#CCFF00] opacity-[0.03] filter blur-[100px] rounded-full z-0 pointer-events-none"></div>
 
               <motion.div 
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: premiumEase }}
-                className="w-full relative group z-10"
-              >
-                <div className="absolute top-4 left-4 z-20 bg-black/80 px-4 py-1.5 uppercase font-mono text-[10px] tracking-widest text-red-500 border border-red-500/30 backdrop-blur-md rounded-full shadow-lg">
-                  Before
-                </div>
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 bg-zinc-900 border border-white/5">
-                  {testimonial.beforeImage && <ParallaxImage src={testimonial.beforeImage} alt="Before Website" />}
-                </div>
-              </motion.div>
-
-              <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-16 h-16 bg-[#CCFF00] rounded-full items-center justify-center text-black shadow-[0_0_30px_rgba(204,255,0,0.4)]">
-                <ArrowRight size={24} className="animate-pulse" />
-              </div>
-
-              <motion.div 
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2, ease: premiumEase }}
                 className="w-full relative z-10"
               >
-                <div className="absolute top-4 right-4 z-20 bg-[#CCFF00] px-4 py-1.5 uppercase font-mono text-[10px] tracking-widest text-black font-bold shadow-lg rounded-full">
-                  After
+                {/* Interactive Slider Container */}
+                <div 
+                  ref={sliderRef}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={handleMouseLeave}
+                  className="w-full aspect-[4/5] rounded-3xl overflow-hidden relative border border-white/10 bg-zinc-900 cursor-ew-resize select-none shadow-2xl"
+                >
+                  {/* Before version (underneath) */}
+                  <div className="absolute inset-0 w-full h-full grayscale opacity-40">
+                    <div className="absolute top-4 left-4 z-20 bg-black/80 px-3.5 py-1.5 uppercase font-mono text-[9px] tracking-widest text-red-500 border border-red-500/20 backdrop-blur-md rounded-full shadow-lg">
+                      Before (Basic UI)
+                    </div>
+                    {testimonial.beforeImage && (
+                      <img 
+                        src={testimonial.beforeImage} 
+                        alt="Before redesign" 
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
+
+                  {/* After version (on top, cropped via clipPath) */}
+                  <div 
+                    className="absolute inset-0 w-full h-full z-10 pointer-events-none transition-all duration-75"
+                    style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
+                  >
+                    <div className="absolute top-4 right-4 z-20 bg-[#CCFF00] px-3.5 py-1.5 uppercase font-mono text-[9px] tracking-widest text-black font-bold shadow-lg rounded-full">
+                      After (Axoraa UI)
+                    </div>
+                    {testimonial.afterImage && (
+                      <img 
+                        src={testimonial.afterImage} 
+                        alt="After redesign" 
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
+
+                  {/* Vertical separator handle */}
+                  <div 
+                    className="absolute inset-y-0 w-[2px] bg-[#CCFF00] z-20 pointer-events-none shadow-[0_0_10px_rgba(204,255,0,0.8)]"
+                    style={{ left: `${sliderPosition}%` }}
+                  />
+
+                  {/* Drag indicator icon */}
+                  <div 
+                    className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-black border border-[#CCFF00]/50 text-[#CCFF00] flex items-center justify-center shadow-[0_0_20px_rgba(204,255,0,0.4)] z-30 pointer-events-none transition-all duration-75"
+                    style={{ left: `${sliderPosition}%` }}
+                  >
+                    <ArrowLeftRight size={18} className="animate-pulse" />
+                  </div>
                 </div>
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl shadow-[#CCFF00]/5 bg-zinc-900 border border-white/10 relative">
-                  {testimonial.afterImage && <ParallaxImage src={testimonial.afterImage} alt="After Website" />}
-                </div>
+
+                {/* Subtitle helper */}
+                <p className="text-center text-xs text-gray-500 font-mono mt-4 uppercase tracking-widest animate-pulse">
+                  Hover & slide mouse horizontally to compare UI
+                </p>
               </motion.div>
             </div>
 

@@ -12,7 +12,7 @@ const ScrollProgress: React.FC = () => {
 
   return (
     <motion.div 
-      className="fixed bottom-26 right-6 z-[100] mix-blend-difference hidden md:flex items-center justify-center cursor-pointer group"
+      className="fixed bottom-26 right-8 z-[100] mix-blend-difference hidden md:flex items-center justify-center cursor-pointer group"
       onClick={scrollToTop}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

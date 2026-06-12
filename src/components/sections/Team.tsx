@@ -1,7 +1,7 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Linkedin } from 'lucide-react';
+import { animate, stagger } from 'animejs';
 import { team } from '../../data';
 import { premiumEase } from '../../lib/utils';
 
@@ -11,6 +11,39 @@ interface TeamProps {
 
 const Team: React.FC<TeamProps> = ({ mousePosition }) => {
   const [hoveredTeamMember, setHoveredTeamMember] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animate('.team-member-row', {
+              translateX: {
+                from: -50,
+                to: 0
+              },
+              opacity: {
+                from: 0,
+                to: 1
+              },
+              delay: stagger(100),
+              ease: 'outQuad',
+              duration: 800
+            });
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="team" className="py-32 px-6 md:px-12 bg-black border-y border-white/10 relative z-10 text-white">
@@ -47,14 +80,13 @@ const Team: React.FC<TeamProps> = ({ mousePosition }) => {
           <p className="text-2xl text-gray-400 max-w-2xl font-light">Engineers by day. Elite freelancers by night. We combine enterprise-grade experience with creative agility.</p>
         </motion.div>
 
-        <div className="flex flex-col relative">
+        <div ref={containerRef} className="flex flex-col relative">
           {team.map((member, index) => (
-            <motion.div 
+            <div 
               key={member.id}
-              initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: index * 0.1, ease: premiumEase }}
               onMouseEnter={() => setHoveredTeamMember(member.id)}
               onMouseLeave={() => setHoveredTeamMember(null)}
-              className="group border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center py-12 md:hover:bg-white/5 transition-colors px-4 -mx-4 md:px-10 md:-mx-10 duration-500 cursor-pointer"
+              className="team-member-row opacity-0 group border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center py-12 md:hover:bg-white/5 transition-colors px-4 -mx-4 md:px-10 md:-mx-10 duration-500 cursor-pointer"
             >
               <div className="flex items-center gap-8 mb-6 md:mb-0 relative z-10">
                 <span className="text-xl font-mono text-gray-500 group-hover:text-[#CCFF00] transition-colors">0{index + 1}</span>
@@ -70,7 +102,7 @@ const Team: React.FC<TeamProps> = ({ mousePosition }) => {
                   <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[#CCFF00] group-hover:border-[#CCFF00] group-hover:text-black transition-all duration-300"><Linkedin size={20}/></a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
           <div className="border-t border-white/10"></div>
         </div>

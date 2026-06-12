@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Preloader from './components/ui/Preloader';
 import CustomCursor from './components/ui/CustomCursor';
 import GlowOrb from './components/ui/GlowOrb';
@@ -20,6 +20,12 @@ import { Analytics } from '@vercel/analytics/react';
 function App() {
   const [loading, setLoading] = useState(true);
   const [preloaderUnmounted, setPreloaderUnmounted] = useState(false);
+  const { pathname } = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   
   // Global Mouse Tracking
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });

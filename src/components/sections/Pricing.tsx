@@ -1,11 +1,46 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Zap } from 'lucide-react';
+import { animate, stagger } from 'animejs';
 import { pricingPlans } from '../../data';
 import { premiumEase } from '../../lib/utils';
 import TiltCard from '../ui/TiltCard';
 
 const Pricing: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animate('.pricing-card-wrapper', {
+              translateY: {
+                from: 50,
+                to: 0
+              },
+              opacity: {
+                from: 0,
+                to: 1
+              },
+              delay: stagger(150),
+              ease: 'outQuad',
+              duration: 800
+            });
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="pricing" className="py-20 md:py-32 px-6 md:px-12 bg-black text-white relative z-10">
       
@@ -39,15 +74,11 @@ const Pricing: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pricingPlans.map((plan, idx) => (
-            <motion.div
+        <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {pricingPlans.map((plan) => (
+            <div
               key={plan.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.2, ease: premiumEase }}
-              className="h-full"
+              className="pricing-card-wrapper opacity-0 h-full"
             >
               <TiltCard>
                 <div className={`relative h-full rounded-3xl p-8 md:p-10 flex flex-col ${plan.recommended ? 'bg-zinc-900 border-2 border-[#CCFF00] shadow-[0_0_40px_rgba(204,255,0,0.1)]' : 'bg-zinc-950 border border-white/10'}`}>
@@ -84,7 +115,7 @@ const Pricing: React.FC = () => {
                   </button>
                 </div>
               </TiltCard>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
