@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://axoraa.tech/sitemap.xml
+Sitemap: https://www.axoraa.tech/sitemap.xml

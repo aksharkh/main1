@@ -3,17 +3,17 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://axoraa.tech/</loc>
+    <loc>https://www.axoraa.tech/</loc>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://axoraa.tech/team</loc>
+    <loc>https://www.axoraa.tech/team</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://axoraa.tech/pricing</loc>
+    <loc>https://www.axoraa.tech/pricing</loc>
     <priority>0.8</priority>
   </url>
 
