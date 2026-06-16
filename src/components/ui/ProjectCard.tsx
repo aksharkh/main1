@@ -1,14 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { ArrowUpRight, Eye } from 'lucide-react';
 import type { Project } from '../../types';
 import TiltCard from './TiltCard';
 
 interface ProjectCardProps {
   project: Project;
-  onOpenDetails: () => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const animationFrameRef = useRef<number | null>(null);
@@ -124,28 +122,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails }) => 
           />
 
           {/* Black Glow Overlay */}
-          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-500 z-10 pointer-events-none"></div>
-
-          {/* Premium Glassmorphic Hover Control Overlay */}
-          <div className="absolute inset-0 z-20 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-[0.76,0,0.24,1]">
-            <a 
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-3.5 bg-[#CCFF00] hover:bg-white text-black font-bold text-xs uppercase tracking-widest rounded-xl flex items-center gap-2 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500 ease-[0.76,0,0.24,1] shadow-xl shadow-[#CCFF00]/10 hover:scale-105"
-            >
-              Live Preview
-              <ArrowUpRight size={14} />
-            </a>
-
-            <button 
-              onClick={onOpenDetails}
-              className="px-5 py-3.5 bg-black/60 hover:bg-white hover:text-black text-white border border-white/20 font-bold text-xs uppercase tracking-widest rounded-xl flex items-center gap-2 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-[0.76,0,0.24,1] backdrop-blur-md shadow-xl hover:scale-105"
-            >
-              Details
-              <Eye size={14} />
-            </button>
-          </div>
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors duration-500 z-10 pointer-events-none"></div>
         </div>
       </div>
     </TiltCard>

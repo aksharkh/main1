@@ -1,7 +1,7 @@
 
 import { Search, PenTool, Code2, Rocket } from 'lucide-react';
 import type { Project, ProcessStep, ExpertiseItem, TeamMember, PricingPlan, Testimonial } from '../types';
-import main2 from '../assets/main2.png';
+import main2 from '../assets/main2.jpg';
 import main3 from '../assets/main3.png';
 import main4 from '../assets/main4.png';
 

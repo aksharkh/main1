@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, Eye } from 'lucide-react';
 import { projects } from '../../data';
 import ProjectCard from '../ui/ProjectCard';
 import ProjectDetailsModal from '../ui/ProjectDetailsModal';
@@ -53,13 +54,34 @@ const Work: React.FC = () => {
                         <div className="w-full mb-6 md:mb-8">
                           <ProjectCard 
                             project={project} 
-                            onOpenDetails={() => setSelectedProject(project)} 
                           />
                         </div>
                         
-                        <div className="flex justify-between items-start border-t border-black/10 pt-6 mt-auto">
-                          <h3 className="text-3xl md:text-4xl font-bold tracking-tight uppercase group-hover:text-gray-500 transition-colors">{project.title}</h3>
-                          <span className="text-sm font-mono uppercase tracking-widest text-gray-500">{project.category}</span>
+                        <div className="flex flex-col gap-4 border-t border-black/10 pt-6 mt-auto">
+                          <div className="flex justify-between items-start">
+                            <h3 className="text-3xl md:text-4xl font-bold tracking-tight uppercase group-hover:text-gray-500 transition-colors">{project.title}</h3>
+                            <span className="text-sm font-mono uppercase tracking-widest text-gray-500">{project.category}</span>
+                          </div>
+
+                          <div className="flex flex-wrap gap-3 mt-1">
+                            <a 
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-5 py-3 bg-black hover:bg-black/80 text-white font-bold text-xs uppercase tracking-widest rounded-xl flex items-center gap-2 transition-colors border border-black/10"
+                            >
+                              Live Preview
+                              <ArrowUpRight size={13} />
+                            </a>
+
+                            <button 
+                              onClick={() => setSelectedProject(project)}
+                              className="px-5 py-3 bg-transparent hover:bg-black/5 text-black border border-black/25 font-bold text-xs uppercase tracking-widest rounded-xl flex items-center gap-2 transition-colors"
+                            >
+                              Details
+                              <Eye size={13} />
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </motion.div>

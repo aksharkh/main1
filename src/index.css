@@ -73,4 +73,40 @@
     border-color: rgba(255, 255, 255, 0.15) !important;
     background-color: rgba(255, 255, 255, 0.05) !important;
   }
+
+  @keyframes borderGlow {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .glow-border-flow {
+    position: relative;
+  }
+
+  .glow-border-flow::before {
+    content: '';
+    position: absolute;
+    inset: -1.5px;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(90deg, #CCFF00, #00F0FF, #CCFF00);
+    background-size: 200% 200%;
+    animation: borderGlow 4s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .glow-card-shadow {
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.03), 0 0 10px rgba(204, 255, 0, 0.03);
+  }
+
+  .glow-card-shadow-active {
+    box-shadow: 0 0 40px rgba(204, 255, 0, 0.15), 0 0 15px rgba(0, 240, 255, 0.1);
+  }
 }
