@@ -2,15 +2,15 @@
 import { Search, PenTool, Code2, Rocket } from 'lucide-react';
 import type { Project, ProcessStep, ExpertiseItem, TeamMember, PricingPlan, Testimonial } from '../types';
 import main2 from '../assets/main2.jpg';
-import main3 from '../assets/main3.png';
-import main4 from '../assets/main4.png';
+import main3 from '../assets/main3.jpg';
+import main4 from '../assets/main4.jpg';
 
-import cafe1 from '../assets/cafe1.png';
-import cafe2 from '../assets/cafe2.png';
-import cafe3 from '../assets/cafe3.png';
-import cafe4 from '../assets/cafe4.png';
-import cafe5 from '../assets/cafe5.png';
-import cafe6 from '../assets/cafe6.png';
+import cafe1 from '../assets/cafe1.jpg';
+import cafe2 from '../assets/cafe2.jpg';
+import cafe3 from '../assets/cafe3.jpg';
+import cafe4 from '../assets/cafe4.jpg';
+import cafe5 from '../assets/cafe5.jpg';
+import cafe6 from '../assets/cafe6.jpg';
 
 import soft1 from '../assets/soft1.png';
 import soft2 from '../assets/soft2.png';
@@ -18,8 +18,8 @@ import soft3 from '../assets/soft3.png';
 import soft4 from '../assets/soft4.png';
 import soft5 from '../assets/soft5.png';
 
-import port1 from '../assets/port1.png';
-import port2 from '../assets/port2.png';
+import port1 from '../assets/port1.jpg';
+import port2 from '../assets/port2.jpg';
 import port3 from '../assets/port3.png';
 
 import akshar from '../assets/akshar.jpeg';
