@@ -47,8 +47,8 @@ const Footer: React.FC = () => {
           
           <div className="flex flex-col md:flex-row gap-12 md:gap-24 text-sm font-bold uppercase tracking-widest">
             <div className="flex flex-col gap-4">
-              <a href="mailto:aksharkh04@gmail.com" className="hover:text-white transition-colors">aksharkh04@gmail.com</a>
-              <a href="tel:+919876543210" className="hover:text-white transition-colors">+91 93534 43100</a>
+              <a href="mailto:aksharkh04@gmail.com" className="hover:text-white transition-colors">info.axoraa@gmail.com</a>
+              <a href="tel:+919876543210" className="hover:text-white transition-colors">+91 08277630021</a>
             </div>
             
             <div className="flex gap-8 md:items-end">
