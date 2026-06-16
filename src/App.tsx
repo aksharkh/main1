@@ -47,7 +47,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-[#CCFF00] selection:text-black relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-[#CCFF00] selection:text-black relative overflow-x-clip">
       <Analytics />
       
       <AnimatePresence mode="wait" onExitComplete={() => setPreloaderUnmounted(true)}>

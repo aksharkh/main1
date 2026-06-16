@@ -4,6 +4,7 @@
 
 @theme {
   --color-neon-lime: #CCFF00;
+  --color-neon-cyan: #00F0FF;
   --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
   --font-display: 'Bricolage Grotesque', 'Syne', sans-serif;
   --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -18,7 +19,7 @@
 
   body {
     @apply bg-black text-white antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -44,5 +45,32 @@
   
   .text-stroke-lime {
     -webkit-text-stroke-color: #CCFF00;
+  }
+
+  @keyframes cloudTrafficDash {
+    to {
+      stroke-dashoffset: -50;
+    }
+  }
+
+  .cloud-traffic-path {
+    stroke-dasharray: 6 12;
+    animation: cloudTrafficDash 1.2s linear infinite;
+  }
+
+  .step-circle-hover {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .group:hover .step-circle-hover:not(.active-step) {
+    background-color: var(--hover-accent) !important;
+    border-color: var(--hover-accent) !important;
+    color: black !important;
+    box-shadow: 0 0 25px var(--hover-accent), 0 0 10px var(--hover-accent) !important;
+  }
+
+  .group:hover div[style*="--hover-accent"] {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
   }
 }

@@ -14,15 +14,15 @@ const Marquee: React.FC = () => {
       <motion.div
         className="flex whitespace-nowrap"
         animate={{ x: ["0%", "-50%"] }}
-        transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
+        transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
       >
-        <div className="flex items-center text-black font-bold text-3xl md:text-5xl tracking-tighter uppercase">
-          <span className="mx-8">AVAILABLE FOR FREELANCE</span> <SparkleIcon />
-          <span className="mx-8">AVAILABLE FOR FREELANCE</span> <SparkleIcon />
-          <span className="mx-8">AVAILABLE FOR FREELANCE</span> <SparkleIcon />
-          <span className="mx-8">AVAILABLE FOR FREELANCE</span> <SparkleIcon />
-          <span className="mx-8">AVAILABLE FOR FREELANCE</span> <SparkleIcon />
-          <span className="mx-8">AVAILABLE FOR FREELANCE</span> <SparkleIcon />
+        <div className="flex items-center text-black font-bold text-3xl md:text-5xl tracking-wider uppercase">
+          {Array.from({ length: 12 }).map((_, idx) => (
+            <React.Fragment key={idx}>
+              <span className="mx-8">AVAILABLE FOR FREELANCE</span>
+              <SparkleIcon />
+            </React.Fragment>
+          ))}
         </div>
       </motion.div>
     </div>

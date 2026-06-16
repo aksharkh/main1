@@ -7,7 +7,7 @@ import { premiumEase } from '../../lib/utils';
 
 const Footer: React.FC = () => {
   return (
-    <footer id="contact" className="py-32 px-6 md:px-12 bg-[#CCFF00] text-black relative z-10 overflow-hidden">
+    <footer id="contact" className="py-32 px-6 md:px-12 bg-[#CCFF00] text-black relative z-10 overflow-hidden rounded-t-4xl">
       <motion.div 
         animate={{ x: ["0%", "-50%"] }} transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
         className="absolute -top-20 left-0 text-[30vw] font-bold text-black/5 whitespace-nowrap pointer-events-none select-none"
@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
             className="text-[15vw] md:text-[10vw] leading-[0.85] font-bold tracking-tighter uppercase"
           >
             Got a <br/> 
-            <span className="text-transparent font-serif italic pr-4" style={{ WebkitTextStroke: '3px black' }}>Project?</span>
+            <span className="text-transparent font-serif italic pr-4" style={{ WebkitTextStroke: '3px black' }}>Project ?</span>
           </motion.h2>
 
           <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 100, delay: 0.2 }}>
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
             
             <div className="flex gap-8 md:items-end">
               {[
-                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/akshar-k-h-1b404521b/' },
+                { name: 'LinkedIn', url: 'https://www.linkedin.com/company/axoraaa' },
                 { name: 'GitHub', url: 'https://github.com/aksharkh' }
               ].map((social) => (
                 <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden hover:text-[#CCFF00] transition-colors">

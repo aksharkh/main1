@@ -19,14 +19,20 @@ const ScrollProgress: React.FC = () => {
       transition={{ delay: 2 }}
     >
        <svg width="60" height="60" viewBox="0 0 100 100" className="-rotate-90">
+         <defs>
+           <linearGradient id="scrollProgressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+             <stop offset="0%" stopColor="#CCFF00" />
+             <stop offset="100%" stopColor="#00F0FF" />
+           </linearGradient>
+         </defs>
          <circle cx="50" cy="50" r="46" stroke="white" strokeWidth="2" fill="none" className="opacity-20" />
          <motion.circle 
             cx="50" cy="50" r="46" 
-            stroke="#CCFF00" strokeWidth="2" fill="none" 
+            stroke="url(#scrollProgressGradient)" strokeWidth="2" fill="none" 
             style={{ pathLength: scrollYProgress }} 
          />
        </svg>
-       <ArrowDown className="absolute text-[#CCFF00] group-hover:-translate-y-1 rotate-180 w-5 h-5 transition-transform duration-300" />
+       <ArrowDown className="absolute text-neon-lime group-hover:text-neon-cyan group-hover:-translate-y-1 rotate-180 w-5 h-5 transition-all duration-300" />
     </motion.div>
   );
 };
