@@ -3,4 +3,5 @@ declare module 'animejs' {
   export function stagger(value: any, options?: any): any;
   export function createTimeline(options?: any): any;
   export const utils: any;
+  export const svg: any;
 }

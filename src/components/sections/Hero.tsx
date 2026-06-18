@@ -90,10 +90,10 @@ const Hero: React.FC<HeroProps> = ({ loading }) => {
           transition={{ duration: 1, delay: 0.2, ease: premiumEase }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 border-b border-white/20 pb-8 mb-12 text-xs md:text-sm text-gray-400 font-mono uppercase tracking-widest"
         >
-          <div>Based in<br/><span className="text-white"><ScrambleText text="Bengaluru, IN" /></span></div>
-          <div>Status<br/><span className="text-[#CCFF00] animate-pulse"><ScrambleText text="Taking Projects" /></span></div>
-          <div className="hidden md:block">Local Time<br/><span className="text-white flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-[#CCFF00] rounded-full animate-pulse inline-block"></span>{localTime}</span></div>
-          <div className="hidden md:block text-right">Est<br/><span className="text-white"><ScrambleText text="2026" /></span></div>
+          <div className="text-black">Based in<br/><span className="text-white"><ScrambleText text="Bengaluru, IN" /></span></div>
+          <div className="text-black">Status<br/><span className="text-[#CCFF00] animate-pulse"><ScrambleText text="Taking Projects" /></span></div>
+          <div className="hidden md:block text-black">Local Time<br/><span className="text-white flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-[#CCFF00] rounded-full animate-pulse inline-block"></span>{localTime}</span></div>
+          <div className="hidden md:block text-black text-right">Est<br/><span className="text-white"><ScrambleText text="2026" /></span></div>
         </motion.div>
 
         <h1 className="text-[12vw] md:text-[7.5vw] lg:text-[6vw] leading-[0.85] font-bold tracking-tighter uppercase mb-8 md:mb-12 flex flex-col mix-blend-difference text-white">

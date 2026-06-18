@@ -65,7 +65,7 @@ const Testimonials: React.FC = () => {
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase mb-6">
-            Real Business <span className="text-[#CCFF00]">Impact</span>
+            Real Business <span className="font-serif italic text-transparent" style={{ WebkitTextStroke: '2px #CCFF00' }}>Impact</span>
           </h2>
           
           <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">

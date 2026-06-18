@@ -1,6 +1,5 @@
-
-import { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Preloader from './components/ui/Preloader';
 import CustomCursor from './components/ui/CustomCursor';
@@ -22,6 +21,11 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [preloaderUnmounted, setPreloaderUnmounted] = useState(false);
   const { pathname } = useLocation();
+
+  // Memoize preloader completion to prevent inline function recreation causing preloader resets on mousemove
+  const handlePreloaderComplete = useCallback(() => {
+    setLoading(false);
+  }, []);
 
   // Scroll to top on route change
   useEffect(() => {
@@ -53,7 +57,7 @@ function App() {
       <SpeedInsights/>
       
       <AnimatePresence mode="wait" onExitComplete={() => setPreloaderUnmounted(true)}>
-        {loading && <Preloader onComplete={() => setLoading(false)} />}
+        {loading && <Preloader onComplete={handlePreloaderComplete} />}
       </AnimatePresence>
 
       <MobileWarning />
@@ -84,20 +88,27 @@ function App() {
       {preloaderUnmounted && <ScrollProgress />}
       <ContactWidget />
 
-      {/* Centered screen content wrapper (removes outer width constraint to let section backgrounds span full bezel-width) */}
-      <div className="w-full min-h-screen bg-black relative flex flex-col pt-3 md:pt-5 pb-3 md:pb-5 px-3 md:px-5">
-        <Navbar />
+      {/* Centered screen content wrapper (removes outer width constraint to let section backgrounds span full bezel-width, only mounts after preloader unmounts) */}
+      {preloaderUnmounted && (
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="w-full min-h-screen bg-black relative flex flex-col pt-3 md:pt-5 pb-3 md:pb-5 px-3 md:px-5"
+        >
+          <Navbar />
 
-        <main className="flex-1 w-full relative">
-          <Routes>
-            <Route path="/" element={<Home loading={!preloaderUnmounted} />} />
-            <Route path="/team" element={<TeamPage mousePosition={mousePosition} />} />
-            <Route path="/pricing" element={<PricingPage />} />
-          </Routes>
-        </main>
+          <main className="flex-1 w-full relative">
+            <Routes>
+              <Route path="/" element={<Home loading={!preloaderUnmounted} />} />
+              <Route path="/team" element={<TeamPage mousePosition={mousePosition} />} />
+              <Route path="/pricing" element={<PricingPage />} />
+            </Routes>
+          </main>
 
-        <Footer />
-      </div>
+          <Footer />
+        </motion.div>
+      )}
     </div>
   );
 }
