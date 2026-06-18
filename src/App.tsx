@@ -16,6 +16,7 @@ import PricingPage from './pages/PricingPage';
 import Footer from './components/layout/Footer';
 
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -49,6 +50,7 @@ function App() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-[#CCFF00] selection:text-black relative overflow-x-clip">
       <Analytics />
+      <SpeedInsights/>
       
       <AnimatePresence mode="wait" onExitComplete={() => setPreloaderUnmounted(true)}>
         {loading && <Preloader onComplete={() => setLoading(false)} />}
