@@ -15,64 +15,64 @@ interface ComparisonRow {
 
 const comparisonData: ComparisonRow[] = [
   {
-    feature: "Target Use Case",
-    description: "The primary business objective and functional focus of the engineered product.",
-    landing: { text: "Lead Capture & Sales", status: "basic" },
-    custom: { text: "Brand & High Traffic", status: "premium" },
-    software: { text: "Workflows & CRM", status: "enterprise" }
+    feature: "Vibe Check (Design)",
+    description: "Are we talking basic cookie-cutter templates, or full-on Awwwards-grade custom flexing that makes competitors cry?",
+    landing: { text: "Clean Grid Layout", status: "basic" },
+    custom: { text: "Awwwards-Level Custom Layouts", status: "premium" },
+    software: { text: "Next-Gen 3D Interactive HUD", status: "enterprise" }
   },
   {
-    feature: "Page Layouts",
-    description: "The number of custom-engineered pages included in the system structure.",
-    landing: { text: "1 Premium Page", status: "basic" },
-    custom: { text: "Up to 12 Pages", status: "premium" },
-    software: { text: "Unlimited Pages", status: "enterprise" }
+    feature: "Performance Speed",
+    description: "Attention spans are short. Slow sites are an instant bounce. We optimize down to the millisecond.",
+    landing: { text: "1.2s Load (Decent)", status: "basic" },
+    custom: { text: "0.4s Page-Load (Fast AF)", status: "premium" },
+    software: { text: "0.1s Instant (Supercomputer)", status: "enterprise" }
   },
   {
-    feature: "Visual Aesthetics",
-    description: "The visual style grade. Custom layouts, bespoke typography hierarchy, and creative direction.",
-    landing: { text: "Modern CSS Grid", status: "basic" },
-    custom: { text: "Awwwards-Grade Design", status: "premium" },
-    software: { text: "Futuristic Enterprise HUD", status: "enterprise" }
+    feature: "Custom Pages Cooked",
+    description: "How many subroutes and pages are we building from scratch? Tell your story without constraints.",
+    landing: { text: "1 Premium Landing Page", status: "basic" },
+    custom: { text: "Up to 12 Custom Pages", status: "premium" },
+    software: { text: "Unlimited Page Routes", status: "enterprise" }
   },
   {
-    feature: "Motion & Interactions",
-    description: "Fluid animation layer implementing bespoke timelines, physics-based triggers, and shaders.",
-    landing: { text: "CSS Transitions", status: "basic" },
-    custom: { text: "GSAP & Motion Timelines", status: "premium" },
-    software: { text: "WebGL & Interactive Shaders", status: "enterprise" }
+    feature: "Database & Backend",
+    description: "Do you need actual databases, data storage, automated user systems, or just a clean contact form?",
+    landing: { text: "None (Form Intake only)", status: "none" },
+    custom: { text: "Headless CMS Syncing", status: "premium" },
+    software: { text: "Custom CRM/HRM Portal & DB", status: "enterprise" }
   },
   {
-    feature: "CMS & Admin Portal",
-    description: "Database integrations letting your team modify, add, or manage live pages and contents.",
-    landing: { text: "Form Intake Only", status: "basic" },
-    custom: { text: "Sanity / Payload CMS", status: "premium" },
-    software: { text: "Custom CRM & Admin Portal", status: "enterprise" }
+    feature: "AI Integration Bots",
+    description: "Let AI handle your boring workflows (invoice reading, lead scoring, database syncs) while you sleep.",
+    landing: { text: "Not Included", status: "none" },
+    custom: { text: "Zapier / Webhook Automations", status: "basic" },
+    software: { text: "Autonomous Custom AI Agents", status: "enterprise" }
   },
   {
-    feature: "AI & Automations",
-    description: "Autonomous backend routines, API integrations, and server agents to eliminate manual operations.",
-    landing: { text: "None", status: "none" },
-    custom: { text: "Webhook Trigger Syncs", status: "basic" },
-    software: { text: "AI Agents & Autonomous Cron", status: "enterprise" }
+    feature: "Search Engine Conquest",
+    description: "SEO settings designed to hijack search results and rank you high on Google without ad spend.",
+    landing: { text: "Basic Meta Config", status: "basic" },
+    custom: { text: "Advanced Rank-Boosting Plan", status: "premium" },
+    software: { text: "Dominant Search Conquest", status: "enterprise" }
   },
   {
-    feature: "Hosting & CDN Matrix",
-    description: "High-performance edge hosting with automatic failovers and serverless global replication.",
-    landing: { text: "Vercel Edge", status: "basic" },
-    custom: { text: "Multi-Region Cloud CDN", status: "premium" },
-    software: { text: "AWS Serverless Clusters", status: "enterprise" }
+    feature: "Support & Red-Line SLA",
+    description: "We monitor the servers, rotate logs, and upgrade packages. Free premium maintenance covers everything.",
+    landing: { text: "3 Years Standard SLA", status: "basic" },
+    custom: { text: "3 Years Priority Support SLA", status: "premium" },
+    software: { text: "24/7 Dedicated Support SLA", status: "enterprise" }
   },
   {
-    feature: "Support & SLA",
-    description: "Post-launch maintenance covering dependency upgrades, security updates, server monitoring, and updates.",
-    landing: { text: "3 Years SLA", status: "basic" },
-    custom: { text: "3 Years + CMS SLA", status: "premium" },
-    software: { text: "3 Years + Dedicated SLA", status: "enterprise" }
+    feature: "Internal Management",
+    description: "Internal software panels built specifically to automate staff, track pipelines, and manage documents.",
+    landing: { text: "Not Included", status: "none" },
+    custom: { text: "Not Included", status: "none" },
+    software: { text: "Full Custom HRM/CRM Portal", status: "enterprise" }
   },
   {
-    feature: "Project Delivery Time",
-    description: "The time window needed to complete design sprints, engineering, debugging, and live deploy.",
+    feature: "Delivery Window",
+    description: "How fast we code, debug, polish, and launch your high-performance platform to production.",
     landing: { text: "5 - 7 Days", status: "basic" },
     custom: { text: "14 - 21 Days", status: "premium" },
     software: { text: "Iterative Agile Sprints", status: "enterprise" }
@@ -118,21 +118,24 @@ const planAnalytics = {
     latency: "8ms",
     performanceRating: "S-Tier"
   }
-};const StatusCapsule: React.FC<{ value: { text: string; status: 'basic' | 'premium' | 'enterprise' | 'none' } }> = ({ value }) => {
+};
+
+const StatusCapsule: React.FC<{ value: { text: string; status: 'basic' | 'premium' | 'enterprise' | 'none' } }> = ({ value }) => {
   const { text, status } = value;
   
   if (status === 'none') {
     return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 md:px-3 md:py-1 rounded-full border border-white/5 bg-white/[0.02] text-zinc-600 font-mono text-[8px] md:text-[9px] uppercase tracking-wider shrink-0">
-        <span>Not Included</span>
+      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-red-500/20 bg-red-500/5 text-red-400 font-mono text-[9px] md:text-[10px] tracking-wide shrink-0">
+        <span className="text-xs">✕</span>
+        <span className="truncate max-w-[120px] md:max-w-none">Not Included</span>
       </span>
     );
   }
 
   if (status === 'basic') {
     return (
-      <span className="inline-flex items-center gap-1 px-2.5 py-1 md:px-3.5 md:py-1.5 rounded-full border border-white/10 bg-white/5 text-gray-300 font-mono text-[9px] md:text-[10px] tracking-wide shrink-0">
-        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0"></span>
+      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-gray-300 font-mono text-[9px] md:text-[10px] tracking-wide shrink-0">
+        <span className="text-xs text-gray-400 font-bold">✓</span>
         <span className="truncate max-w-[120px] md:max-w-none">{text}</span>
       </span>
     );
@@ -140,16 +143,16 @@ const planAnalytics = {
 
   if (status === 'premium') {
     return (
-      <span className="inline-flex items-center gap-1 px-2.5 py-1 md:px-3.5 md:py-1.5 rounded-full border border-[#CCFF00]/25 bg-[#CCFF00]/5 text-[#CCFF00] font-mono text-[9px] md:text-[10px] font-bold tracking-wide shadow-[0_0_12px_rgba(204,255,0,0.05)] shrink-0">
-        <Sparkles size={9} className="animate-pulse shrink-0" />
+      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#CCFF00]/30 bg-[#CCFF00]/5 text-[#CCFF00] font-mono text-[9px] md:text-[10px] font-bold tracking-wide shadow-[0_0_12px_rgba(204,255,0,0.05)] shrink-0">
+        <span className="text-xs">✨</span>
         <span className="truncate max-w-[120px] md:max-w-none">{text}</span>
       </span>
     );
   }
 
   return (
-    <span className="inline-flex items-center gap-1 px-2.5 py-1 md:px-3.5 md:py-1.5 rounded-full border border-[#00F0FF]/30 bg-[#00F0FF]/5 text-[#00F0FF] font-mono text-[9px] md:text-[10px] font-bold tracking-wide shadow-[0_0_15px_rgba(0,240,255,0.08)] shrink-0">
-      <Zap size={9} className="animate-bounce shrink-0" style={{ animationDuration: '3s' }} />
+    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#00F0FF]/30 bg-[#00F0FF]/5 text-[#00F0FF] font-mono text-[9px] md:text-[10px] font-bold tracking-wide shadow-[0_0_15px_rgba(0,240,255,0.08)] shrink-0">
+      <span className="text-xs">⚡</span>
       <span className="truncate max-w-[120px] md:max-w-none">{text}</span>
     </span>
   );
@@ -157,7 +160,6 @@ const planAnalytics = {
 
 const Pricing: React.FC = () => {
   const [activePlan, setActivePlan] = useState<'landing' | 'custom' | 'software'>('custom');
-  const [mobileTab, setMobileTab] = useState<'landing' | 'custom' | 'software'>('custom');
   const [openRow, setOpenRow] = useState<number | null>(null);
   const [openMobileRow, setOpenMobileRow] = useState<number | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -299,46 +301,7 @@ const Pricing: React.FC = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mt-4 items-center">
             
-            {/* HUD Left: Speed and performance diagnostic dial */}
-            <div className="col-span-1 lg:col-span-5 flex flex-col gap-6 border-r border-white/10 pr-0 lg:pr-12">
-              <div>
-                <h4 className="font-mono text-xs uppercase tracking-widest text-[#00F0FF] mb-2">Diagnostic_Metrics</h4>
-                <div className="text-3xl font-bold tracking-tight text-white uppercase">Performance Profile</div>
-              </div>
-
-              {/* Speed Progress Dial */}
-              <div className="flex flex-col gap-3">
-                <div className="flex justify-between items-end">
-                  <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">Page Load Speed</span>
-                  <span className="text-2xl font-bold text-white font-mono">{stats.loadSpeed}</span>
-                </div>
-                
-                <div className="w-full h-3 border border-white/10 rounded-full bg-black overflow-hidden relative">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: `${stats.speedPct}%` }}
-                    transition={{ duration: 0.8, ease: premiumEase }}
-                    className="h-full bg-gradient-to-r from-[#CCFF00] to-[#00F0FF] shadow-[0_0_12px_#00F0FF]"
-                  />
-                </div>
-                
-                <div className="flex justify-between text-[9px] font-mono text-gray-500">
-                  <span>Target: &lt; 2.0s</span>
-                  <span>Rating: {stats.performanceRating}</span>
-                </div>
-              </div>
-
-              {/* Latency HUD Row */}
-              <div className="flex justify-between items-center p-4 rounded-xl bg-black border border-white/5 font-mono text-xs">
-                <div className="flex items-center gap-2">
-                  <Clock size={14} className="text-[#CCFF00]" />
-                  <span className="text-gray-400">DNS Edge Latency</span>
-                </div>
-                <span className="text-[#00F0FF] font-bold">{stats.latency}</span>
-              </div>
-            </div>
-
-            {/* HUD Right: ROI, Traffic & Automations */}
+            {/* HUD Left: ROI, Traffic & Automations */}
             <div className="col-span-1 lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-6">
               
               {/* Box 1: Traffic Growth */}
@@ -378,180 +341,302 @@ const Pricing: React.FC = () => {
               </div>
 
             </div>
-          </div>
-        </motion.div>
 
-        {/* 3. Detailed Comparison Matrix Table */}
-        <div className="mb-28">
-          <div className="mb-10 text-left">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#00F0FF] mb-2">SYSTEM_SPECS // COMPARE</div>
-            <h3 className="text-3xl md:text-5xl font-bold uppercase tracking-tight text-white mb-2">
-              System Specifications Comparison
-            </h3>
-            <p className="text-gray-400 text-md font-light max-w-xl">
-              Tap any parameter row below to expand detailed technology stacks, architectural rationale, and engineering breakdowns.
-            </p>
-          </div>
-
-          {/* Desktop Table View */}
-          <div className="hidden md:block relative border border-white/10 rounded-3xl bg-zinc-950/20 backdrop-blur-md overflow-hidden glow-card-shadow">
-            {/* Tech bracket accents */}
-            <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/30" />
-            <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/30" />
-            <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/30" />
-            <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/30" />
-
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b border-white/10 bg-zinc-950 font-mono text-xs uppercase tracking-wider text-gray-400 select-none">
-                  <th className="p-6 font-semibold w-1/4">Capability / Spec</th>
-                  
-                  {/* Column 1: Basic Landing */}
-                  <th className={`p-6 w-1/4 relative transition-colors duration-300 ${activePlan === 'landing' ? 'bg-zinc-900/60' : ''}`}>
-                    {activePlan === 'landing' && (
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-[#CCFF00] shadow-[0_0_10px_#CCFF00]" />
-                    )}
-                    <span className={activePlan === 'landing' ? 'text-[#CCFF00] font-bold' : ''}>Basic Landing</span>
-                  </th>
-                  
-                  {/* Column 2: Custom Website */}
-                  <th className={`p-6 w-1/4 relative transition-colors duration-300 ${activePlan === 'custom' ? 'bg-zinc-900/60' : ''}`}>
-                    {activePlan === 'custom' && (
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-[#00F0FF] shadow-[0_0_10px_#00F0FF]" />
-                    )}
-                    <span className={activePlan === 'custom' ? 'text-[#00F0FF] font-bold' : ''}>Custom Website</span>
-                  </th>
-                  
-                  {/* Column 3: Software & CRM */}
-                  <th className={`p-6 w-1/4 relative transition-colors duration-300 ${activePlan === 'software' ? 'bg-zinc-900/60' : ''}`}>
-                    {activePlan === 'software' && (
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-[#00F0FF] shadow-[0_0_10px_#00F0FF]" />
-                    )}
-                    <span className={activePlan === 'software' ? 'text-[#00F0FF] font-bold' : ''}>Software & CRM</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((row, i) => {
-                  const isRowOpen = openRow === i;
-                  return (
-                    <React.Fragment key={i}>
-                      {/* Interactive Row Header */}
-                      <tr 
-                        onClick={() => setOpenRow(isRowOpen ? null : i)}
-                        className={`border-b border-white/5 cursor-pointer transition-all duration-300 group ${
-                          isRowOpen ? 'bg-white/[0.03]' : 'hover:bg-white/[0.01]'
-                        }`}
-                      >
-                        <td className="p-6 text-white font-semibold flex items-center gap-3 select-none">
-                          <motion.div
-                            animate={{ rotate: isRowOpen ? 90 : 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="text-gray-500 group-hover:text-white"
-                          >
-                            <ChevronDown size={14} />
-                          </motion.div>
-                          <span className="group-hover:text-[#CCFF00] transition-colors">{row.feature}</span>
-                        </td>
-                        <td className={`p-6 transition-all duration-300 ${activePlan === 'landing' ? 'bg-zinc-900/20' : ''}`}>
-                          <StatusCapsule value={row.landing} />
-                        </td>
-                        <td className={`p-6 transition-all duration-300 ${activePlan === 'custom' ? 'bg-zinc-900/20' : ''}`}>
-                          <StatusCapsule value={row.custom} />
-                        </td>
-                        <td className={`p-6 transition-all duration-300 ${activePlan === 'software' ? 'bg-zinc-900/20' : ''}`}>
-                          <StatusCapsule value={row.software} />
-                        </td>
-                      </tr>
-                      
-                      {/* Expandable Details Row */}
-                      <tr className="border-none">
-                        <td colSpan={4} className="p-0">
-                          <AnimatePresence initial={false}>
-                            {isRowOpen && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.3, ease: premiumEase }}
-                                className="overflow-hidden bg-black/60 border-b border-white/5"
-                              >
-                                <div className="px-12 py-6 text-sm text-gray-400 font-light leading-relaxed flex flex-col gap-2 relative">
-                                  <div className="absolute top-6 left-6 w-[2px] h-3/5 bg-gradient-to-b from-[#CCFF00] to-transparent" />
-                                  <div className="font-mono text-[9px] uppercase tracking-widest text-[#00F0FF] mb-1">Architectural_Scope //</div>
-                                  <p className="max-w-4xl text-gray-300 pl-4">{row.description}</p>
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </td>
-                      </tr>
-                    </React.Fragment>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Mobile Comparison Cockpit Layout */}
-          <div className="block md:hidden">
-            {/* Mobile Plan Selector Tabs */}
-            <div className="flex border border-white/10 rounded-full p-1 bg-zinc-950 mb-6 w-full">
-              {(['landing', 'custom', 'software'] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setMobileTab(tab)}
-                  className={`flex-1 py-3 text-center text-xs font-mono font-bold uppercase tracking-wider rounded-full transition-all ${
-                    mobileTab === tab 
-                      ? 'bg-gradient-to-r from-[#CCFF00] to-[#00F0FF] text-black shadow-md' 
-                      : 'text-gray-400 hover:text-white bg-transparent'
-                  }`}
-                >
-                  {tab === 'landing' ? 'Landing' : tab === 'custom' ? 'Custom' : 'CRM/App'}
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile specs card */}
-            <div className="border border-white/10 rounded-3xl p-6 bg-zinc-950/40 glow-card-shadow flex flex-col gap-4 relative">
-              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#00F0FF]" />
-              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#00F0FF]" />
-              
-              <div className="font-mono text-[9px] text-gray-500 uppercase tracking-widest mb-2 border-b border-white/5 pb-2">
-                active_view: spec_matrix // {mobileTab.toUpperCase()}
+            {/* HUD Right: Speed and performance diagnostic dial */}
+            <div className="col-span-1 lg:col-span-5 flex flex-col gap-6 lg:border-l border-white/10 lg:pl-12 pl-0">
+              <div>
+                <h4 className="font-mono text-xs uppercase tracking-widest text-[#00F0FF] mb-2">Diagnostic_Metrics</h4>
+                <div className="text-3xl font-bold tracking-tight text-white uppercase">Performance Profile</div>
               </div>
 
-              {comparisonData.map((row, i) => {
-                const isMobileOpen = openMobileRow === i;
-                const value = mobileTab === 'landing' ? row.landing : mobileTab === 'custom' ? row.custom : row.software;
+              {/* Speed Progress Dial */}
+              <div className="flex flex-col gap-3">
+                <div className="flex justify-between items-end">
+                  <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">Page Load Speed</span>
+                  <span className="text-2xl font-bold text-white font-mono">{stats.loadSpeed}</span>
+                </div>
+                
+                <div className="w-full h-3 border border-white/10 rounded-full bg-black overflow-hidden relative">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    animate={{ width: `${stats.speedPct}%` }}
+                    transition={{ duration: 0.8, ease: premiumEase }}
+                    className="h-full bg-gradient-to-r from-[#CCFF00] to-[#00F0FF] shadow-[0_0_12px_#00F0FF]"
+                  />
+                </div>
+                
+                <div className="flex justify-between text-[9px] font-mono text-gray-500">
+                  <span>Target: &lt; 2.0s</span>
+                  <span>Rating: {stats.performanceRating}</span>
+                </div>
+              </div>
 
-                return (
-                  <div key={i} className="border-b border-white/5 pb-4 last:border-none last:pb-0">
-                    <div 
-                      onClick={() => setOpenMobileRow(isMobileOpen ? null : i)}
-                      className="flex justify-between items-center cursor-pointer py-1 text-sm text-white hover:text-[#CCFF00] transition-colors"
+              {/* Latency HUD Row */}
+              <div className="flex justify-between items-center p-4 rounded-xl bg-black border border-white/5 font-mono text-xs">
+                <div className="flex items-center gap-2">
+                  <Clock size={14} className="text-[#CCFF00]" />
+                  <span className="text-gray-400">DNS Edge Latency</span>
+                </div>
+                <span className="text-[#00F0FF] font-bold">{stats.latency}</span>
+              </div>
+            </div>
+
+          </div>
+        </motion.div>
+      </div> {/* End max-w-[1400px] main top wrapper */}
+
+      {/* 3. Detailed Comparison Matrix Table (Alternative Background Band) */}
+        <div className="py-24 bg-gradient-to-b from-[#03060c] to-[#010204] border-y border-white/5 relative z-10 my-24">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+            <div className="mb-10 text-left">
+              <div className="font-mono text-xs uppercase tracking-widest text-[#00F0FF] mb-2">SYSTEM_SPECS // COMPARE</div>
+              <h3 className="text-3xl md:text-5xl font-bold uppercase tracking-tight text-white mb-2">
+                System Specifications Comparison
+              </h3>
+              <p className="text-gray-400 text-md font-light max-w-xl">
+                Click any plan header to toggle active selection, or tap parameter rows to expand technology breakdowns.
+              </p>
+            </div>
+
+            {/* Desktop Table View */}
+            <div className="hidden md:block relative border border-white/10 rounded-3xl bg-zinc-950/20 backdrop-blur-md overflow-hidden glow-card-shadow">
+              {/* Tech bracket accents */}
+              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/30" />
+              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/30" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/30" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/30" />
+
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-white/10 bg-zinc-950 font-mono text-xs uppercase tracking-wider text-gray-400 select-none">
+                    <th className="p-6 font-semibold w-1/4">Capability / Spec</th>
+                    
+                    {/* Column 1: Basic Landing */}
+                    <th 
+                      onClick={() => handlePlanSelect('landing')}
+                      className={`p-6 w-1/4 relative transition-colors duration-300 cursor-pointer group hover:bg-zinc-900/40 ${activePlan === 'landing' ? 'bg-zinc-900/60' : ''}`}
                     >
-                      <span className="font-medium flex items-center gap-1.5">
-                        <motion.div animate={{ rotate: isMobileOpen ? 90 : 0 }} className="text-zinc-600">
-                          <ChevronDown size={12} />
-                        </motion.div>
-                        {row.feature}
+                      {activePlan === 'landing' && (
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-[#00F0FF] shadow-[0_0_10px_#00F0FF]" />
+                      )}
+                      <span className={`transition-colors flex flex-col gap-0.5 ${activePlan === 'landing' ? 'text-[#00F0FF] font-bold' : 'text-gray-400 group-hover:text-white'}`}>
+                        <span>Basic Landing</span>
+                        <span className="text-[8px] font-mono font-light opacity-60">Click to Select</span>
                       </span>
-                      <StatusCapsule value={value} />
+                    </th>
+                    
+                    {/* Column 2: Custom Website */}
+                    <th 
+                      onClick={() => handlePlanSelect('custom')}
+                      className={`p-6 w-1/4 relative transition-colors duration-300 cursor-pointer group hover:bg-zinc-900/40 ${activePlan === 'custom' ? 'bg-zinc-900/60' : ''}`}
+                    >
+                      {activePlan === 'custom' && (
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-[#CCFF00] shadow-[0_0_10px_#CCFF00]" />
+                      )}
+                      <span className={`transition-colors flex flex-col gap-0.5 ${activePlan === 'custom' ? 'text-[#CCFF00] font-bold' : 'text-gray-400 group-hover:text-white'}`}>
+                        <span>Custom Website</span>
+                        <span className="text-[8px] font-mono font-light opacity-60">Click to Select</span>
+                      </span>
+                    </th>
+                    
+                    {/* Column 3: Software & CRM */}
+                    <th 
+                      onClick={() => handlePlanSelect('software')}
+                      className={`p-6 w-1/4 relative transition-colors duration-300 cursor-pointer group hover:bg-zinc-900/40 ${activePlan === 'software' ? 'bg-zinc-900/60' : ''}`}
+                    >
+                      {activePlan === 'software' && (
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-[#00F0FF] shadow-[0_0_10px_#00F0FF]" />
+                      )}
+                      <span className={`transition-colors flex flex-col gap-0.5 ${activePlan === 'software' ? 'text-[#00F0FF] font-bold' : 'text-gray-400 group-hover:text-white'}`}>
+                        <span>Software & CRM</span>
+                        <span className="text-[8px] font-mono font-light opacity-60">Click to Select</span>
+                      </span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonData.map((row, i) => {
+                    const isRowOpen = openRow === i;
+                    return (
+                      <React.Fragment key={i}>
+                        {/* Interactive Row Header */}
+                        <tr 
+                          onClick={() => setOpenRow(isRowOpen ? null : i)}
+                          className={`border-b border-white/5 cursor-pointer transition-all duration-300 group ${
+                            isRowOpen ? 'bg-white/[0.03]' : 'hover:bg-white/[0.01]'
+                          }`}
+                        >
+                          <td className="p-6 text-white font-semibold flex items-center gap-3 select-none">
+                            <motion.div
+                              animate={{ rotate: isRowOpen ? 90 : 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="text-gray-500 group-hover:text-white"
+                            >
+                              <ChevronDown size={14} />
+                            </motion.div>
+                            <span className="group-hover:text-[#CCFF00] transition-colors">{row.feature}</span>
+                          </td>
+                          <td className={`p-6 transition-all duration-300 ${activePlan === 'landing' ? 'bg-zinc-900/20' : ''}`}>
+                            <StatusCapsule value={row.landing} />
+                          </td>
+                          <td className={`p-6 transition-all duration-300 ${activePlan === 'custom' ? 'bg-zinc-900/20' : ''}`}>
+                            <StatusCapsule value={row.custom} />
+                          </td>
+                          <td className={`p-6 transition-all duration-300 ${activePlan === 'software' ? 'bg-zinc-900/20' : ''}`}>
+                            <StatusCapsule value={row.software} />
+                          </td>
+                        </tr>
+                        
+                        {/* Expandable Details Row */}
+                        <tr className="border-none">
+                          <td colSpan={4} className="p-0">
+                            <AnimatePresence initial={false}>
+                              {isRowOpen && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.3, ease: premiumEase }}
+                                  className="overflow-hidden bg-black/60 border-b border-white/5"
+                                >
+                                  <div className="px-12 py-6 text-sm text-gray-400 font-light leading-relaxed flex flex-col gap-2 relative">
+                                    <div className="absolute top-6 left-6 w-[2px] h-3/5 bg-gradient-to-b from-[#CCFF00] to-transparent" />
+                                    <div className="font-mono text-[9px] uppercase tracking-widest text-[#00F0FF] mb-1">Architectural_Scope //</div>
+                                    <p className="max-w-4xl text-gray-300 pl-4">{row.description}</p>
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </td>
+                        </tr>
+                      </React.Fragment>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Comparison Cockpit Layout */}
+            <div className="block md:hidden">
+              {/* Mobile Plan Selector Tabs */}
+              <div className="flex border border-white/10 rounded-full p-1 bg-zinc-950 mb-6 w-full">
+                {(['landing', 'custom', 'software'] as const).map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => handlePlanSelect(tab)}
+                    className={`flex-1 py-3 text-center text-xs font-mono font-bold uppercase tracking-wider rounded-full transition-all ${
+                      activePlan === tab 
+                        ? 'bg-gradient-to-r from-[#CCFF00] to-[#00F0FF] text-black shadow-md' 
+                        : 'text-gray-400 hover:text-white bg-transparent'
+                    }`}
+                  >
+                    {tab === 'landing' ? 'Landing' : tab === 'custom' ? 'Custom' : 'CRM/App'}
+                  </button>
+                ))}
+              </div>
+
+              {/* Mobile specs card */}
+              <div className="border border-white/10 rounded-3xl p-6 bg-zinc-950/40 glow-card-shadow flex flex-col gap-4 relative">
+                <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#00F0FF]" />
+                <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#00F0FF]" />
+                
+                <div className="font-mono text-[9px] text-gray-500 uppercase tracking-widest mb-2 border-b border-white/5 pb-2">
+                  active_view: spec_matrix // {activePlan.toUpperCase()}
+                </div>
+
+                {comparisonData.map((row, i) => {
+                  const isMobileOpen = openMobileRow === i;
+                  const value = activePlan === 'landing' ? row.landing : activePlan === 'custom' ? row.custom : row.software;
+
+                  return (
+                    <div key={i} className="border-b border-white/5 pb-4 last:border-none last:pb-0">
+                      <div 
+                        onClick={() => setOpenMobileRow(isMobileOpen ? null : i)}
+                        className="flex justify-between items-center cursor-pointer py-1 text-sm text-white hover:text-[#CCFF00] transition-colors"
+                      >
+                        <span className="font-medium flex items-center gap-1.5">
+                          <motion.div animate={{ rotate: isMobileOpen ? 90 : 0 }} className="text-zinc-600">
+                            <ChevronDown size={12} />
+                          </motion.div>
+                          {row.feature}
+                        </span>
+                        <StatusCapsule value={value} />
+                      </div>
+
+                      <AnimatePresence initial={false}>
+                        {isMobileOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="overflow-hidden mt-2"
+                          >
+                            <p className="text-[11px] text-gray-400 font-light leading-relaxed bg-black/40 p-3 rounded-lg border border-white/5">
+                              {row.description}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
+                  );
+                })}
+              </div>
+            </div>
+
+          </div>
+        </div> {/* End Alternative Background Band */}
+
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 pb-24 relative z-10">
+          {/* 4. Interactive FAQs Accordion */}
+          <div>
+            <div className="mb-12 text-center">
+              <div className="flex items-center gap-2 mb-4 justify-center">
+                <Zap size={16} className="text-[#CCFF00]" />
+                <h3 className="text-3xl font-bold uppercase tracking-tight text-white">Frequently Asked Questions</h3>
+              </div>
+              <p className="text-gray-400 text-sm max-w-xl mx-auto">Get answers to critical delivery questions and technical workflows.</p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+              {faqData.map((item, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div 
+                    key={idx}
+                    className={`border rounded-2xl bg-zinc-950/40 overflow-hidden transition-all duration-300 ${
+                      isOpen ? 'border-[#CCFF00]/40 shadow-[0_0_20px_rgba(204,255,0,0.05)]' : 'border-white/10 hover:border-white/20'
+                    }`}
+                  >
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : idx)}
+                      className="w-full p-6 text-left flex justify-between items-center gap-4 transition-colors duration-300"
+                    >
+                      <span className={`text-md font-semibold tracking-tight transition-colors duration-300 ${
+                        isOpen ? 'text-[#CCFF00]' : 'text-white hover:text-[#CCFF00]'
+                      }`}>{item.q}</span>
+                      <motion.div
+                        animate={{ rotate: isOpen ? 180 : 0 }}
+                        transition={{ duration: 0.3, ease: premiumEase }}
+                        className={`shrink-0 transition-colors duration-300 ${
+                          isOpen ? 'text-[#CCFF00]' : 'text-[#00F0FF]'
+                        }`}
+                      >
+                        <ChevronDown size={18} />
+                      </motion.div>
+                    </button>
 
                     <AnimatePresence initial={false}>
-                      {isMobileOpen && (
+                      {isOpen && (
                         <motion.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25 }}
-                          className="overflow-hidden mt-2"
+                          transition={{ duration: 0.3, ease: premiumEase }}
                         >
-                          <p className="text-[11px] text-gray-400 font-light leading-relaxed bg-black/40 p-3 rounded-lg border border-white/5">
-                            {row.description}
-                          </p>
+                          <div className="px-6 pb-6 text-sm text-zinc-300 leading-relaxed border-t border-white/5 pt-4">
+                            <span className="text-[#00F0FF]/90 font-light">{item.a}</span>
+                          </div>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -559,61 +644,40 @@ const Pricing: React.FC = () => {
                 );
               })}
             </div>
-          </div>
-        </div>
 
-        {/* 4. Interactive FAQs Accordion */}
-        <div>
-          <div className="mb-12 text-center">
-            <div className="flex items-center gap-2 mb-4 justify-center">
-              <Zap size={16} className="text-[#CCFF00]" />
-              <h3 className="text-3xl font-bold uppercase tracking-tight text-white">Frequently Asked Questions</h3>
-            </div>
-            <p className="text-gray-400 text-sm max-w-xl mx-auto">Get answers to critical delivery questions and technical workflows.</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            {faqData.map((item, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div 
-                  key={idx}
-                  className="border border-white/10 rounded-2xl bg-zinc-950/40 overflow-hidden transition-colors hover:border-white/20"
+            {/* Custom FAQ Question Input Form */}
+            <div className="mt-16 max-w-xl mx-auto p-8 rounded-3xl border border-white/10 bg-zinc-950/40 text-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#00F0FF]/5 rounded-full filter blur-xl pointer-events-none" />
+              <div className="font-mono text-[9px] text-[#00F0FF] uppercase tracking-widest mb-2 select-none">
+                Got a different question?
+              </div>
+              <h4 className="text-xl font-bold text-white mb-2 uppercase tracking-tight">Ask Us Anything</h4>
+              <p className="text-xs text-gray-400 mb-6 font-light">Can't find what you need? Drop your question here and we'll hit you back ASAP.</p>
+              <form 
+                onSubmit={(e) => { 
+                  e.preventDefault(); 
+                  const input = (e.currentTarget.elements.namedItem('faqQuestion') as HTMLInputElement);
+                  alert(`Question submitted: "${input.value}". We'll get back to you!`); 
+                  input.value = '';
+                }} 
+                className="flex flex-col sm:flex-row gap-3 relative z-10"
+              >
+                <input 
+                  name="faqQuestion"
+                  type="text" 
+                  placeholder="Type your question here..." 
+                  className="flex-1 px-5 py-3.5 rounded-xl bg-black border border-white/10 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-[#CCFF00] transition-colors"
+                  required
+                />
+                <button 
+                  type="submit" 
+                  className="px-6 py-3.5 rounded-xl bg-[#CCFF00] text-black font-bold text-xs uppercase tracking-wider hover:bg-white hover:text-black transition-colors shrink-0"
                 >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full p-6 text-left flex justify-between items-center gap-4 text-white hover:text-[#CCFF00] transition-colors"
-                  >
-                    <span className="text-md font-semibold tracking-tight">{item.q}</span>
-                    <motion.div
-                      animate={{ rotate: isOpen ? 180 : 0 }}
-                      transition={{ duration: 0.3, ease: premiumEase }}
-                      className="text-[#00F0FF] shrink-0"
-                    >
-                      <ChevronDown size={18} />
-                    </motion.div>
-                  </button>
-
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: premiumEase }}
-                      >
-                        <div className="px-6 pb-6 text-sm text-gray-400 leading-relaxed border-t border-white/5 pt-4">
-                          {item.a}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
+                  Submit Query
+                </button>
+              </form>
+            </div>
         </div>
-
       </div>
     </section>
   );

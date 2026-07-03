@@ -35,6 +35,15 @@ import zoviqold from '../assets/zoviqold.png';
 
 
 
+export const preloadImages = [
+  main2, main3, main4,
+  cafe1, cafe2, cafe3, cafe4, cafe5, cafe6,
+  soft1, soft2, soft3, soft4, soft5,
+  port1, port2, port3,
+  akshar, abhinav, adnaan, bhuvan,
+  zoviq, zoviqold
+];
+
 export const projects: Project[] = [
   // Company Portfolios
   {

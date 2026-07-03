@@ -8,6 +8,7 @@ import { premiumEase } from '../../lib/utils';
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDarkBg, setIsDarkBg] = useState(true);
+  const [isScrolling, setIsScrolling] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -25,6 +26,24 @@ const Navbar: React.FC = () => {
     { name: 'COLLECTIVE', path: '/team' },
     { name: 'PRICING', path: '/pricing' },
   ];
+
+  useEffect(() => {
+    let scrollTimeout: any;
+    
+    const handleScrollDetect = () => {
+      setIsScrolling(true);
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+      }, 250); // 250ms of stillness marks scroll stop
+    };
+
+    window.addEventListener('scroll', handleScrollDetect);
+    return () => {
+      window.removeEventListener('scroll', handleScrollDetect);
+      clearTimeout(scrollTimeout);
+    };
+  }, []);
 
   useEffect(() => {
     const checkBg = () => {
@@ -118,80 +137,113 @@ const Navbar: React.FC = () => {
           <path d="M0 0C0 37.3 9 50 50 50H0V0Z" fill="currentColor" />
         </svg>
 
-        {/* Left: Logo */}
-        <Magnetic strength={0.1}>
-          <Link 
-            to="/" 
-            className={`flex items-center gap-2 pointer-events-auto transition-colors p-2 -m-2 ${
-              isDarkBg ? 'hover:text-[#4A6B00]' : 'hover:text-[#CCFF00]'
+        {/* Left Section: Work & Process links (Desktop only) */}
+        <div className="w-1/3 hidden md:flex justify-start items-center">
+          <motion.div
+            animate={{
+              x: isScrolling ? "120px" : "0px",
+              opacity: isScrolling ? 0 : 1,
+              filter: isScrolling ? "blur(4px)" : "blur(0px)"
+            }}
+            transition={{ duration: 0.4, ease: premiumEase }}
+            className={`flex gap-8 font-medium tracking-wide pointer-events-auto text-sm uppercase ${
+              isScrolling ? 'pointer-events-none' : ''
+            } ${
+              isDarkBg ? 'text-black' : 'text-zinc-400'
             }`}
           >
-            <span className="text-base md:text-lg font-bold tracking-tighter uppercase">AXORAA©</span>
-          </Link>
-        </Magnetic>
-        
-        {/* Center: Links */}
-        <div className={`hidden md:flex gap-10 font-medium tracking-wide pointer-events-auto text-xs uppercase ${
-          isDarkBg ? 'text-black' : 'text-zinc-400'
-        }`}>
-          {navItems.map((item) => (
-            <Magnetic key={item.name} strength={0.1}>
-              {item.isHash ? (
-                <a 
-                  href={item.path} 
-                  onClick={(e) => handleHashLinkClick(e, item.path)}
-                  className={`transition-colors duration-300 p-2 -m-2 block ${
-                    isDarkBg ? 'hover:text-black' : 'hover:text-white'
-                  }`}
-                >
-                  {item.name}
-                </a>
-              ) : (
-                <Link 
-                  to={item.path} 
-                  className={`transition-colors duration-300 p-2 -m-2 block ${
-                    isDarkBg ? 'hover:text-black' : 'hover:text-white'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              )}
-            </Magnetic>
-          ))}
+            {navItems.slice(0, 2).map((item) => (
+              <Magnetic key={item.name} strength={0.1}>
+                {item.isHash ? (
+                  <a 
+                    href={item.path} 
+                    onClick={(e) => handleHashLinkClick(e, item.path)}
+                    className={`transition-colors duration-300 p-2 -m-2 block ${
+                      isDarkBg ? 'hover:text-black' : 'hover:text-white'
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link 
+                    to={item.path} 
+                    className={`transition-colors duration-300 p-2 -m-2 block ${
+                      isDarkBg ? 'hover:text-black' : 'hover:text-white'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </Magnetic>
+            ))}
+          </motion.div>
         </div>
 
-        {/* Right: Actions */}
-        {/* <div className="hidden md:flex items-center gap-6 pointer-events-auto">
-          <Magnetic strength={0.15}>
-            <div className="flex items-center">
-              <a 
-                href="#contact" 
-                className={`px-4 py-2 rounded-l-xl text-[10px] font-bold uppercase tracking-widest transition-colors h-9 flex items-center ${
-                  isDarkBg 
-                    ? 'bg-black text-white hover:bg-zinc-800' 
-                    : 'bg-white text-black hover:bg-zinc-200'
-                }`}
-              >
-                Try for free
-              </a>
-              <span className={`w-9 h-9 rounded-r-xl flex items-center justify-center font-bold transition-colors ${
-                isDarkBg ? 'bg-[#4A6B00] text-white' : 'bg-[#CCFF00] text-black'
-              }`}>
-                <ArrowRight size={14} className="rotate-45" />
-              </span>
-            </div>
+        {/* Center Section: Logo (Always Visible & Center) */}
+        <div className="flex-1 md:w-1/3 flex justify-start md:justify-center items-center">
+          <Magnetic strength={0.1}>
+            <Link 
+              to="/" 
+              className={`flex items-center gap-2 pointer-events-auto transition-colors p-2 -m-2 ${
+                isDarkBg ? 'hover:text-[#4A6B00]' : 'hover:text-[#CCFF00]'
+              }`}
+            >
+              <span className="text-base md:text-3xl font-bold tracking-tighter uppercase">AXORAA©</span>
+            </Link>
           </Magnetic>
-        </div> */}
+        </div>
 
-        {/* Mobile menu button */}
-        <button 
-          className={`pointer-events-auto md:hidden p-2 rounded-full backdrop-blur-md transition-colors ${
-            isDarkBg ? 'bg-black/10 text-black' : 'bg-white/10 text-white'
-          }`}
-          onClick={() => setMobileMenuOpen(true)}
-        >
-          <Menu size={20} />
-        </button>
+        {/* Right Section: Collective & Pricing links (Desktop) or Menu Burger (Mobile) */}
+        <div className="w-auto md:w-1/3 flex justify-end items-center gap-6">
+          <motion.div
+            animate={{
+              x: isScrolling ? "-120px" : "0px",
+              opacity: isScrolling ? 0 : 1,
+              filter: isScrolling ? "blur(4px)" : "blur(0px)"
+            }}
+            transition={{ duration: 0.4, ease: premiumEase }}
+            className={`hidden md:flex gap-8 font-medium tracking-wide pointer-events-auto text-sm uppercase ${
+              isScrolling ? 'pointer-events-none' : ''
+            } ${
+              isDarkBg ? 'text-black' : 'text-zinc-400'
+            }`}
+          >
+            {navItems.slice(2, 4).map((item) => (
+              <Magnetic key={item.name} strength={0.1}>
+                {item.isHash ? (
+                  <a 
+                    href={item.path} 
+                    onClick={(e) => handleHashLinkClick(e, item.path)}
+                    className={`transition-colors duration-300 p-2 -m-2 block ${
+                      isDarkBg ? 'hover:text-black' : 'hover:text-white'
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link 
+                    to={item.path} 
+                    className={`transition-colors duration-300 p-2 -m-2 block ${
+                      isDarkBg ? 'hover:text-black' : 'hover:text-white'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </Magnetic>
+            ))}
+          </motion.div>
+
+          {/* Mobile menu button */}
+          <button 
+            className={`pointer-events-auto md:hidden p-2 rounded-full backdrop-blur-md transition-colors ${
+              isDarkBg ? 'bg-black/10 text-black' : 'bg-white/10 text-white'
+            }`}
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            <Menu size={20} />
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>

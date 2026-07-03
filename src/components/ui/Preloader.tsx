@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { animate, svg, stagger } from 'animejs';
+import { preloadImages } from '../../data';
 
 interface PreloaderProps {
   onComplete: () => void;
@@ -11,6 +12,8 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [drawingCompleted, setDrawingCompleted] = useState(false);
   const [isReady, setIsReady] = useState(false);
+  const [progressPercent, setProgressPercent] = useState(0);
+  const [resourcesLoaded, setResourcesLoaded] = useState(false);
 
   // Keep latest onComplete callback in a ref to prevent inline recreation from re-triggering the useEffect
   const onCompleteRef = React.useRef(onComplete);
@@ -18,6 +21,64 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
     onCompleteRef.current = onComplete;
   }, [onComplete]);
 
+  // 1. Preload static images and background video
+  useEffect(() => {
+    const totalResources = preloadImages.length + 1; // local images + hero video
+    let loadedCount = 0;
+
+    const updateProgress = () => {
+      loadedCount++;
+      const percent = Math.min(100, Math.round((loadedCount / totalResources) * 100));
+      setProgressPercent(percent);
+      if (loadedCount >= totalResources) {
+        setResourcesLoaded(true);
+      }
+    };
+
+    // Preload Images
+    preloadImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = updateProgress;
+      img.onerror = updateProgress; // count as loaded even on error to prevent locks
+    });
+
+    // Preload Hero Video
+    const video = document.createElement('video');
+    video.src = '/hero-video.mp4';
+    video.preload = 'auto';
+
+    const handleVideoLoaded = () => {
+      if (video.oncanplaythrough) {
+        video.oncanplaythrough = null;
+        updateProgress();
+      }
+    };
+
+    video.oncanplaythrough = handleVideoLoaded;
+    video.onerror = () => {
+      if (video.oncanplaythrough) {
+        video.oncanplaythrough = null;
+        updateProgress();
+      }
+    };
+
+    // Set a safety timeout for the video asset (8 seconds max wait)
+    const videoTimeout = setTimeout(() => {
+      if (video.oncanplaythrough) {
+        video.oncanplaythrough = null;
+        updateProgress();
+      }
+    }, 8000);
+
+    return () => {
+      clearTimeout(videoTimeout);
+      video.oncanplaythrough = null;
+      video.onerror = null;
+    };
+  }, []);
+
+  // 2. Stroke Drawing Animation
   useEffect(() => {
     let anim: any = null;
     let timer: any = null;
@@ -56,11 +117,6 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
         onComplete: () => {
           if (!active) return;
           setDrawingCompleted(true);
-          // Leave the fully drawn wordmark on screen briefly before completing
-          timer = setTimeout(() => {
-            if (!active) return;
-            onCompleteRef.current();
-          }, 750);
         }
       });
     };
@@ -76,7 +132,17 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
         clearTimeout(timer);
       }
     };
-  }, []); // Decoupled from dependencies so it runs exactly once on mount
+  }, []);
+
+  // 3. Coordinate drawing completion and resource caching
+  useEffect(() => {
+    if (drawingCompleted && resourcesLoaded) {
+      const dismissTimer = setTimeout(() => {
+        onCompleteRef.current();
+      }, 750);
+      return () => clearTimeout(dismissTimer);
+    }
+  }, [drawingCompleted, resourcesLoaded]);
 
   return (
     <motion.div 
@@ -141,6 +207,21 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
           </g>
         </svg>
  
+        {/* Real-time Progress Bar & Percent Indicator */}
+        <div className="w-full max-w-[280px] mt-6 flex flex-col gap-2 font-mono text-[9px] text-zinc-500 uppercase tracking-widest select-none">
+          <div className="flex justify-between items-center text-zinc-400">
+            <span>Compiling_assets</span>
+            <span className="text-[#CCFF00] font-bold">{progressPercent}%</span>
+          </div>
+          <div className="w-full h-[3px] bg-white/5 border border-white/5 rounded-full overflow-hidden relative">
+            <motion.div 
+              className="h-full bg-[#CCFF00]"
+              animate={{ width: `${progressPercent}%` }}
+              transition={{ duration: 0.1 }}
+            />
+          </div>
+        </div>
+
         {/* Monospace Subtitle */}
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
