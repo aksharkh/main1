@@ -18,18 +18,86 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const [preloaderUnmounted, setPreloaderUnmounted] = useState(false);
-  const { pathname } = useLocation();
+  const [loading, setLoading] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hasRun = sessionStorage.getItem('preloader-run');
+      if (hasRun) return false;
+    }
+    return true;
+  });
+  const [preloaderUnmounted, setPreloaderUnmounted] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hasRun = sessionStorage.getItem('preloader-run');
+      if (hasRun) return true;
+    }
+    return false;
+  });
+  const { pathname, hash } = useLocation();
 
   // Memoize preloader completion to prevent inline function recreation causing preloader resets on mousemove
   const handlePreloaderComplete = useCallback(() => {
     setLoading(false);
+    sessionStorage.setItem('preloader-run', 'true');
   }, []);
 
-  // Scroll to top on route change
+  // Scroll to hash or top on route change
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (hash) {
+      const id = hash.replace('#', '');
+      const timer = setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
+  
+  // Screen bezel color tracking (matches navbar)
+  const [isDarkBg, setIsDarkBg] = useState(true);
+
+  useEffect(() => {
+    const checkBg = () => {
+      // Footer Section (#contact) should be black (on all pages)
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        const rect = contactSection.getBoundingClientRect();
+        if (rect.top <= 60) {
+          setIsDarkBg(false);
+          return;
+        }
+      }
+
+      if (pathname === '/team' || pathname === '/pricing') {
+        setIsDarkBg(true);
+        return;
+      }
+      if (window.scrollY < 300) {
+        setIsDarkBg(false);
+        return;
+      }
+      
+      const workSection = document.getElementById('work');
+      if (workSection) {
+        const rect = workSection.getBoundingClientRect();
+        if (rect.top <= 60 && rect.bottom >= 60) {
+          setIsDarkBg(false);
+          return;
+        }
+      }
+      setIsDarkBg(true);
+    };
+
+    checkBg();
+    window.addEventListener('scroll', checkBg);
+    window.addEventListener('resize', checkBg);
+    return () => {
+      window.removeEventListener('scroll', checkBg);
+      window.removeEventListener('resize', checkBg);
+    };
   }, [pathname]);
   
   // Global Mouse Tracking
@@ -57,28 +125,28 @@ function App() {
       <SpeedInsights/>
       
       <AnimatePresence mode="wait" onExitComplete={() => setPreloaderUnmounted(true)}>
-        {loading && <Preloader onComplete={handlePreloaderComplete} />}
+        {loading && <Preloader key="preloader" onComplete={handlePreloaderComplete} />}
       </AnimatePresence>
 
       <MobileWarning />
 
       {/* Screen Edge Bezel Frames */}
-      <div className="fixed top-0 left-0 right-0 h-3 md:h-5 bg-[#0a0a0a] z-[100] pointer-events-none" />
-      <div className="fixed bottom-0 left-0 right-0 h-3 md:h-5 bg-[#0a0a0a] z-[100] pointer-events-none" />
-      <div className="fixed top-0 bottom-0 left-0 w-3 md:w-5 bg-[#0a0a0a] z-[100] pointer-events-none" />
-      <div className="fixed top-0 bottom-0 right-0 w-3 md:w-5 bg-[#0a0a0a] z-[100] pointer-events-none" />
+      <div className={`fixed top-0 left-0 right-0 h-3 md:h-5 z-[100] pointer-events-none transition-colors duration-500 ${isDarkBg ? 'bg-white' : 'bg-[#0a0a0a]'}`} />
+      <div className={`fixed bottom-0 left-0 right-0 h-3 md:h-5 z-[100] pointer-events-none transition-colors duration-500 ${isDarkBg ? 'bg-white' : 'bg-[#0a0a0a]'}`} />
+      <div className={`fixed top-0 bottom-0 left-0 w-3 md:w-5 z-[100] pointer-events-none transition-colors duration-500 ${isDarkBg ? 'bg-white' : 'bg-[#0a0a0a]'}`} />
+      <div className={`fixed top-0 bottom-0 right-0 w-3 md:w-5 z-[100] pointer-events-none transition-colors duration-500 ${isDarkBg ? 'bg-white' : 'bg-[#0a0a0a]'}`} />
 
       {/* SVG Screen Corners Masks */}
-      <svg className="fixed top-3 md:top-5 left-3 md:left-5 text-[#0a0a0a] pointer-events-none z-[100] w-8 h-8 md:w-12 md:h-12" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className={`fixed top-3 md:top-5 left-3 md:left-5 pointer-events-none z-[100] w-8 h-8 md:w-12 md:h-12 transition-colors duration-500 ${isDarkBg ? 'text-white' : 'text-[#0a0a0a]'}`} viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M50 0C22.4 0 0 22.4 0 50V0H50Z" fill="currentColor" />
       </svg>
-      <svg className="fixed top-3 md:top-5 right-3 md:right-5 text-[#0a0a0a] pointer-events-none z-[100] w-8 h-8 md:w-12 md:h-12 rotate-90" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className={`fixed top-3 md:top-5 right-3 md:right-5 pointer-events-none z-[100] w-8 h-8 md:w-12 md:h-12 rotate-90 transition-colors duration-500 ${isDarkBg ? 'text-white' : 'text-[#0a0a0a]'}`} viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M50 0C22.4 0 0 22.4 0 50V0H50Z" fill="currentColor" />
       </svg>
-      <svg className="fixed bottom-3 md:bottom-5 left-3 md:left-5 text-[#0a0a0a] pointer-events-none z-[100] w-8 h-8 md:w-12 md:h-12 -rotate-90" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className={`fixed bottom-3 md:bottom-5 left-3 md:left-5 pointer-events-none z-[100] w-8 h-8 md:w-12 md:h-12 -rotate-90 transition-colors duration-500 ${isDarkBg ? 'text-white' : 'text-[#0a0a0a]'}`} viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M50 0C22.4 0 0 22.4 0 50V0H50Z" fill="currentColor" />
       </svg>
-      <svg className="fixed bottom-3 md:bottom-5 right-3 md:right-5 text-[#0a0a0a] pointer-events-none z-[100] w-8 h-8 md:w-12 md:h-12 rotate-180" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className={`fixed bottom-3 md:bottom-5 right-3 md:right-5 pointer-events-none z-[100] w-8 h-8 md:w-12 md:h-12 rotate-180 transition-colors duration-500 ${isDarkBg ? 'text-white' : 'text-[#0a0a0a]'}`} viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M50 0C22.4 0 0 22.4 0 50V0H50Z" fill="currentColor" />
       </svg>
 

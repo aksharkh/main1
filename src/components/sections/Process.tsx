@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence, MotionValue } from 'framer-motion';
 import { processSteps } from '../../data';
 import { premiumEase } from '../../lib/utils';
 
@@ -172,12 +172,76 @@ const CDNMapSandbox: React.FC = () => {
   );
 };
 
+interface ProcessStepItemProps {
+  step: typeof processSteps[0];
+  idx: number;
+  scaleY: MotionValue<number>;
+  targetFraction: number;
+  stepColor: string;
+}
+
+const ProcessStepItem: React.FC<ProcessStepItemProps> = ({ step, idx, scaleY, targetFraction, stepColor }) => {
+  const activeProgress = useTransform(
+    scaleY, 
+    idx === 0 ? [0, 0.05] : [targetFraction - 0.08, targetFraction - 0.02], 
+    idx === 0 ? [1, 1] : [0, 1],
+    { clamp: true }
+  );
+
+  const backgroundColor = useTransform(activeProgress, [0, 1], ["#000000", stepColor]);
+  const borderColor = useTransform(activeProgress, [0, 1], ["rgba(255, 255, 255, 0.1)", stepColor]);
+  const color = useTransform(activeProgress, [0, 1], ["#ffffff", "#000000"]);
+  const boxShadow = useTransform(
+    activeProgress, 
+    [0, 1], 
+    ["0px 0px 0px rgba(0,0,0,0)", `0px 0px 30px ${stepColor}`]
+  );
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      viewport={{ once: true, margin: "-20%" }} 
+      transition={{ duration: 1, ease: premiumEase }}
+      className="relative pl-16 md:pl-20 py-8 md:py-12 group transition-colors duration-500 rounded-r-2xl hover:bg-white/[0.01]"
+    >
+      <div className="absolute right-12 top-1/2 -translate-y-1/2 w-48 h-48 bg-[#CCFF00] opacity-0 group-hover:opacity-[0.03] filter blur-[80px] rounded-full transition-opacity duration-700 pointer-events-none"></div>
+
+      {/* Circle Step indicator */}
+      <motion.div 
+        className="step-circle step-circle-hover absolute top-8 md:top-12 left-0 md:-left-10 w-12 h-12 md:w-20 md:h-20 rounded-full flex items-center justify-center font-mono text-lg md:text-xl transition-all duration-500 z-20 border font-bold"
+        style={{
+          backgroundColor,
+          borderColor,
+          color,
+          boxShadow,
+        }}
+      >
+        {step.id}
+      </motion.div>
+      
+      <div className="mb-6 inline-block p-4 rounded-xl bg-white/5 border border-white/5 group-hover:border-[#CCFF00]/30 group-hover:bg-white/10 transition-all duration-500" style={{ '--hover-accent': stepColor } as React.CSSProperties}>
+        {step.icon}
+      </div>
+      
+      <h3 className="text-3xl md:text-5xl font-bold tracking-tighter uppercase mb-4 text-white group-hover:text-white transition-colors duration-300">
+        {step.title}
+      </h3>
+      
+      <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-2xl">
+        {step.desc}
+      </p>
+
+      <div className="absolute bottom-0 right-0 left-10 md:left-20 h-px bg-white/5 group-hover:bg-white/10 transition-colors duration-500"></div>
+    </motion.div>
+  );
+};
+
 const Process: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [lineCoords, setLineCoords] = useState({ top: 0, height: 0 });
   const [circleCenters, setCircleCenters] = useState<number[]>([]);
   const [scrollRange, setScrollRange] = useState({ start: 0, end: 1 });
-  const [activeStepProgress, setActiveStepProgress] = useState(0);
   const [activeStepIdx, setActiveStepIdx] = useState(0);
   
   // Track scroll progress of the steps container
@@ -186,11 +250,20 @@ const Process: React.FC = () => {
     offset: ["start center", "end center"]
   });
 
-  // Map scroll progress to scaleY relative to the first and last circles
-  const scaleY = useTransform(scrollYProgress, [scrollRange.start, scrollRange.end], [0, 1], { clamp: true });
+  // Map scroll progress to scaleY relative to the first and last circles (clamp to 0.99 so it ends exactly at the center of the last circle)
+  const scaleY = useTransform(scrollYProgress, [scrollRange.start, scrollRange.end], [0, 0.99], { clamp: true });
 
   useMotionValueEvent(scaleY, "change", (latest) => {
-    setActiveStepProgress(latest);
+    if (circleCenters.length > 0 && lineCoords.height > 0) {
+      let activeIdx = 0;
+      for (let i = 0; i < circleCenters.length; i++) {
+        const targetFraction = circleCenters[i] / lineCoords.height;
+        if (latest >= targetFraction - 0.07) {
+          activeIdx = i;
+        }
+      }
+      setActiveStepIdx(activeIdx);
+    }
   });
 
   useEffect(() => {
@@ -210,11 +283,12 @@ const Process: React.FC = () => {
 
         const lastCircle = circles[circles.length - 1];
         const lastRect = lastCircle.getBoundingClientRect();
+        const lastRadius = lastRect.height / 2;
         const lastCenter = lastRect.top + (lastRect.height / 2) - containerRect.top;
 
-        // Start line 1.8 radii above the first circle, end exactly at the center of the last circle
+        // Start line 1.8 radii above the first circle, end slightly above the center of the last circle to prevent overflow
         const top = firstCenter - firstRadius * 1.8;
-        const bottom = lastCenter;
+        const bottom = lastCenter - lastRadius * 0.8;
         const height = bottom - top;
 
         const centers: number[] = [];
@@ -256,19 +330,7 @@ const Process: React.FC = () => {
     };
   }, []);
 
-  // Set the index of the currently active stage
-  useEffect(() => {
-    if (circleCenters.length > 0 && lineCoords.height > 0) {
-      let activeIdx = 0;
-      for (let i = 0; i < circleCenters.length; i++) {
-        const targetFraction = circleCenters[i] / lineCoords.height;
-        if (activeStepProgress >= targetFraction - 0.05) {
-          activeIdx = i;
-        }
-      }
-      setActiveStepIdx(activeIdx);
-    }
-  }, [activeStepProgress, circleCenters, lineCoords]);
+  // Active stage index is set directly inside the useMotionValueEvent change listener to avoid cascading state updates.
 
   // Renders the active stage's showcase dashboard
   const renderStickySandbox = () => {
@@ -291,7 +353,6 @@ const Process: React.FC = () => {
                 <line x1="100" y1="100" x2="50" y2="60" stroke="rgba(255,255,255,0.15)" strokeWidth="1.2" strokeDasharray="3 3" />
                 <line x1="100" y1="100" x2="150" y2="60" stroke="rgba(255,255,255,0.15)" strokeWidth="1.2" strokeDasharray="3 3" />
                 <line x1="100" y1="100" x2="40" y2="130" stroke="rgba(255,255,255,0.15)" strokeWidth="1.2" strokeDasharray="3 3" />
-                <line x1="100" y1="100" x2="160" y2="130" stroke="rgba(255,255,255,0.15)" strokeWidth="1.2" strokeDasharray="3 3" />
 
                 <circle cx="100" cy="100" r="14" fill="#CCFF00" />
                 <text x="100" y="103" fill="black" fontSize="7" textAnchor="middle" fontWeight="bold">IDEAS</text>
@@ -330,21 +391,14 @@ const Process: React.FC = () => {
   };
 
   return (
-    <section id="process" className="py-20 md:py-40 px-5 md:px-12 bg-zinc-950 relative z-10 border-b border-white/5">
+    <section id="process" className="py-20 md:py-40 px-5 md:px-12 bg-[#050508] relative z-10 border-b border-white/5">
       <div 
-        className="absolute inset-0 z-0 opacity-5 pointer-events-none" 
+        className="absolute inset-0 z-0 opacity-[0.18] pointer-events-none" 
         style={{ 
-          backgroundImage: 'radial-gradient(#CCFF00 1px, transparent 1px)', 
+          backgroundImage: 'radial-gradient(#CCFF00 1.2px, transparent 1.2px)', 
           backgroundSize: '40px 40px' 
         }}
       ></div>
-
-      <div className="absolute inset-y-0 top-0 bottom-0 max-w-[1400px] mx-auto w-full flex justify-between pointer-events-none z-0 px-5 md:px-12">
-        <div className="w-px h-full bg-white/5"></div>
-        <div className="w-px h-full bg-white/5 hidden md:block"></div>
-        <div className="w-px h-full bg-white/5 hidden md:block"></div>
-        <div className="w-px h-full bg-white/5"></div>
-      </div>
 
       <div className="max-w-5xl mx-auto relative z-10 px-6 md:px-12">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
@@ -380,7 +434,7 @@ const Process: React.FC = () => {
             {/* Background continuous line */}
             <div 
               style={{ top: `${lineCoords.top}px`, height: `${lineCoords.height}px` }}
-              className="absolute left-0 w-[2px] bg-white/10 z-0 pointer-events-none" 
+              className="absolute left-6 md:left-0 w-[2px] bg-white/10 z-0 pointer-events-none" 
             />
             
             {/* Animated active progress line */}
@@ -391,59 +445,23 @@ const Process: React.FC = () => {
                 scaleY, 
                 originY: 0 
               }}
-              className="absolute left-0 w-[2px] bg-gradient-to-b from-[#CCFF00] to-[#00F0FF] z-10 shadow-[0_0_15px_rgba(0,240,255,0.8),0_0_8px_rgba(204,255,0,0.9)] origin-top pointer-events-none"
+              className="absolute left-6 md:left-0 w-[2px] bg-gradient-to-b from-[#CCFF00] to-[#00F0FF] z-10 shadow-[0_0_15px_rgba(0,240,255,0.8),0_0_8px_rgba(204,255,0,0.9)] origin-top pointer-events-none"
             />
 
             {processSteps.map((step, idx) => {
               const targetFraction = lineCoords.height > 0 ? circleCenters[idx] / lineCoords.height : 0;
-              const isActive = circleCenters.length > 0 
-                ? (activeStepProgress >= targetFraction - 0.01 || (idx === 0 && activeStepProgress >= 0))
-                : idx === 0;
-
               const stepColors = ['#CCFF00', '#85F966', '#00F0FF', '#00F0FF'];
               const stepColor = stepColors[idx];
 
               return (
-                <motion.div 
+                <ProcessStepItem
                   key={step.id}
-                  initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-20%" }} transition={{ duration: 1, ease: premiumEase }}
-                  className="relative pl-10 md:pl-20 py-8 md:py-12 group transition-colors duration-500 rounded-r-2xl hover:bg-white/[0.01]"
-                >
-                  <div className="absolute right-12 top-1/2 -translate-y-1/2 w-48 h-48 bg-[#CCFF00] opacity-0 group-hover:opacity-[0.03] filter blur-[80px] rounded-full transition-opacity duration-700 pointer-events-none"></div>
-
-                  {/* Circle Step indicator (class step-circle is tracked) */}
-                  <div 
-                    className={`step-circle step-circle-hover absolute top-8 md:top-12 -left-6 md:-left-10 w-12 h-12 md:w-20 md:h-20 bg-black border rounded-full flex items-center justify-center font-mono text-lg md:text-xl transition-all duration-500 z-20 ${
-                      isActive 
-                        ? 'text-black font-bold active-step border-transparent' 
-                        : 'border-white/10 text-white'
-                    }`}
-                    style={{
-                      '--hover-accent': stepColor,
-                      ...(isActive ? {
-                        borderColor: stepColor,
-                        backgroundColor: stepColor,
-                        boxShadow: `0 0 35px ${stepColor}, 0 0 12px ${stepColor}`
-                      } : {})
-                    } as React.CSSProperties}
-                  >
-                    {step.id}
-                  </div>
-                  
-                  <div className="mb-6 inline-block p-4 rounded-xl bg-white/5 border border-white/5 group-hover:border-[#CCFF00]/30 group-hover:bg-white/10 transition-all duration-500" style={{ '--hover-accent': stepColor } as React.CSSProperties}>
-                    {step.icon}
-                  </div>
-                  
-                  <h3 className="text-3xl md:text-5xl font-bold tracking-tighter uppercase mb-4 text-white group-hover:text-white transition-colors duration-300">
-                    {step.title}
-                  </h3>
-                  
-                  <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-2xl">
-                    {step.desc}
-                  </p>
-
-                  <div className="absolute bottom-0 right-0 left-10 md:left-20 h-px bg-white/5 group-hover:bg-white/10 transition-colors duration-500"></div>
-                </motion.div>
+                  step={step}
+                  idx={idx}
+                  scaleY={scaleY}
+                  targetFraction={targetFraction}
+                  stepColor={stepColor}
+                />
               );
             })}
           </div>

@@ -31,23 +31,25 @@ const Testimonials: React.FC = () => {
   const bounceRate = Math.round(72 - 51 * fraction);
 
   return (
-    <section id="testimonials" className="py-24 md:py-48 px-6 md:px-12 bg-zinc-950 text-white relative z-10 overflow-hidden border-b border-white/5">
+    <section id="testimonials" className="py-24 md:py-48 px-6 md:px-12 bg-[#07070a] text-white relative z-10 overflow-hidden border-b border-white/5">
+      {/* Dynamic Backlight Glow that shifts position based on comparison slider */}
+      <div 
+        className="absolute w-[500px] h-[500px] rounded-full opacity-[0.06] filter blur-[120px] pointer-events-none z-0 transition-all duration-300"
+        style={{
+          left: `calc(15% + ${sliderPosition * 0.4}% - 250px)`,
+          top: '30%',
+          backgroundColor: sliderPosition > 50 ? '#CCFF00' : '#00F0FF',
+        }}
+      />
+
       {/* Dot matrix backdrop */}
       <div 
-        className="absolute inset-0 z-0 opacity-5 pointer-events-none" 
+        className="absolute inset-0 z-0 opacity-[0.18] pointer-events-none" 
         style={{ 
-          backgroundImage: 'radial-gradient(#CCFF00 1px, transparent 1px)', 
+          backgroundImage: 'radial-gradient(#CCFF00 1.2px, transparent 1.2px)', 
           backgroundSize: '40px 40px' 
         }}
       ></div>
-
-      {/* Grid Layout Lines */}
-      <div className="absolute inset-y-0 top-0 bottom-0 max-w-[1400px] mx-auto w-full flex justify-between pointer-events-none z-0 px-6 md:px-12">
-        <div className="w-px h-full bg-white/5"></div>
-        <div className="w-px h-full bg-white/5 hidden md:block"></div>
-        <div className="w-px h-full bg-white/5 hidden md:block"></div>
-        <div className="w-px h-full bg-white/5"></div>
-      </div>
 
       <div className="max-w-[1400px] mx-auto relative z-10 px-6 md:px-12">
         

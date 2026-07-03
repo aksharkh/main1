@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { animate, svg, stagger } from 'animejs';
@@ -9,6 +10,7 @@ interface PreloaderProps {
 const Preloader = ({ onComplete }: PreloaderProps) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [drawingCompleted, setDrawingCompleted] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   // Keep latest onComplete callback in a ref to prevent inline recreation from re-triggering the useEffect
   const onCompleteRef = React.useRef(onComplete);
@@ -40,6 +42,8 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
       drawables.forEach((d: any) => {
         d.draw = '0 0';
       });
+
+      setIsReady(true);
 
       if (!active) return;
 
@@ -96,7 +100,15 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
               <stop offset="100%" stopColor="#CCFF00" />
             </linearGradient>
           </defs>
-          <g stroke="url(#loaderGradient)" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-95">
+          <g 
+            stroke="url(#loaderGradient)" 
+            fill="none" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            className="opacity-95 transition-opacity duration-300"
+            style={{ opacity: isReady ? 0.95 : 0 }}
+          >
             {/* A (1) */}
             <path className="wordmark-line" d="M 15 85 L 36 15 L 44 15 L 65 85 L 53 85 L 47 65 L 33 65 L 27 85 Z" fill="url(#loaderGradient)" style={{ fillOpacity: drawingCompleted ? 1 : 0, transition: 'fill-opacity 0.7s ease-out' }} />
             <path className="wordmark-line" d="M 36 54 L 44 54 L 40 40 Z" fill="#000000" style={{ fillOpacity: drawingCompleted ? 1 : 0, transition: 'fill-opacity 0.7s ease-out' }} />

@@ -19,7 +19,7 @@ const Marquee: React.FC = () => {
         <div className="flex items-center text-black font-bold text-3xl md:text-5xl tracking-wider uppercase">
           {Array.from({ length: 12 }).map((_, idx) => (
             <React.Fragment key={idx}>
-              <span className="mx-8">AVAILABLE FOR FREELANCE</span>
+              <span className="mx-8">AVAILABLE FOR PROJECTS</span>
               <SparkleIcon />
             </React.Fragment>
           ))}

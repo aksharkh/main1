@@ -46,7 +46,22 @@ const Team: React.FC<TeamProps> = ({ mousePosition }) => {
   }, []);
 
   return (
-    <section id="team" className="py-32 px-6 md:px-12 bg-black border-y border-white/10 relative z-10 text-white">
+    <section id="team" className="py-32 px-6 md:px-12 bg-[#040605] border-y border-white/10 relative z-10 text-white">
+      <div 
+        className="absolute inset-0 z-0 opacity-[0.18] pointer-events-none" 
+        style={{ 
+          backgroundImage: 'radial-gradient(#CCFF00 1.2px, transparent 1.2px)', 
+          backgroundSize: '36px 36px' 
+        }}
+      ></div>
+
+      {/* Technical Grid Coordinates Backdrop */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-[0.03]">
+        <div className="absolute top-10 left-10 font-mono text-[9px]">COORD: [AX-01] // SYS_LAT_8.2ms</div>
+        <div className="absolute top-10 right-10 font-mono text-[9px]">GRID: [L-4] // NODE_15_OK</div>
+        <div className="absolute bottom-10 left-10 font-mono text-[9px]">LAT: 12.91° N // LON: 77.59° E</div>
+        <div className="absolute bottom-10 right-10 font-mono text-[9px]">ENGINE_UP: [2026]</div>
+      </div>
       
       {/* Floating Image element (desktop only) */}
       <AnimatePresence>
@@ -88,8 +103,18 @@ const Team: React.FC<TeamProps> = ({ mousePosition }) => {
               onMouseLeave={() => setHoveredTeamMember(null)}
               className="team-member-row opacity-0 group border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center py-12 md:hover:bg-white/5 transition-colors px-4 -mx-4 md:px-10 md:-mx-10 duration-500 cursor-pointer"
             >
-              <div className="flex items-center gap-8 mb-6 md:mb-0 relative z-10">
+              <div className="flex items-center gap-4 md:gap-8 mb-6 md:mb-0 relative z-10">
                 <span className="text-xl font-mono text-gray-500 group-hover:text-[#CCFF00] transition-colors">0{index + 1}</span>
+                
+                {/* Mobile inline avatar */}
+                <div className="md:hidden w-16 h-16 rounded-full overflow-hidden border border-white/15 shrink-0 bg-zinc-900 shadow-lg">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
                 <h3 className="text-4xl md:text-7xl font-bold tracking-tighter uppercase group-hover:text-white md:group-hover:translate-x-8 transition-all duration-500 ease-[0.76,0,0.24,1] text-gray-300">
                   {member.name}
                 </h3>

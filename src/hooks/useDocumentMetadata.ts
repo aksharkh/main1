@@ -22,13 +22,13 @@ export const useDocumentMetadata = ({ title, description, canonical }: MetadataO
       metaDesc.setAttribute('content', description);
 
       // Also update og:description
-      let ogDesc = document.querySelector('meta[property="og:description"]');
+      const ogDesc = document.querySelector('meta[property="og:description"]');
       if (ogDesc) {
         ogDesc.setAttribute('content', description);
       }
       
       // Also update twitter:description
-      let twitterDesc = document.querySelector('meta[name="twitter:description"]');
+      const twitterDesc = document.querySelector('meta[name="twitter:description"]');
       if (twitterDesc) {
         twitterDesc.setAttribute('content', description);
       }

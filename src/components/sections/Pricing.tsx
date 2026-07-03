@@ -118,14 +118,12 @@ const planAnalytics = {
     latency: "8ms",
     performanceRating: "S-Tier"
   }
-};
-
-const StatusCapsule: React.FC<{ value: { text: string; status: 'basic' | 'premium' | 'enterprise' | 'none' } }> = ({ value }) => {
+};const StatusCapsule: React.FC<{ value: { text: string; status: 'basic' | 'premium' | 'enterprise' | 'none' } }> = ({ value }) => {
   const { text, status } = value;
   
   if (status === 'none') {
     return (
-      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/5 bg-white/[0.02] text-zinc-600 font-mono text-[9px] uppercase tracking-wider">
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 md:px-3 md:py-1 rounded-full border border-white/5 bg-white/[0.02] text-zinc-600 font-mono text-[8px] md:text-[9px] uppercase tracking-wider shrink-0">
         <span>Not Included</span>
       </span>
     );
@@ -133,26 +131,26 @@ const StatusCapsule: React.FC<{ value: { text: string; status: 'basic' | 'premiu
 
   if (status === 'basic') {
     return (
-      <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 text-gray-300 font-mono text-[10px] tracking-wide">
-        <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
-        <span>{text}</span>
+      <span className="inline-flex items-center gap-1 px-2.5 py-1 md:px-3.5 md:py-1.5 rounded-full border border-white/10 bg-white/5 text-gray-300 font-mono text-[9px] md:text-[10px] tracking-wide shrink-0">
+        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0"></span>
+        <span className="truncate max-w-[120px] md:max-w-none">{text}</span>
       </span>
     );
   }
 
   if (status === 'premium') {
     return (
-      <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-[#CCFF00]/20 bg-[#CCFF00]/5 text-[#CCFF00] font-mono text-[10px] font-bold tracking-wide shadow-[0_0_12px_rgba(204,255,0,0.05)]">
-        <Sparkles size={10} className="animate-pulse" />
-        <span>{text}</span>
+      <span className="inline-flex items-center gap-1 px-2.5 py-1 md:px-3.5 md:py-1.5 rounded-full border border-[#CCFF00]/25 bg-[#CCFF00]/5 text-[#CCFF00] font-mono text-[9px] md:text-[10px] font-bold tracking-wide shadow-[0_0_12px_rgba(204,255,0,0.05)] shrink-0">
+        <Sparkles size={9} className="animate-pulse shrink-0" />
+        <span className="truncate max-w-[120px] md:max-w-none">{text}</span>
       </span>
     );
   }
 
   return (
-    <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-[#00F0FF]/30 bg-[#00F0FF]/5 text-[#00F0FF] font-mono text-[10px] font-bold tracking-wide shadow-[0_0_15px_rgba(0,240,255,0.08)]">
-      <Zap size={10} className="animate-bounce" style={{ animationDuration: '3s' }} />
-      <span>{text}</span>
+    <span className="inline-flex items-center gap-1 px-2.5 py-1 md:px-3.5 md:py-1.5 rounded-full border border-[#00F0FF]/30 bg-[#00F0FF]/5 text-[#00F0FF] font-mono text-[9px] md:text-[10px] font-bold tracking-wide shadow-[0_0_15px_rgba(0,240,255,0.08)] shrink-0">
+      <Zap size={9} className="animate-bounce shrink-0" style={{ animationDuration: '3s' }} />
+      <span className="truncate max-w-[120px] md:max-w-none">{text}</span>
     </span>
   );
 };
@@ -171,22 +169,21 @@ const Pricing: React.FC = () => {
   };
 
   return (
-    <section id="pricing" className="py-24 md:py-40 px-6 md:px-12 bg-black text-white relative z-10 overflow-hidden border-b border-white/5">
+    <section id="pricing" className="py-24 md:py-40 px-6 md:px-12 bg-[#020508] text-white relative z-10 overflow-hidden border-b border-white/5">
+      {/* Decorative Neon Section Corner Brackets */}
+      <div className="absolute top-10 left-10 w-12 h-12 border-t border-l border-[#00F0FF]/15 pointer-events-none z-0 hidden md:block" />
+      <div className="absolute top-10 right-10 w-12 h-12 border-t border-r border-[#00F0FF]/15 pointer-events-none z-0 hidden md:block" />
+      <div className="absolute bottom-10 left-10 w-12 h-12 border-b border-l border-[#00F0FF]/15 pointer-events-none z-0 hidden md:block" />
+      <div className="absolute bottom-10 right-10 w-12 h-12 border-b border-r border-[#00F0FF]/15 pointer-events-none z-0 hidden md:block" />
+
       {/* Background grids */}
       <div 
-        className="absolute inset-0 z-0 opacity-5 pointer-events-none" 
+        className="absolute inset-0 z-0 opacity-[0.18] pointer-events-none" 
         style={{ 
-          backgroundImage: 'radial-gradient(#00F0FF 1px, transparent 1px)', 
+          backgroundImage: 'radial-gradient(#00F0FF 1.2px, transparent 1.2px)', 
           backgroundSize: '40px 40px' 
         }}
       ></div>
-
-      <div className="absolute inset-y-0 top-0 bottom-0 max-w-[1400px] mx-auto w-full flex justify-between pointer-events-none z-0 px-6 md:px-12">
-        <div className="w-px h-full bg-white/5"></div>
-        <div className="w-px h-full bg-white/5 hidden md:block"></div>
-        <div className="w-px h-full bg-white/5 hidden md:block"></div>
-        <div className="w-px h-full bg-white/5"></div>
-      </div>
 
       <div className="max-w-[1400px] mx-auto relative z-10">
         
@@ -204,6 +201,28 @@ const Pricing: React.FC = () => {
           <p className="text-xl text-gray-400 font-light max-w-2xl mx-auto">
             World-class engineering mapped directly to business returns. Choose a plan to calculate your system analytics below.
           </p>
+        </div>
+
+        {/* GenZ Value Prop Callout Banner */}
+        <div className="mb-16 max-w-4xl mx-auto p-8 rounded-3xl border border-[#CCFF00]/25 bg-zinc-950/80 relative overflow-hidden shadow-[0_0_30px_rgba(204,255,0,0.02)]">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[#CCFF00]/5 rounded-full filter blur-xl pointer-events-none" />
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10">
+            <div className="space-y-2 text-left">
+              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-[#CCFF00]/10 text-[#CCFF00] font-mono text-[10px] uppercase tracking-wider">
+                Math Check 🧠
+              </div>
+              <h3 className="text-2xl font-bold uppercase tracking-tight text-white">One-Time Burn, Lifetime Returns</h3>
+              <p className="text-sm text-zinc-400 font-light leading-relaxed max-w-2xl">
+                Instead of paying recurring salaries or monthly SaaS subscriptions forever, invest <span className="text-[#CCFF00] font-semibold">1 month of a single staff member's salary</span> into a high-performance digital asset. It runs 24/7/365, never takes sick leave, and builds your brand value for a lifetime. One-time investment, lifelong margins. Period.
+              </p>
+            </div>
+            <div className="font-mono text-zinc-500 text-[10px] border border-white/5 bg-white/[0.02] p-4 rounded-xl shrink-0 self-stretch md:self-auto flex flex-col justify-center gap-1.5 min-w-[200px] text-left">
+              <div className="flex justify-between"><span className="text-[#CCFF00]">1mo Staff Pay</span><span>= 1x Cost</span></div>
+              <div className="flex justify-between"><span className="text-[#00F0FF]">AXORAA Site</span><span>= ∞ Returns</span></div>
+              <div className="border-t border-white/10 my-1"></div>
+              <div className="text-[9px] uppercase tracking-wider text-center text-zinc-400">Zero subscription fees</div>
+            </div>
+          </div>
         </div>
 
         {/* 1. Overview Plan Selection Cards */}

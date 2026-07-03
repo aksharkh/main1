@@ -3,27 +3,28 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Monitor } from 'lucide-react';
 
 const MobileWarning: React.FC = () => {
-  const [showWarning, setShowWarning] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+  const [showWarning, setShowWarning] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
     
-    checkMobile();
     window.addEventListener('resize', checkMobile);
     
-    if (window.innerWidth < 768) {
-      setShowWarning(true);
-      const timer = setTimeout(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    if (isMobile && showWarning) {
+      timer = setTimeout(() => {
         setShowWarning(false);
       }, 2000);
-      return () => clearTimeout(timer);
     }
     
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      if (timer) clearTimeout(timer);
+    };
+  }, [isMobile, showWarning]);
 
   return (
     <AnimatePresence>

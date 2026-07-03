@@ -129,6 +129,13 @@ const Work: React.FC = () => {
           />
         )}
       </AnimatePresence>
+
+      {/* Sawtooth brutalist cut from Work (#fafafa) to Process (#050508) */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20 translate-y-[99%] pointer-events-none">
+        <svg viewBox="0 0 1200 40" preserveAspectRatio="none" className="relative block w-full h-4 md:h-8 text-[#050508]">
+          <path d="M0,40 L20,0 L40,40 L60,0 L80,40 L100,0 L120,40 L140,0 L160,40 L180,0 L200,40 L220,0 L240,40 L260,0 L280,40 L300,0 L320,40 L340,0 L360,40 L380,0 L400,40 L420,0 L440,40 L460,0 L480,40 L500,0 L520,40 L540,0 L560,40 L580,0 L600,40 L620,0 L640,40 L660,0 L680,40 L700,0 L720,40 L740,0 L760,40 L780,0 L800,40 L820,0 L840,40 L860,0 L880,40 L900,0 L920,40 L940,0 L960,40 L980,0 L1000,40 L1020,0 L1040,40 L1060,0 L1080,40 L1100,0 L1120,40 L1140,0 L1160,40 L1180,0 L1200,40 L1200,40 L0,40 Z" fill="currentColor"></path>
+        </svg>
+      </div>
     </section>
   );
 };

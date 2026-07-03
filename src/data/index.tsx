@@ -270,17 +270,17 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: 'landing',
     name: 'Basic Landing Pages',
-    price: '₹10,000',
-    originalPrice: '₹15,000',
-    description: 'High-converting, single-page websites designed to capture leads and showcase your offer.',
+    price: '₹20,000 - ₹25,000',
+    originalPrice: '₹30,000',
+    description: "Equivalent to 1 month's salary of entry-level staff. A one-time investment for a 24/7 lead-generation engine with lifetime returns.",
     features: ['Custom UI/UX Design', 'Mobile Responsive', 'SEO Optimization', 'Contact Form Integration', 'Fast Load Times', '3 Years Free Maintenance']
   },
   {
     id: 'custom',
     name: 'Full Custom Websites',
-    price: '₹25,000',
-    originalPrice: '₹30,000',
-    description: 'Complete digital experiences with CMS, multiple pages, and advanced interactions.',
+    price: '₹45,000 - ₹50,000',
+    originalPrice: '₹60,000',
+    description: "Equivalent to 1 month's salary of mid-level staff. An Awwwards-grade visual machine built for lifetime brand dominance.",
     features: ['Custom Awwwards-Level Design', 'CMS Integration', 'Advanced Animations (GSAP)', 'Premium Aesthetics', 'E-commerce Ready', '3 Years Free Maintenance'],
     recommended: true
   },
@@ -288,7 +288,7 @@ export const pricingPlans: PricingPlan[] = [
     id: 'software',
     name: 'Internal Software & CRMs',
     price: 'Custom',
-    description: 'Bespoke software to automate workflows, reduce internal manual work, and manage relationships.',
+    description: "Equivalent to 1 month's salary of senior/management staff. Custom operations engines to automate your entire team's workflow forever.",
     features: ['Custom Workflow Automation', 'Secure Data Architecture', 'Role-based Access Control', 'Third-party API Integration', 'Scalable Cloud Infrastructure', '3 Years Free Maintenance']
   }
 ];

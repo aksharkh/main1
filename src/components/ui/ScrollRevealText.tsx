@@ -1,10 +1,26 @@
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface ScrollRevealTextProps {
   text: string;
 }
+
+interface WordProps {
+  word: string;
+  scrollYProgress: any;
+  start: number;
+  end: number;
+}
+
+const Word: React.FC<WordProps> = ({ word, scrollYProgress, start, end }) => {
+  const colorProgress = useTransform(scrollYProgress, [start, end], ["#333333", "#ffffff"]);
+  return (
+    <motion.span style={{ color: colorProgress }}>
+      {word}
+    </motion.span>
+  );
+};
 
 const ScrollRevealText: React.FC<ScrollRevealTextProps> = ({ text }) => {
   const targetRef = useRef(null);
@@ -19,12 +35,15 @@ const ScrollRevealText: React.FC<ScrollRevealTextProps> = ({ text }) => {
       {words.map((word, i) => {
         const start = i / words.length;
         const end = start + (1 / words.length);
-        const colorProgress = useTransform(scrollYProgress, [start, end], ["#333333", "#ffffff"]);
         return (
-          <motion.span key={i} style={{ color: colorProgress }}>
-            {word}
-          </motion.span>
-        )
+          <Word 
+            key={i} 
+            word={word} 
+            scrollYProgress={scrollYProgress} 
+            start={start} 
+            end={end} 
+          />
+        );
       })}
     </p>
   );

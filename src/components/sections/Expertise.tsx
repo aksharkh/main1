@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Terminal, Database, Cpu, Layers } from 'lucide-react';
 import ScrambleText from '../ui/ScrambleText';
@@ -7,6 +7,24 @@ import { premiumEase } from '../../lib/utils';
 export const Expertise: React.FC = () => {
   // Frontend Card state
   const [rotate, setRotate] = useState({ x: 15, y: -15 });
+  const [isHoveredFrontend, setIsHoveredFrontend] = useState(false);
+  const [autoRotate, setAutoRotate] = useState({ x: 15, y: -15 });
+
+  // 1. Auto-rotation loop for Frontend 3D Sandbox
+  useEffect(() => {
+    if (isHoveredFrontend) return;
+    let frame: number;
+    const start = performance.now();
+    const animate = (time: number) => {
+      const elapsed = time - start;
+      const angleX = 15 + Math.sin(elapsed * 0.001) * 20;
+      const angleY = -15 + Math.cos(elapsed * 0.001) * 25;
+      setAutoRotate({ x: angleX, y: angleY });
+      frame = requestAnimationFrame(animate);
+    };
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [isHoveredFrontend]);
   
   const handleFrontendMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -19,6 +37,7 @@ export const Expertise: React.FC = () => {
   };
 
   const handleFrontendMouseLeave = () => {
+    setIsHoveredFrontend(false);
     setRotate({ x: 15, y: -15 });
   };
 
@@ -34,6 +53,24 @@ export const Expertise: React.FC = () => {
     const time = new Date().toLocaleTimeString('en-US', { hour12: false });
     setLogs((prev) => [...prev.slice(-5), `[${time}] ${msg}`]);
   };
+
+  // 2. Auto-log metrics effect for Backend Console
+  useEffect(() => {
+    const activities = [
+      "HEALTH: Cluster status: 100% healthy",
+      "METRICS: CPU: 12% | RAM: 29% | Disk: 15%",
+      "SYNC: cron-sync completed - 0 mutations",
+      "API: GET /api/v1/health - 200 OK - 2.8ms",
+      "CACHE: Recompiling cache metrics... Ready",
+      "DB: Transaction logs rotated successfully",
+      "AUDIT: Redis Cache hit ratio: 99.8%"
+    ];
+    const interval = setInterval(() => {
+      const randomMsg = activities[Math.floor(Math.random() * activities.length)];
+      addLog(randomMsg);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
 
   const triggerApi = () => {
     if (isPinging) return;
@@ -69,24 +106,43 @@ export const Expertise: React.FC = () => {
     setTimeout(() => setTrafficActive(false), 2500);
   };
 
+  // 3. Auto-traffic effect for Cloud Infrastructure
+  useEffect(() => {
+    simulateTraffic();
+    const interval = setInterval(() => {
+      simulateTraffic();
+    }, 6500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section id="expertise" className="py-24 md:py-48 px-6 md:px-12 relative z-10 bg-black text-white overflow-hidden border-b border-white/5">
+    <section id="expertise" className="py-24 md:py-48 px-6 md:px-12 relative z-10 bg-[#020202] text-white overflow-hidden border-b border-white/5">
+      {/* Rotating Tech Radar Backdrop */}
+      <motion.div 
+        animate={{ rotate: 360 }}
+        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+        className="absolute -right-40 -top-40 w-[600px] h-[600px] opacity-[0.03] text-[#CCFF00] pointer-events-none z-0 select-none"
+      >
+        <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0.5" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="90" strokeDasharray="2 4" />
+          <circle cx="100" cy="100" r="70" />
+          <circle cx="100" cy="100" r="50" strokeDasharray="4 2" />
+          <circle cx="100" cy="100" r="30" />
+          <line x1="10" y1="100" x2="190" y2="100" strokeDasharray="1 3" />
+          <line x1="100" y1="10" x2="100" y2="190" strokeDasharray="1 3" />
+          <line x1="36.36" y1="36.36" x2="163.64" y2="163.64" />
+          <line x1="36.36" y1="163.64" x2="163.64" y2="36.36" />
+        </svg>
+      </motion.div>
+
       {/* Dot matrix grid backdrop */}
       <div 
-        className="absolute inset-0 z-0 opacity-5 pointer-events-none" 
+        className="absolute inset-0 z-0 opacity-[0.18] pointer-events-none" 
         style={{ 
-          backgroundImage: 'radial-gradient(#CCFF00 1px, transparent 1px)', 
+          backgroundImage: 'radial-gradient(#CCFF00 1.2px, transparent 1.2px)', 
           backgroundSize: '36px 36px' 
         }}
       ></div>
-
-      {/* Grid Layout Lines */}
-      <div className="absolute inset-y-0 top-0 bottom-0 max-w-[1400px] mx-auto w-full flex justify-between pointer-events-none z-0 px-6 md:px-12">
-        <div className="w-px h-full bg-white/5"></div>
-        <div className="w-px h-full bg-white/5 hidden md:block"></div>
-        <div className="w-px h-full bg-white/5 hidden md:block"></div>
-        <div className="w-px h-full bg-white/5"></div>
-      </div>
 
       <div className="max-w-[1400px] mx-auto relative z-10 px-6 md:px-12">
         
@@ -130,6 +186,7 @@ export const Expertise: React.FC = () => {
 
             {/* Interactive Sandbox: CSS 3D Rotate Cube */}
             <div 
+              onMouseEnter={() => setIsHoveredFrontend(true)}
               onMouseMove={handleFrontendMouseMove}
               onMouseLeave={handleFrontendMouseLeave}
               className="mt-auto aspect-square rounded-2xl bg-black border border-white/5 flex flex-col items-center justify-center relative overflow-hidden p-6 cursor-grab active:cursor-grabbing shadow-inner group-hover:border-white/10 transition-colors"
@@ -139,10 +196,10 @@ export const Expertise: React.FC = () => {
               
               {/* Monospace coordinates HUD */}
               <div className="absolute top-3 left-4 font-mono text-[9px] text-gray-500 uppercase tracking-widest pointer-events-none">
-                3D_ROTATE: RX:{Math.round(rotate.x)}° RY:{Math.round(rotate.y)}°
+                3D_ROTATE: RX:{Math.round(isHoveredFrontend ? rotate.x : autoRotate.x)}° RY:{Math.round(isHoveredFrontend ? rotate.y : autoRotate.y)}°
               </div>
               <div className="absolute bottom-3 left-4 font-mono text-[9px] text-[#CCFF00] uppercase tracking-widest pointer-events-none animate-pulse">
-                Interactive_Matrix
+                {isHoveredFrontend ? "Manual_Override" : "Auto_Rotate_Active"}
               </div>
 
               {/* 3D Container */}
@@ -151,7 +208,7 @@ export const Expertise: React.FC = () => {
                   className="w-20 h-20 relative transition-transform duration-200" 
                   style={{ 
                     transformStyle: 'preserve-3d',
-                    transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`
+                    transform: `rotateX(${isHoveredFrontend ? rotate.x : autoRotate.x}deg) rotateY(${isHoveredFrontend ? rotate.y : autoRotate.y}deg)`
                   }}
                 >
                   {/* Cube Faces */}
