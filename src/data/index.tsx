@@ -30,6 +30,14 @@ import bhuvan from '../assets/bhuvan.jpeg';
 
 import zoviq from '../assets/zoviq.png';
 import zoviqold from '../assets/zoviqold.png';
+import doc from '../assets/doc.png';
+import zoviqcopy from '../assets/zoviq copy.png';
+import pet from '../assets/pet.png';
+import polymind from '../assets/polymind.png';
+import children from '../assets/children.png';
+import aarogyam from '../assets/aarogyam.png';
+import spa from '../assets/spa.png';
+import zumba from '../assets/zumba.png';
 
 
 
@@ -46,29 +54,20 @@ export const preloadImages = [
 
 export const projects: Project[] = [
   // Company Portfolios
-  {
+
+    {
     id: 1,
-    title: 'DevStudio',
+    title: 'Zoviq',
     category: 'Company Portfolio',
-    image: main2,
-    aspect: 'aspect-[16/10]',
-    col: 'md:col-span-7',
-    link: 'https://main2-nu.vercel.app/',
-    tags: ['Next.js', 'TailwindCSS', 'Framer Motion']
+    image: zoviqcopy,
+    aspect: 'aspect-[4/5]',
+    col: 'md:col-span-5',
+    link: 'https://www.zoviq.page/',
+    tags: ['React', 'Vite', 'TailwindCSS']
   },
   {
     id: 2,
-    title: 'DevCollective',
-    category: 'Company Portfolio',
-    image: main3,
-    aspect: 'aspect-[4/5]',
-    col: 'md:col-span-5',
-    link: 'https://main3-ruby.vercel.app/',
-    tags: ['React', 'Vite', 'GSAP']
-  },
-  {
-    id: 3,
-    title: 'Business Energy',
+    title: 'ShineGoGlobal',
     category: 'Company Portfolio',
     image: main4,
     aspect: 'aspect-[16/10]',
@@ -77,39 +76,93 @@ export const projects: Project[] = [
     tags: ['TypeScript', 'Node.js', 'PostgreSQL']
   },
 
-  // Cafe Websites
+  {
+    id: 3,
+    title: 'Polymind',
+    category: 'Company Portfolio',
+    image: polymind,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://polymind.zoviq.page/',
+    tags: ['React', 'Vite', 'TailwindCSS']
+  },
   {
     id: 4,
+    title: 'DevStudio',
+    category: 'Company Portfolio',
+    image: main2,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://devstudio.axoraa.tech/',
+    tags: ['Next.js', 'TailwindCSS', 'Framer Motion']
+  },
+  {
+    id: 5,
+    title: 'DevCollective',
+    category: 'Company Portfolio',
+    image: main3,
+    aspect: 'aspect-[4/5]',
+    col: 'md:col-span-5',
+    link: 'https://devcollective.axoraa.tech/',
+    tags: ['React', 'Vite', 'GSAP']
+  },
+  
+
+  // Medical Systems
+  {
+    id: 6,
+    title: 'Aarogyam ',
+    category: 'Medical System',
+    image: aarogyam,
+    aspect: 'aspect-[4/5]',
+    col: 'md:col-span-5',
+    link: 'https://aarogyam.axoraa.tech/',
+    tags: ['Next.js', 'React', 'TailwindCSS']
+  },
+  {
+    id: 7,
+    title: 'Doc CRM',
+    category: 'Medical System',
+    image: doc,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://doc.axoraa.tech/',
+    tags: ['React', 'Node.js', 'PostgreSQL']
+  },
+
+  // Cafe Websites
+  {
+    id: 8,
     title: 'SABLE',
     category: 'Cafe Website',
     image: cafe1,
     aspect: 'aspect-[4/5]',
     col: 'md:col-span-5',
-    link: 'https://ca3-five.vercel.app/',
+    link: 'https://sable.axoraa.tech/',
     tags: ['Next.js', 'MongoDB', 'Vercel']
   },
   {
-    id: 5,
+    id: 9,
     title: 'TERRA',
     category: 'Cafe Website',
     image: cafe2,
     aspect: 'aspect-[16/10]',
     col: 'md:col-span-7',
-    link: 'https://ca2-opal.vercel.app/',
+    link: 'https://terra.axoraa.tech/',
     tags: ['React', 'Redux', 'AntD']
   },
   {
-    id: 6,
+    id: 10,
     title: 'LUMINA',
     category: 'Cafe Website',
     image: cafe3,
     aspect: 'aspect-[4/5]',
     col: 'md:col-span-5',
-    link: 'https://ca1-pi.vercel.app/',
+    link: 'https://lumina.axoraa.tech/',
     tags: ['Vue.js', 'TailwindCSS', 'Firebase']
   },
-   {
-    id: 7,
+  {
+    id: 11,
     title: 'Ojas Theta',
     category: 'Cafe Website',
     image: cafe4,
@@ -119,7 +172,7 @@ export const projects: Project[] = [
     tags: ['Svelte', 'Node.js', 'MySQL']
   },
   {
-    id: 8,
+    id: 12,
     title: 'Masala Modern',
     category: 'Cafe Website',
     image: cafe5,
@@ -129,29 +182,29 @@ export const projects: Project[] = [
     tags: ['Next.js', 'Prisma', 'PostgreSQL']
   },
   {
-    id: 9,
+    id: 13,
     title: 'Lumière',
     category: 'Cafe Website',
     image: cafe6,
     aspect: 'aspect-[16/10]',
     col: 'md:col-span-7',
     link: 'https://new-folder-two-steel.vercel.app/',
-    tags: ['React', 'Framer Motion', 'Viter']
+    tags: ['React', 'Framer Motion', 'Vite']
   },
 
   // Internal Softwares
   {
-    id: 10,
-    title: 'F-Mine ',
+    id: 14,
+    title: 'F-Mine',
     category: 'Internal Software',
     image: soft1,
     aspect: 'aspect-[16/10]',
     col: 'md:col-span-7',
-    link: 'https://f-mine-demo.vercel.app/',
+    link: 'https://restaurant-crm.axoraa.tech/',
     tags: ['React', 'TypeScript', 'Dashboard']
   },
   {
-    id: 11,
+    id: 15,
     title: 'AI Test Propter',
     category: 'Internal Software',
     image: soft2,
@@ -161,27 +214,27 @@ export const projects: Project[] = [
     tags: ['Python', 'FastAPI', 'React']
   },
   {
-    id: 12,
+    id: 16,
     title: 'Sparkonomy',
     category: 'Internal Software',
     image: soft3,
     aspect: 'aspect-[16/10]',
     col: 'md:col-span-7',
-    link: 'https://sparkonomy-eta.vercel.app/',
+    link: 'https://sparkonomy.axoraa.tech/',
     tags: ['Next.js', 'Redis', 'TailwindCSS']
   },
   {
-    id: 13,
+    id: 17,
     title: 'Flam Five',
     category: 'Internal Software',
     image: soft4,
     aspect: 'aspect-[4/5]',
     col: 'md:col-span-5',
-    link: 'https://flam-five.vercel.app/',
+    link: 'https://flam.axoraa.tech/',
     tags: ['Angular', 'RxJS', 'Node.js']
   },
   {
-    id: 14,
+    id: 18,
     title: 'Smart Home Dash',
     category: 'Internal Software',
     image: soft5,
@@ -191,10 +244,53 @@ export const projects: Project[] = [
     tags: ['IoT', 'React', 'MQTT']
   },
 
+  // Creative Portals
+  {
+    id: 19,
+    title: 'PetCare Portal',
+    category: 'Creative Portals',
+    image: pet,
+    aspect: 'aspect-[4/5]',
+    col: 'md:col-span-5',
+    link: 'https://pet.axoraa.tech/',
+    tags: ['React', 'Vite', 'TailwindCSS']
+  },
+  {
+    id: 20,
+    title: 'Zumba Studio',
+    category: 'Creative Portals',
+    image: zumba,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://zumba.axoraa.tech/',
+    tags: ['React', 'GSAP', 'TailwindCSS']
+  },
+  {
+    id: 21,
+    title: 'KinderCare Portal',
+    category: 'Creative Portals',
+    image: children,
+    aspect: 'aspect-[16/10]',
+    col: 'md:col-span-7',
+    link: 'https://kinder.axoraa.tech/',
+    tags: ['Next.js', 'Framer Motion', 'TailwindCSS']
+  },
+  {
+    id: 22,
+    title: 'Aura Spa Portal',
+    category: 'Creative Portals',
+    image: spa,
+    aspect: 'aspect-[4/5]',
+    col: 'md:col-span-5',
+    link: 'https://spa.axoraa.tech/',
+    tags: ['React', 'TailwindCSS', 'Vercel']
+  },
+  
+
   // Personal Portfolios
   {
-    id: 15,
-    title: 'Bhuvan ',
+    id: 23,
+    title: 'Bhuvan',
     category: 'Personal Portfolio',
     image: port1,
     aspect: 'aspect-[4/5]',
@@ -203,7 +299,7 @@ export const projects: Project[] = [
     tags: ['HTML', 'CSS', 'JavaScript']
   },
   {
-    id: 16,
+    id: 24,
     title: 'Abhinav R',
     category: 'Personal Portfolio',
     image: port2,
@@ -213,13 +309,13 @@ export const projects: Project[] = [
     tags: ['React', 'Three.js', 'Vercel']
   },
   {
-    id: 17,
-    title: 'Akshar ',
+    id: 25,
+    title: 'Akshar',
     category: 'Personal Portfolio',
     image: port3,
     aspect: 'aspect-[4/5]',
     col: 'md:col-span-5',
-    link: 'https://aksharkh.vercel.app/',
+    link: 'https://akshar.axoraa.tech/',
     tags: ['Next.js', 'Sanity', 'TailwindCSS']
   }
 ];

@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AXORAA - Project Quotation & Agreement (Outsourced Design - 150K)</title>
+  <!-- Tailwind CSS for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#CCFF00',
+            brandDark: '#4A6B00',
+            obsidian: '#060608',
+            darkgray: '#111114',
+            lightgray: '#f9f9fb',
+          },
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+    
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    
+    .page-container {
+      width: 210mm;
+      height: 297mm;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+      break-after: page;
+    }
+    
+    .grid-lines {
+      background-image: linear-gradient(to right, rgba(204,255,0,0.02) 1px, transparent 1px), 
+                        linear-gradient(to bottom, rgba(204,255,0,0.02) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-white font-sans antialiased">
+
+  <!-- PAGE 1: COVER PAGE (DARK THEME - 50% FADING DOTTED GRID) -->
+  <div class="page-container bg-obsidian p-[20mm] text-white">
+    <!-- Localized Faded Dotted Grid Overlay (Right 50% Page Area, Mask Faded) -->
+    <div class="absolute inset-y-0 right-0 w-[110mm] pointer-events-none opacity-30 z-0">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gridFadeRight" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0%" stop-color="white" stop-opacity="1" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </linearGradient>
+          <mask id="fadeMaskRight">
+            <rect width="100%" height="100%" fill="url(#gridFadeRight)" />
+          </mask>
+          <pattern id="dotPattern" width="24" height="24" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1" fill="#CCFF00" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dotPattern)" mask="url(#fadeMaskRight)" />
+      </svg>
+    </div>
+    <div class="absolute top-1/3 right-10 w-96 h-96 rounded-full bg-brand/5 filter blur-[100px] pointer-events-none"></div>
+    
+    <!-- Header -->
+    <div class="flex justify-between items-center relative z-10 border-b border-white/10 pb-6">
+      <span class="text-xl font-bold tracking-tighter uppercase">
+        AXORAA<span class="text-brand font-black">©</span>
+      </span>
+      <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
+        project_quotation
+      </span>
+    </div>
+
+    <!-- Title Body -->
+    <div class="my-auto relative z-10 space-y-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand/20 bg-brand/5 text-brand font-mono text-xs uppercase tracking-wide">
+        <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+        Digital Engineering Studio
+      </div>
+      
+      <h1 class="text-6xl font-extrabold tracking-tighter uppercase leading-none">
+        Project<br>
+        <span class="text-brand">Quotation</span>
+      </h1>
+      
+      <p class="text-lg text-zinc-400 font-light max-w-2xl leading-relaxed">
+        Unified cross-platform Android & iOS applications, a custom web ecosystem (frontend & backend), and custom visual design systems outsourced to specialized designers and billed strictly at cost.
+      </p>
+
+      <div class="grid grid-cols-2 gap-8 font-mono text-xs border border-white/10 rounded-xl p-6 bg-zinc-950/40 backdrop-blur-sm">
+        <div>
+          <span class="text-zinc-500 block uppercase text-[10px] mb-1 font-bold">ISSUED BY</span>
+          <span class="text-white font-bold block">AXORAA LABS</span>
+          <span class="text-zinc-400 block text-[9px] font-sans mt-0.5">info.axoraa@gmail.com</span>
+          <span class="text-zinc-400 block text-[9px] font-sans">www.axoraa.tech</span>
+          <span class="text-zinc-400 block text-[9px] font-sans">+91 8277630021</span>
+          <span class="text-zinc-400 block text-[9px] font-sans">Bengaluru, KA, India</span>
+        </div>
+        <div>
+          <span class="text-zinc-500 block uppercase text-[10px] mb-1 font-bold">PREPARED FOR</span>
+          <span class="text-white font-bold block">Prospective Partner</span>
+          <span class="text-zinc-500 block uppercase text-[10px] mt-4 mb-1 font-bold">OFFERED PROJECT VALUE</span>
+          <span class="text-brand font-bold">₹1,50,000 INR (All-Inclusive)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-white/10 pt-8 flex justify-between relative z-10 text-zinc-500 font-mono text-[10px]">
+      <div>
+        <div class="text-zinc-400 font-bold uppercase mb-1">AXORAA LABS</div>
+        <div>URL: <span class="text-brand">https://www.axoraa.tech/</span></div>
+      </div>
+      <div class="text-right">
+        <div class="text-zinc-400 font-bold uppercase mb-1">DATE OF ISSUE</div>
+        <div>JULY 22, 2026 // BENGALURU, IN</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2: PROJECT DELIVERABLES MATRIX (LIGHT THEME - 50% LEFT SUNRISE & ORBITS MASK FADED, UNCLIPPED) -->
+  <div class="page-container bg-white p-[20mm] text-zinc-955">
+    <!-- Left 50% Sunrise Radial Glow & Mixed Orbits Background (Mask Faded, Unclipped viewBox) -->
+    <div class="absolute inset-y-0 left-0 w-[140mm] pointer-events-none z-0">
+      <svg viewBox="0 -75 200 350" class="w-full h-full text-brandDark" fill="none" stroke="currentColor">
+        <defs>
+          <linearGradient id="orbitFadeLeft2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="white" stop-opacity="1" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </linearGradient>
+          <mask id="orbitMaskLeft2">
+            <rect x="0" y="-75" width="200" height="350" fill="url(#orbitFadeLeft2)" stroke="none" />
+          </mask>
+          <radialGradient id="sunriseGlowLeft2" cx="0" cy="100" r="150" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.15" />
+            <stop offset="40%" stop-color="#00F0FF" stop-opacity="0.08" />
+            <stop offset="100%" stop-color="#white" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        
+        <g mask="url(#orbitMaskLeft2)">
+          <!-- Ambient Sunrise Glow -->
+          <rect x="0" y="-75" width="200" height="350" fill="url(#sunriseGlowLeft2)" stroke="none" />
+          
+          <!-- Concentric Mixed Orbits -->
+          <circle cx="0" cy="100" r="30" stroke-width="0.3" />
+          <circle cx="0" cy="100" r="50" stroke-width="0.6" stroke-dasharray="2 2" />
+          <circle cx="0" cy="100" r="70" stroke-width="0.3" />
+          <circle cx="0" cy="100" r="95" stroke-width="1.2" stroke-dasharray="6 4" />
+          <circle cx="0" cy="100" r="120" stroke-width="0.4" />
+          <circle cx="0" cy="100" r="145" stroke-width="0.8" stroke-dasharray="1 3" />
+          <circle cx="0" cy="100" r="170" stroke-width="1.8" />
+          
+          <!-- Elliptical orbits -->
+          <ellipse cx="0" cy="100" rx="200" ry="80" stroke-width="0.5" transform="rotate(20 0 100)" />
+          <ellipse cx="0" cy="100" rx="230" ry="110" stroke-width="0.8" stroke-dasharray="4 4" transform="rotate(-30 0 100)" />
+          
+          <!-- planetary nodes -->
+          <circle cx="50" cy="100" r="3.5" fill="currentColor" />
+          <circle cx="95" cy="100" r="2" fill="currentColor" />
+          <circle cx="120" cy="100" r="4" fill="currentColor" />
+          <circle cx="170" cy="100" r="3" fill="#00F0FF" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Header -->
+    <div class="flex justify-between items-center border-b border-zinc-200 pb-6 relative z-10">
+      <span class="text-lg font-bold tracking-tighter uppercase text-black font-sans">
+        AXORAA<span class="text-brandDark font-black">©</span>
+      </span>
+      <span class="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
+        section_01 // project_scope
+      </span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="my-auto space-y-8 relative z-10">
+      <div>
+        <h2 class="text-xs font-mono uppercase tracking-widest text-brandDark mb-1">01 // DELIVERABLES BRIEF</h2>
+        <h3 class="text-3xl font-extrabold tracking-tighter uppercase text-black">ENGINEERING SCOPE MATRIX</h3>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 text-zinc-950">
+        <!-- App Dev -->
+        <div class="p-4 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl space-y-1">
+          <h4 class="text-xs font-bold text-black uppercase font-mono">Mobile App Sprints (Android & iOS App Frontend)</h4>
+          <p class="text-[10px] text-zinc-900 leading-relaxed font-semibold font-sans">
+            Complete frontend and backend codebases for both Android and iOS apps. Supports 3 release versions, localized translations, messaging webhooks, and secure payment integrations.
+          </p>
+        </div>
+
+        <!-- Web Dev -->
+        <div class="p-4 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl space-y-1">
+          <h4 class="text-xs font-bold text-black uppercase font-mono">Website Ecosystem (Frontend & Backend)</h4>
+          <p class="text-[10px] text-zinc-900 leading-relaxed font-semibold font-sans">
+            React/Next.js dynamic website with visual layouts, responsive mobile grids, full frontend rendering and connected backend systems.
+          </p>
+        </div>
+
+        <!-- Database & Storage -->
+        <div class="p-4 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl space-y-1">
+          <h4 class="text-xs font-bold text-black uppercase font-mono">Relational Database & S3 Storage</h4>
+          <p class="text-[10px] text-zinc-900 leading-relaxed font-semibold font-sans">
+            Unified backend database setup using robust relational tables, security policies, and AWS S3 storage buckets configuration.
+          </p>
+        </div>
+
+        <!-- Cloud Dev -->
+        <div class="p-4 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl space-y-1">
+          <h4 class="text-xs font-bold text-black uppercase font-mono">2 Backend Cloud Server Instances</h4>
+          <p class="text-[10px] text-zinc-900 leading-relaxed font-semibold font-sans">
+            Configuration of 2 secure backend cloud server instances, architecture load-optimization, and global deployment lines setup.
+          </p>
+        </div>
+      </div>
+
+      <div class="border-t border-zinc-200 pt-6">
+        <h4 class="text-xs font-mono uppercase tracking-widest text-brandDark mb-3">02 // CO-RESPONSIBILITY SPLIT</h4>
+        <div class="grid grid-cols-2 gap-6 text-xs font-sans font-medium text-zinc-900">
+          <div class="space-y-1 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl p-4">
+            <span class="font-bold text-black block font-mono text-[10px] tracking-wider">AXORAA RESPONSIBILITY</span>
+            <p class="text-[10px] leading-relaxed font-semibold text-zinc-900 mt-1 font-sans">
+              We manage the entire frontend servers, compile release AAB/IPA packages, integrate systems, deploy staging panels, and verify stores.
+            </p>
+          </div>
+          <div class="space-y-1 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl p-4">
+            <span class="font-bold text-black block font-mono text-[10px] tracking-wider">CLIENT RESPONSIBILITY</span>
+            <p class="text-[10px] leading-relaxed font-semibold text-zinc-900 mt-1 font-sans">
+              Client manages the cloud server and database infrastructure costs directly, and pays Google/Apple store developer account registration fees.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-zinc-200 pt-6 flex justify-between text-zinc-600 font-mono text-[10px]">
+      <div>AXORAA STUDIOS</div>
+      <div>PAGE 02 // 09</div>
+    </div>
+  </div>
+
+  <!-- PAGE 3: COMMERCIAL SUMMARY (LIGHT THEME - 50% RIGHT SUNRISE & ORBITS MASK FADED, UNCLIPPED) -->
+  <div class="page-container bg-white p-[20mm] text-zinc-955">
+    <!-- Right 50% Sunrise Radial Glow & Mixed Orbits Background (Mask Faded, Unclipped viewBox) -->
+    <div class="absolute inset-y-0 right-0 w-[140mm] pointer-events-none z-0">
+      <svg viewBox="0 -75 200 350" class="w-full h-full text-brandDark" fill="none" stroke="currentColor">
+        <defs>
+          <linearGradient id="orbitFadeRight3" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0%" stop-color="white" stop-opacity="1" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </linearGradient>
+          <mask id="orbitMaskRight3">
+            <rect x="0" y="-75" width="200" height="350" fill="url(#orbitFadeRight3)" stroke="none" />
+          </mask>
+          <radialGradient id="sunriseGlowRight3" cx="200" cy="100" r="150" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.15" />
+            <stop offset="40%" stop-color="#00F0FF" stop-opacity="0.08" />
+            <stop offset="100%" stop-color="#white" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        
+        <g mask="url(#orbitMaskRight3)">
+          <!-- Ambient Sunrise Glow -->
+          <rect x="0" y="-75" width="200" height="350" fill="url(#sunriseGlowRight3)" stroke="none" />
+          
+          <!-- Concentic Mixed Orbits -->
+          <circle cx="200" cy="100" r="30" stroke-width="0.3" />
+          <circle cx="200" cy="100" r="50" stroke-width="0.6" stroke-dasharray="2 2" />
+          <circle cx="200" cy="100" r="70" stroke-width="0.3" />
+          <circle cx="200" cy="100" r="95" stroke-width="1.2" stroke-dasharray="6 4" />
+          <circle cx="200" cy="100" r="120" stroke-width="0.4" />
+          <circle cx="200" cy="100" r="145" stroke-width="0.8" stroke-dasharray="1 3" />
+          <circle cx="200" cy="100" r="170" stroke-width="1.8" />
+          
+          <!-- Elliptical orbits -->
+          <ellipse cx="200" cy="100" rx="200" ry="80" stroke-width="0.5" transform="rotate(-20 200 100)" />
+          <ellipse cx="200" cy="100" rx="230" ry="110" stroke-width="0.8" stroke-dasharray="4 4" transform="rotate(30 200 100)" />
+          
+          <!-- planetary nodes -->
+          <circle cx="150" cy="100" r="3.5" fill="currentColor" />
+          <circle cx="105" cy="100" r="2" fill="currentColor" />
+          <circle cx="80" cy="100" r="4" fill="currentColor" />
+          <circle cx="30" cy="100" r="3" fill="#00F0FF" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Header -->
+    <div class="flex justify-between items-center border-b border-zinc-200 pb-6 relative z-10">
+      <span class="text-lg font-bold tracking-tighter uppercase text-black font-sans">
+        AXORAA<span class="text-brandDark font-black">©</span>
+      </span>
+      <span class="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
+        section_02 // commercials_summary
+      </span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="my-auto space-y-8 relative z-10 text-zinc-950">
+      <div>
+        <h2 class="text-xs font-mono uppercase tracking-widest text-brandDark mb-1">03 // PRICING ESTIMATE</h2>
+        <h3 class="text-3xl font-extrabold tracking-tighter uppercase text-black font-sans">COMMERCIAL PROPOSAL SUMMARY</h3>
+        <p class="text-[11px] text-zinc-900 mt-2 font-medium leading-relaxed max-w-xl">
+          One-time design and engineering investment, utilizing professional outsourced UI/UX designers billed directly at cost.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4 font-mono">
+        <!-- App -->
+        <div class="p-5 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl flex flex-col justify-between h-[155px]">
+          <div>
+            <h4 class="text-[10px] text-zinc-500 uppercase tracking-wider font-bold">Android & iOS App</h4>
+            <p class="text-[8px] text-zinc-900 font-sans leading-snug mt-1 font-semibold">Frontend & Backend code for both OS platforms.</p>
+          </div>
+          <div class="border-t border-zinc-200 pt-2 flex flex-col">
+            <span class="text-[9px] text-zinc-500 line-through">₹1,20,000</span>
+            <span class="text-lg font-bold text-black">₹65,000</span>
+          </div>
+        </div>
+
+        <!-- Web -->
+        <div class="p-5 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl flex flex-col justify-between h-[155px]">
+          <div>
+            <h4 class="text-[10px] text-zinc-500 uppercase tracking-wider font-bold">Custom Website</h4>
+            <p class="text-[8px] text-zinc-900 font-sans leading-snug mt-1 font-semibold">Responsive React/Next.js environment.</p>
+          </div>
+          <div class="border-t border-zinc-200 pt-2 flex flex-col">
+            <span class="text-[9px] text-zinc-500 line-through">₹35,000</span>
+            <span class="text-lg font-bold text-black">₹15,000</span>
+          </div>
+        </div>
+
+        <!-- Design -->
+        <div class="p-5 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl flex flex-col justify-between h-[155px]">
+          <div>
+            <h4 class="text-[10px] text-zinc-500 uppercase tracking-wider font-bold">Visual Design</h4>
+            <p class="text-[8px] text-zinc-900 font-sans leading-snug mt-1 font-semibold">Professional outsourced UI/UX design billed at partner cost rates.</p>
+          </div>
+          <div class="border-t border-zinc-200 pt-2 flex flex-col">
+            <span class="text-[9px] text-zinc-500 line-through">₹1,00,000</span>
+            <span class="text-lg font-bold text-black">₹70,000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total Banner with comparison -->
+      <div class="p-5 bg-zinc-950 text-white rounded-2xl flex justify-between items-center font-mono">
+        <div>
+          <span class="text-zinc-500 text-[8px] uppercase tracking-widest block">TOTAL INVESTMENT VALUE</span>
+          <span class="text-[10px] text-zinc-400 line-through tracking-wider">₹2,55,000 INR</span>
+          <span class="text-2xl font-extrabold uppercase text-white tracking-tight block">₹1,50,000 <span class="text-[#CCFF00]">INR</span></span>
+        </div>
+        <div class="text-[10px] text-[#CCFF00] font-sans text-right max-w-xs font-light">
+          Bespoke high-performance engineering (₹80k) coupled with premium outsourced visual design systems (₹70k billed at cost).
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-zinc-200 pt-6 flex justify-between text-zinc-600 font-mono text-[10px]">
+      <div>AXORAA STUDIOS</div>
+      <div>PAGE 03 // 09</div>
+    </div>
+  </div>
+
+  <!-- PAGE 4: DETAILED PRICE BREAKDOWN TABLE (LIGHT THEME - 50% LEFT SUNRISE & ORBITS MASK FADED, UNCLIPPED) -->
+  <div class="page-container bg-white p-[20mm] text-zinc-950">
+    <!-- Left 50% Sunrise Radial Glow & Mixed Orbits Background (Mask Faded, Unclipped viewBox) -->
+    <div class="absolute inset-y-0 left-0 w-[140mm] pointer-events-none z-0">
+      <svg viewBox="0 -75 200 350" class="w-full h-full text-brandDark" fill="none" stroke="currentColor">
+        <defs>
+          <linearGradient id="orbitFadeLeft4" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="white" stop-opacity="1" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </linearGradient>
+          <mask id="orbitMaskLeft4">
+            <rect x="0" y="-75" width="200" height="350" fill="url(#orbitFadeLeft4)" stroke="none" />
+          </mask>
+          <radialGradient id="sunriseGlowLeft4" cx="0" cy="100" r="150" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.15" />
+            <stop offset="40%" stop-color="#00F0FF" stop-opacity="0.08" />
+            <stop offset="100%" stop-color="#white" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        
+        <g mask="url(#orbitMaskLeft4)">
+          <!-- Ambient Sunrise Glow -->
+          <rect x="0" y="-75" width="200" height="350" fill="url(#sunriseGlowLeft4)" stroke="none" />
+          
+          <!-- Concentric Mixed Orbits -->
+          <circle cx="0" cy="100" r="30" stroke-width="0.3" />
+          <circle cx="0" cy="100" r="50" stroke-width="0.6" stroke-dasharray="2 2" />
+          <circle cx="0" cy="100" r="70" stroke-width="0.3" />
+          <circle cx="0" cy="100" r="95" stroke-width="1.2" stroke-dasharray="6 4" />
+          <circle cx="0" cy="100" r="120" stroke-width="0.4" />
+          <circle cx="0" cy="100" r="145" stroke-width="0.8" stroke-dasharray="1 3" />
+          <circle cx="0" cy="100" r="170" stroke-width="1.8" />
+          
+          <!-- Elliptical orbits -->
+          <ellipse cx="0" cy="100" rx="200" ry="80" stroke-width="0.5" transform="rotate(20 0 100)" />
+          <ellipse cx="0" cy="100" rx="230" ry="110" stroke-width="0.8" stroke-dasharray="4 4" transform="rotate(-30 0 100)" />
+          
+          <!-- planetary nodes -->
+          <circle cx="50" cy="100" r="3.5" fill="currentColor" />
+          <circle cx="95" cy="100" r="2" fill="currentColor" />
+          <circle cx="120" cy="100" r="4" fill="currentColor" />
+          <circle cx="170" cy="100" r="3" fill="#00F0FF" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Header -->
+    <div class="flex justify-between items-center border-b border-zinc-200 pb-4 relative z-10">
+      <span class="text-lg font-bold tracking-tighter uppercase text-black font-mono">
+        AXORAA<span class="text-brandDark font-black">©</span>
+      </span>
+      <span class="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
+        section_03 // commercials_detail
+      </span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="my-auto space-y-4 relative z-10 text-zinc-950">
+      <div>
+        <h2 class="text-xs font-mono uppercase tracking-widest text-brandDark mb-0.5">04 // LINE ITEM COMPILER</h2>
+        <h3 class="text-2xl font-extrabold tracking-tighter uppercase text-black font-sans">DETAILED VALUATION TABLE</h3>
+      </div>
+
+      <!-- Pricing Table -->
+      <div class="border border-zinc-200 rounded-xl overflow-hidden bg-lightgray/95 backdrop-blur-md font-mono text-[9px]">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-zinc-900 text-white uppercase text-[8px] tracking-wider border-b border-zinc-200">
+              <th class="p-3 w-[60%]">Engineering Component / Scope Description</th>
+              <th class="p-3 w-[20%] text-center">Standard Rate</th>
+              <th class="p-3 w-[20%] text-right">AXORAA Rate</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-200 text-zinc-900 font-semibold">
+            <tr>
+              <td class="p-2.5 font-sans font-bold text-black">Mobile App Sprints (Android & iOS App Frontend)</td>
+              <td class="p-2.5 text-center text-zinc-500 line-through">₹75,000</td>
+              <td class="p-2.5 text-right font-black text-black">₹40,000</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-sans font-bold text-black">App Backend & API Engine Consumptions</td>
+              <td class="p-2.5 text-center text-zinc-500 line-through">₹45,000</td>
+              <td class="p-2.5 text-right font-black text-black">₹25,000</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-sans font-bold text-black">Custom React/Next.js Website Sprints (Frontend & Backend)</td>
+              <td class="p-2.5 text-center text-zinc-500 line-through">₹35,000</td>
+              <td class="p-2.5 text-right font-black text-black">₹15,000</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-sans font-bold text-black font-extrabold text-brandDark">Outsourced Custom UI/UX Design (Partnership Cost)</td>
+              <td class="p-2.5 text-center text-zinc-500 line-through">₹1,00,005</td>
+              <td class="p-2.5 text-right font-black text-black font-extrabold">₹70,000</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-sans text-zinc-900">Relational Database setup, Schemas & S3 Storage Config</td>
+              <td class="p-2.5 text-center text-zinc-500 line-through">₹15,000</td>
+              <td class="p-2.5 text-right text-brandDark font-extrabold">₹0 (Included)</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-sans text-zinc-900">2 Backend server instances setup & Cloud configuration</td>
+              <td class="p-2.5 text-center text-zinc-500 line-through">₹15,000</td>
+              <td class="p-2.5 text-right text-brandDark font-extrabold">₹0 (Included)</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-sans text-zinc-900">Architecture Optimisation & Frontend Performance tunings</td>
+              <td class="p-2.5 text-center text-zinc-500 line-through">₹10,000</td>
+              <td class="p-2.5 text-right text-brandDark font-extrabold">₹0 (Included)</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-sans text-zinc-900">App integrations (Payment Gateway, messaging Webhooks, Translation)</td>
+              <td class="p-2.5 text-center text-zinc-500 line-through">₹25,000</td>
+              <td class="p-2.5 text-right text-brandDark font-extrabold">₹0 (Included)</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-sans text-zinc-900 font-extrabold text-brandDark">SEO & App Store Optimisation (ASO) Setup</td>
+              <td class="p-2.5 text-center text-zinc-500 line-through">₹15,000</td>
+              <td class="p-2.5 text-right text-brandDark font-extrabold">₹0 (Included)</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-sans text-zinc-900">Testing, Quality Checks, Deployments & Store Verification</td>
+              <td class="p-2.5 text-center text-zinc-500 line-through">₹15,000</td>
+              <td class="p-2.5 text-right text-brandDark font-extrabold">₹0 (Included)</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-sans text-zinc-900 font-extrabold text-brandDark">Post-launch SLA Maintenance (1 Year SLA)</td>
+              <td class="p-2.5 text-center text-zinc-500 line-through">₹30,000</td>
+              <td class="p-2.5 text-right text-brandDark font-extrabold">₹0 (Included)</td>
+            </tr>
+            <tr>
+              <td class="p-2.5 font-sans text-zinc-900">App Core Releases (V1, V2, V3 releases setup)</td>
+              <td class="p-2.5 text-center text-zinc-500 line-through">₹20,000</td>
+              <td class="p-2.5 text-right text-brandDark font-extrabold">₹0 (Included)</td>
+            </tr>
+            <tr class="bg-zinc-900 text-white font-bold uppercase border-t border-zinc-200">
+              <td class="p-3 text-xs">Total Offered Valuation</td>
+              <td class="p-3 text-center text-zinc-500 line-through text-xs">₹4,00,000</td>
+              <td class="p-3 text-right text-[#CCFF00] text-xs">₹1,50,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-zinc-200 pt-6 flex justify-between text-zinc-600 font-mono text-[10px]">
+      <div>AXORAA STUDIOS</div>
+      <div>PAGE 04 // 09</div>
+    </div>
+  </div>
+
+  <!-- PAGE 5: COMMERCIAL TERMS & PAYMENT DETAILS (LIGHT THEME - 50% LEFT SUNRISE & ORBITS MASK FADED, UNCLIPPED) -->
+  <div class="page-container bg-white p-[20mm] text-zinc-955">
+    <!-- Left 50% Sunrise Radial Glow & Mixed Orbits Background (Mask Faded, Unclipped viewBox) -->
+    <div class="absolute inset-y-0 left-0 w-[140mm] pointer-events-none z-0">
+      <svg viewBox="0 -75 200 350" class="w-full h-full text-brandDark" fill="none" stroke="currentColor">
+        <defs>
+          <linearGradient id="orbitFadeLeft5" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="white" stop-opacity="1" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </linearGradient>
+          <mask id="orbitMaskLeft5">
+            <rect x="0" y="-75" width="200" height="350" fill="url(#orbitFadeLeft5)" stroke="none" />
+          </mask>
+          <radialGradient id="sunriseGlowLeft5" cx="0" cy="100" r="150" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.15" />
+            <stop offset="40%" stop-color="#00F0FF" stop-opacity="0.08" />
+            <stop offset="100%" stop-color="#white" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        
+        <g mask="url(#orbitMaskLeft5)">
+          <!-- Ambient Sunrise Glow -->
+          <rect x="0" y="-75" width="200" height="350" fill="url(#sunriseGlowLeft5)" stroke="none" />
+          
+          <!-- Concentric Mixed Orbits -->
+          <circle cx="0" cy="100" r="30" stroke-width="0.3" />
+          <circle cx="0" cy="100" r="50" stroke-width="0.6" stroke-dasharray="2 2" />
+          <circle cx="0" cy="100" r="70" stroke-width="0.3" />
+          <circle cx="0" cy="100" r="95" stroke-width="1.2" stroke-dasharray="6 4" />
+          <circle cx="0" cy="100" r="120" stroke-width="0.4" />
+          <circle cx="0" cy="100" r="145" stroke-width="0.8" stroke-dasharray="1 3" />
+          <circle cx="0" cy="100" r="170" stroke-width="1.8" />
+          
+          <!-- Elliptical orbits -->
+          <ellipse cx="0" cy="100" rx="200" ry="80" stroke-width="0.5" transform="rotate(20 0 100)" />
+          <ellipse cx="0" cy="100" rx="230" ry="110" stroke-width="0.8" stroke-dasharray="4 4" transform="rotate(-30 0 100)" />
+          
+          <!-- planetary nodes -->
+          <circle cx="50" cy="100" r="3.5" fill="currentColor" />
+          <circle cx="95" cy="100" r="2" fill="currentColor" />
+          <circle cx="120" cy="100" r="4" fill="currentColor" />
+          <circle cx="170" cy="100" r="3" fill="#00F0FF" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Header -->
+    <div class="flex justify-between items-center border-b border-zinc-200 pb-6 relative z-10">
+      <span class="text-lg font-bold tracking-tighter uppercase text-black font-sans">
+        AXORAA<span class="text-brandDark font-black">©</span>
+      </span>
+      <span class="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
+        section_03 // billing_terms
+      </span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="my-auto space-y-6 relative z-10 text-zinc-950">
+      <div>
+        <h2 class="text-xs font-mono uppercase tracking-widest text-brandDark mb-1">05 // MILESTONES & TRANSFERS</h2>
+        <h3 class="text-3xl font-extrabold tracking-tighter uppercase text-black font-sans">PAYMENT DETAILS</h3>
+        <p class="text-[10px] text-zinc-900 font-semibold leading-relaxed">
+          Operational billing cycles configured to support the outsourced design and engineering pipeline.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Card 1: Milestones Split -->
+        <div class="p-4 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl space-y-3 text-zinc-955">
+          <h4 class="font-bold text-zinc-950 uppercase text-xs font-mono border-b border-zinc-200 pb-1.5">01 // ESCROW MILESTONES</h4>
+          <div class="space-y-2 text-[10px] text-zinc-900 font-semibold leading-relaxed font-sans">
+            <div class="flex justify-between items-center">
+              <span>Installment 1 (30% Advance)</span>
+              <span class="text-black font-bold">₹45,000 INR</span>
+            </div>
+            <p class="text-[9px] text-zinc-500 font-normal leading-normal font-sans">
+              Due upon execution of this agreement to initialize visual layout sprints and secure custom designer reservations.
+            </p>
+            <div class="flex justify-between items-center pt-1 border-t border-zinc-100">
+              <span>Installment 2 (30% Mid-Dev)</span>
+              <span class="text-black font-bold">₹45,000 INR</span>
+            </div>
+            <p class="text-[9px] text-zinc-500 font-normal leading-normal font-sans">
+              Due upon approval of custom UI/UX design prototypes and completion of core website backend routing.
+            </p>
+            <div class="flex justify-between items-center pt-1 border-t border-zinc-100">
+              <span>Installment 3 (40% Handover)</span>
+              <span class="text-black font-bold">₹60,000 INR</span>
+            </div>
+            <p class="text-[9px] text-zinc-500 font-normal leading-normal font-sans">
+              Due post-testing verification and final deployment closure, prior to store transfer and codebase ownership release.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Account Transfer Credentials -->
+        <div class="p-4 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl space-y-3 flex flex-col justify-between text-zinc-955">
+          <div class="space-y-2">
+            <h4 class="font-bold text-black uppercase text-xs font-mono border-b border-zinc-200 pb-1.5">02 // BANK TRANSFER DETAILS</h4>
+            <table class="w-full text-left text-[10px] text-zinc-900 font-semibold font-sans">
+              <tbody>
+                <tr>
+                  <td class="py-0.5 text-zinc-500 w-[40%] font-normal">Account Name:</td>
+                  <td class="py-0.5 text-black font-bold">AKSHAR K H</td>
+                </tr>
+                <tr>
+                  <td class="py-0.5 text-zinc-500 font-normal">Account Number:</td>
+                  <td class="py-0.5 text-black font-bold font-mono">0573101035889</td>
+                </tr>
+                <tr>
+                  <td class="py-0.5 text-zinc-500 font-normal">IFSC Code:</td>
+                  <td class="py-0.5 text-black font-bold font-mono">CNRB0000573</td>
+                </tr>
+                <tr>
+                  <td class="py-0.5 text-zinc-500 font-normal">Bank Name:</td>
+                  <td class="py-0.5 text-black font-bold">Canara Bank</td>
+                </tr>
+                <tr>
+                  <td class="py-0.5 text-zinc-500 font-normal">Registered Mobile:</td>
+                  <td class="py-0.5 text-black font-bold font-mono">+91 9353443100</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pt-2 border-t border-zinc-200 space-y-1">
+            <h4 class="font-bold text-black uppercase text-[10px] font-mono">03 // UPI PAYMENT ID</h4>
+            <div class="flex justify-between items-center bg-zinc-950 p-2 rounded-lg text-white">
+              <span class="font-mono text-[9px] tracking-wider text-brand">aksharkh04@okaxis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-zinc-200 pt-6 flex justify-between text-zinc-600 font-mono text-[10px]">
+      <div>AXORAA STUDIOS</div>
+      <div>PAGE 05 // 09</div>
+    </div>
+  </div>
+
+  <!-- PAGE 6: ROADMAP & PIPELINES (DARK THEME - 50% FADING LINE GRID) -->
+  <div class="page-container bg-obsidian p-[20mm] text-white">
+    <!-- Localized Line Grid Overlay (Left 50% Page Area, Mask Faded) -->
+    <div class="absolute inset-y-0 left-0 w-[110mm] pointer-events-none opacity-15 z-0">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gridFadeLeft" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="white" stop-opacity="1" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </linearGradient>
+          <mask id="fadeMaskLeft">
+            <rect width="100%" height="100%" fill="url(#gridFadeLeft)" />
+          </mask>
+          <pattern id="linePattern" width="30" height="30" patternUnits="userSpaceOnUse">
+            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#CCFF00" stroke-width="0.5" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#linePattern)" mask="url(#fadeMaskLeft)" />
+      </svg>
+    </div>
+
+    <!-- Header -->
+    <div class="flex justify-between items-center border-b border-white/10 pb-6 relative z-10">
+      <span class="text-lg font-bold tracking-tighter uppercase">
+        AXORAA<span class="text-brand font-black">©</span>
+      </span>
+      <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
+        section_02 // project_timeline
+      </span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="my-auto space-y-6 relative z-10">
+      <div>
+        <h2 class="text-xs font-mono uppercase tracking-widest text-brand mb-1">06 // ROADMAP PIPELINE</h2>
+        <h3 class="text-3xl font-extrabold tracking-tighter uppercase text-white">DEVELOPMENT TIMELINE</h3>
+        <p class="text-xs text-zinc-400 mt-2 font-light max-w-xl">
+          App and website sprints proceed concurrently in parallel paths to ensure launch schedules. Total duration: 2 - 3 months.
+        </p>
+      </div>
+
+      <!-- Arrow-Styled Flow Roadmap -->
+      <div class="space-y-3 font-mono text-xs">
+        <!-- Step 1 -->
+        <div class="flex items-center gap-4 bg-darkgray/90 backdrop-blur-sm border border-white/10 rounded-xl p-4 relative">
+          <div class="w-10 h-10 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center font-bold text-brand shrink-0">01</div>
+          <div class="flex-1">
+            <div class="flex justify-between items-baseline">
+              <h4 class="font-bold text-white uppercase text-xs font-sans">UI/UX Design</h4>
+              <span class="text-brand text-[10px]">1 - 2 weeks</span>
+            </div>
+            <p class="text-[9px] text-zinc-400 font-sans mt-0.5 leading-relaxed font-light">Custom layout styling, assets prototyping, and high-fidelity layouts system freeze. Outsourced to custom designers billed at cost.</p>
+          </div>
+        </div>
+
+        <!-- Flow Connector Arrow -->
+        <div class="flex justify-center my-0.5">
+          <svg class="w-4 h-4 text-brand/50" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 13l-7 7-7-7m14-6l-7 7-7-7"></path>
+          </svg>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex items-center gap-4 bg-darkgray/90 backdrop-blur-sm border border-white/10 rounded-xl p-4 relative">
+          <div class="w-10 h-10 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center font-bold text-brand shrink-0">02</div>
+          <div class="flex-1">
+            <div class="flex justify-between items-baseline">
+              <h4 class="font-bold text-white uppercase text-xs font-sans">Website (Frontend & Backend)</h4>
+              <span class="text-brand text-[10px]">2 weeks</span>
+            </div>
+            <p class="text-[9px] text-zinc-400 font-sans mt-0.5 leading-relaxed font-light">React/Next.js frontend assembly, database schemas connection, S3 file storage setups. Runs parallel to App.</p>
+          </div>
+        </div>
+
+        <!-- Flow Connector Arrow -->
+        <div class="flex justify-center my-0.5">
+          <svg class="w-4 h-4 text-brand/50" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 13l-7 7-7-7m14-6l-7 7-7-7"></path>
+          </svg>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex items-center gap-4 bg-darkgray/90 backdrop-blur-sm border border-white/10 rounded-xl p-4 relative">
+          <div class="w-10 h-10 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center font-bold text-brand shrink-0">03</div>
+          <div class="flex-1">
+            <div class="flex justify-between items-baseline">
+              <h4 class="font-bold text-white uppercase text-xs font-sans">App Development (Frontend & Backend)</h4>
+              <span class="text-brand text-[10px]">1 month 15 days</span>
+            </div>
+            <p class="text-[9px] text-zinc-400 font-sans mt-0.5 leading-relaxed font-light">Cross-platform build logic, integration of payment portal, webhooks, localization engines, testing, and store submissions.</p>
+          </div>
+        </div>
+
+        <!-- Flow Connector Arrow -->
+        <div class="flex justify-center my-0.5">
+          <svg class="w-4 h-4 text-brand/50" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 13l-7 7-7-7m14-6l-7 7-7-7"></path>
+          </svg>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flex items-center gap-4 bg-darkgray/90 backdrop-blur-sm border border-white/10 rounded-xl p-4 relative">
+          <div class="w-10 h-10 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center font-bold text-brand shrink-0">04</div>
+          <div class="flex-1">
+            <div class="flex justify-between items-baseline">
+              <h4 class="font-bold text-white uppercase text-xs font-sans">Final Deployments & Version Sprints</h4>
+              <span class="text-brand text-[10px]">1 week (V1 Live)</span>
+            </div>
+            <p class="text-[9px] text-zinc-400 font-sans mt-0.5 leading-relaxed font-light">
+              Website & App V1 deployment (1 week). Version 2 will follow in next 2 weeks. Version 3 in next 2 weeks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-white/10 pt-6 flex justify-between text-zinc-500 font-mono text-[10px]">
+      <div>AXORAA STUDIOS</div>
+      <div>PAGE 06 // 09</div>
+    </div>
+  </div>
+
+  <!-- PAGE 7: TERMS AND POLICIES (LIGHT THEME - 50% RIGHT SUNRISE & ORBITS MASK FADED, UNCLIPPED) -->
+  <div class="page-container bg-white p-[20mm] text-zinc-955">
+    <!-- Right 50% Sunrise Radial Glow & Mixed Orbits Background (Mask Faded, Unclipped viewBox) -->
+    <div class="absolute inset-y-0 right-0 w-[140mm] pointer-events-none z-0">
+      <svg viewBox="0 -75 200 350" class="w-full h-full text-brandDark" fill="none" stroke="currentColor">
+        <defs>
+          <linearGradient id="orbitFadeRight6" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0%" stop-color="white" stop-opacity="1" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </linearGradient>
+          <mask id="orbitMaskRight6">
+            <rect x="0" y="-75" width="200" height="350" fill="url(#orbitFadeRight6)" stroke="none" />
+          </mask>
+          <radialGradient id="sunriseGlowRight6" cx="200" cy="100" r="150" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.15" />
+            <stop offset="40%" stop-color="#00F0FF" stop-opacity="0.08" />
+            <stop offset="100%" stop-color="#white" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        
+        <g mask="url(#orbitMaskRight6)">
+          <!-- Ambient Sunrise Glow -->
+          <rect x="0" y="-75" width="200" height="350" fill="url(#sunriseGlowRight6)" stroke="none" />
+          
+          <!-- Concentric Mixed Orbits -->
+          <circle cx="200" cy="100" r="30" stroke-width="0.3" />
+          <circle cx="200" cy="100" r="50" stroke-width="0.6" stroke-dasharray="2 2" />
+          <circle cx="200" cy="100" r="70" stroke-width="0.3" />
+          <circle cx="200" cy="100" r="95" stroke-width="1.2" stroke-dasharray="6 4" />
+          <circle cx="200" cy="100" r="120" stroke-width="0.4" />
+          <circle cx="200" cy="100" r="145" stroke-width="0.8" stroke-dasharray="1 3" />
+          <circle cx="200" cy="100" r="170" stroke-width="1.8" />
+          
+          <!-- Elliptical orbits -->
+          <ellipse cx="200" cy="100" rx="200" ry="80" stroke-width="0.5" transform="rotate(-20 200 100)" />
+          <ellipse cx="200" cy="100" rx="230" ry="110" stroke-width="0.8" stroke-dasharray="4 4" transform="rotate(30 200 100)" />
+          
+          <!-- planetary nodes -->
+          <circle cx="150" cy="100" r="3.5" fill="currentColor" />
+          <circle cx="105" cy="100" r="2" fill="currentColor" />
+          <circle cx="80" cy="100" r="4" fill="currentColor" />
+          <circle cx="30" cy="100" r="3" fill="#00F0FF" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Header -->
+    <div class="flex justify-between items-center border-b border-zinc-200 pb-6 relative z-10">
+      <span class="text-sm font-bold tracking-tighter uppercase text-black font-mono">
+        AXORAA© S E C T I O N _04 / / T E R M S _ A N D _ P O L I C I E S
+      </span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="my-auto space-y-6 relative z-10 text-zinc-950">
+      <div>
+        <h2 class="text-xs font-mono uppercase tracking-widest text-brandDark mb-1">07 // P O L I C I E S & L E G A L</h2>
+        <h3 class="text-2xl font-extrabold tracking-tighter uppercase text-black font-sans">SCOPE MANAGEMENT RULES</h3>
+        <p class="text-[10px] text-zinc-900 font-semibold leading-relaxed">
+          Standard operational guidelines structured to ensure smooth parallel development timelines.
+        </p>
+      </div>
+
+      <div class="space-y-4 text-xs font-mono">
+        <!-- 01 -->
+        <div class="p-4 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl space-y-1.5 text-zinc-950">
+          <h4 class="font-bold text-zinc-950 uppercase text-xs font-sans">01 // FULL CODE & ACCESS OWNERSHIP</h4>
+          <p class="text-[10px] text-zinc-900 font-semibold leading-relaxed font-sans">
+            We transfer 100% intellectual property ownership of the complete codebase to the client upon final milestone payment. You will receive complete Git source repository access, server host configurations, deployment dashboard logins, and secure access credentials. We keep no licenses and charge no licensing fees.
+          </p>
+        </div>
+
+        <!-- 02 -->
+        <div class="p-4 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl space-y-1.5 text-zinc-950">
+          <h4 class="font-bold text-zinc-950 uppercase text-xs font-sans">02 // TWEAKS & CUSTOMIZATION LIMITS</h4>
+          <p class="text-[10px] text-zinc-900 font-semibold leading-relaxed font-sans">
+            To prevent scope creep and maintain the launch schedules, the project is governed by the following tweak policies:
+          </p>
+          <ul class="list-disc pl-4 text-[9px] text-zinc-900 font-sans font-semibold space-y-1">
+            <li><strong>Medium-Level Tweaks (Included):</strong> Minor layout shifts, textual changes, button configurations, color switches, and font swaps are handled up to a maximum limit of 15 adjustments during active sprints.</li>
+            <li><strong>Advanced-Level Customizations (Capped):</strong> Major changes to architectural design, changing third-party system dependencies, or rewritten databases are capped at 20-30% of the initial codebase. Anything exceeding this threshold will require a separate change order assessment.</li>
+          </ul>
+        </div>
+
+        <!-- 03 -->
+        <div class="p-4 bg-lightgray/95 backdrop-blur-md border border-zinc-200 rounded-xl space-y-1.5 text-zinc-950">
+          <h4 class="font-bold text-zinc-950 uppercase text-xs font-sans">03 // COMMERCIAL & TERMS SLA</h4>
+          <ul class="list-disc pl-4 text-[9px] text-zinc-900 font-sans font-semibold space-y-1">
+            <li><strong>Payment Schedule:</strong> 30% Advance (₹45,000 INR), 30% Mid-Development (₹45,000 INR), and 40% Final Handover (₹60,000 INR).</li>
+            <li><strong>Infrastructure Bills:</strong> Client is billed directly by cloud host providers (AWS/Vercel/Supabase). We maintain frontend deployments but database fees remain client's direct cost.</li>
+            <li><strong>App Store approvals:</strong> Store reviews depend on Google/Apple queue velocity. We assist in resolving review issues, but timeline estimates exclude store queue wait times.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-zinc-200 pt-6 flex justify-between text-zinc-600 font-mono text-[10px] relative z-10">
+      <div>AXORAA STUDIOS</div>
+      <div>PAGE 07 // 09</div>
+    </div>
+  </div>
+
+  <!-- PAGE 8: BINDING TERMS & CONDITIONS - PART 1 (LIGHT THEME - COMPACT LAYOUT, PADDING BALANCED) -->
+  <div class="page-container bg-white p-[18mm] text-zinc-950 flex flex-col justify-start">
+    <!-- Left 50% Sunrise Radial Glow & Mixed Orbits Background (Mask Faded, Unclipped viewBox) -->
+    <div class="absolute inset-y-0 left-0 w-[140mm] pointer-events-none z-0">
+      <svg viewBox="0 -75 200 350" class="w-full h-full text-brandDark" fill="none" stroke="currentColor">
+        <defs>
+          <linearGradient id="orbitFadeLeft7" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="white" stop-opacity="1" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </linearGradient>
+          <mask id="orbitMaskLeft7">
+            <rect x="0" y="-75" width="200" height="350" fill="url(#orbitFadeLeft7)" stroke="none" />
+          </mask>
+          <radialGradient id="sunriseGlowLeft7" cx="0" cy="100" r="150" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.15" />
+            <stop offset="40%" stop-color="#00F0FF" stop-opacity="0.08" />
+            <stop offset="100%" stop-color="#white" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        
+        <g mask="url(#orbitMaskLeft7)">
+          <!-- Ambient Sunrise Glow -->
+          <rect x="0" y="-75" width="200" height="350" fill="url(#sunriseGlowLeft7)" stroke="none" />
+          
+          <!-- Concentric Mixed Orbits -->
+          <circle cx="0" cy="100" r="30" stroke-width="0.3" />
+          <circle cx="0" cy="100" r="50" stroke-width="0.6" stroke-dasharray="2 2" />
+          <circle cx="0" cy="100" r="70" stroke-width="0.3" />
+          <circle cx="0" cy="100" r="95" stroke-width="1.2" stroke-dasharray="6 4" />
+          <circle cx="0" cy="100" r="120" stroke-width="0.4" />
+          <circle cx="0" cy="100" r="145" stroke-width="0.8" stroke-dasharray="1 3" />
+          <circle cx="0" cy="100" r="170" stroke-width="1.8" />
+          
+          <!-- Elliptical orbits -->
+          <ellipse cx="0" cy="100" rx="200" ry="80" stroke-width="0.5" transform="rotate(20 0 100)" />
+          <ellipse cx="0" cy="100" rx="230" ry="110" stroke-width="0.8" stroke-dasharray="4 4" transform="rotate(-30 0 100)" />
+          
+          <!-- planetary nodes -->
+          <circle cx="50" cy="100" r="3.5" fill="currentColor" />
+          <circle cx="95" cy="100" r="2" fill="currentColor" />
+          <circle cx="120" cy="100" r="4" fill="currentColor" />
+          <circle cx="170" cy="100" r="3" fill="#00F0FF" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Header -->
+    <div class="flex justify-between items-center border-b border-zinc-200 pb-4 relative z-10">
+      <span class="text-sm font-bold tracking-tighter uppercase text-black font-mono">
+        AXORAA© S E C T I O N _05 / / B I N D I N G _ T E R M S
+      </span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="mt-5 space-y-5 relative z-10 text-zinc-950">
+      <div>
+        <h2 class="text-xs font-mono uppercase tracking-widest text-brandDark mb-1">08 // B I N D I N G T E R M S & C O N D I T I O N S</h2>
+        <h3 class="text-2xl font-extrabold tracking-tighter uppercase text-black font-sans">LEGAL FRAMEWORK</h3>
+        <p class="text-[9px] text-zinc-900 font-semibold leading-relaxed">
+          Comprehensive terms governing the engagement between Axoraa and the Client. Acceptance of this quotation constitutes acceptance of all terms below.
+        </p>
+      </div>
+
+      <div class="space-y-3.5 font-sans font-semibold text-zinc-900 leading-relaxed bg-white/95 backdrop-blur-md p-4 rounded-xl border border-zinc-200 text-[9.5px]">
+        <p><strong>1. Scope Freeze & Finality:</strong> The scope of work is strictly limited to the deliverables listed in this quotation document. Once the project commences, no additional features, pages, screens, modules, or functionality changes beyond the agreed scope shall be undertaken unless a separate Change Request (CR) is raised, documented in writing, and priced independently by Axoraa.</p>
+        
+        <p><strong>2. Post-Delivery — Zero Obligation:</strong> Once the final deliverables have been deployed, handed over, and the project is marked as "Delivered & Closed," Axoraa shall handle absolutely no obligation to perform any additional modifications, enhancements, redesigns, bug fixes (arising from client-side changes or third-party updates), content updates, or unpaid support. Any work requested after the formal delivery closure will be treated as a completely new engagement and quoted separately at prevailing market rates.</p>
+        
+        <p><strong>3. Payment Structure — Three Installments:</strong> The payment schedule consists of Installment 1 (30% Advance: ₹45,000 INR), Installment 2 (30% Mid-Development: ₹45,000 INR), and Installment 3 (40% Final Delivery: ₹60,000 INR).</p>
+        
+        <p><strong>4. Non-Refundable Payments:</strong> All milestone payments are strictly non-refundable once a milestone phase has been initiated. Partial work completed under any milestone phase is billable in full. No exceptions.</p>
+        
+        <p><strong>5. Late Payment Penalty & Work Suspension:</strong> A late fee of 2% per week (compounding) shall be applied on any overdue payment after a 7-business-day grace period. Axoraa reserves the unilateral right to halt all active development, revoke staging/preview access, and suspend all deliverables until outstanding payments are cleared in full. Project timelines will be extended accordingly.</p>
+        
+        <p><strong>6. Client-Caused Delays:</strong> Estimated project timelines are contingent upon timely receipt of all payments, content, brand assets, media files, credentials, feedback, and written approvals from the Client. Delays caused by the Client — including but not limited to delayed responses, content unavailability, or indecisiveness — shall automatically extend the project deadline by an equivalent duration without any liability or penalty to Axoraa.</p>
+        
+        <p><strong>7. Client Material Obligations:</strong> The Client is responsible for providing all required content (text copy, images, logos, branding guidelines, domain credentials, hosting access, API keys, and app store accounts) within 5 business days of each written request by Axoraa.</p>
+        
+        <p><strong>8. Intellectual Property — Conditional Transfer:</strong> Full ownership of the source code, design assets, and all project deliverables is transferred to the Client only upon receipt of the final payment (Installment 3). Until complete payment is received, all intellectual property, code repositories, design files, and deployment configurations remain the exclusive property of Axoraa. Third-party open-source licenses (fonts, libraries, frameworks) remain subject to their own respective license terms.</p>
+        
+        <p><strong>9. Third-Party Service Costs:</strong> Costs for all third-party services — including but not limited to domain registration, hosting subscriptions, SSL certificates, email services, premium plugins/APIs, cloud database fees, Apple Developer Program ($99/year), Google Play Console ($25 one-time), push notification services, and analytics platforms — are not included in this quotation and shall be borne entirely by the Client.</p>
+        
+        <p><strong>10. Confidentiality & NDA:</strong> Both parties agree to keep all project information, business data, technical documentation, source code, trade secrets, and proprietary details strictly confidential. Neither party shall disclose such information to any third party without prior written consent. This confidentiality obligation survives the termination of this agreement for a period of 2 years.</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-zinc-200 pt-6 flex justify-between text-zinc-600 font-mono text-[10px] relative z-10 mt-auto">
+      <div>AXORAA STUDIOS</div>
+      <div>PAGE 08 // 09</div>
+    </div>
+  </div>
+
+  <!-- PAGE 9: BINDING TERMS - PART 2 & SIGNATURES (LIGHT THEME - COMPACT LAYOUT, PADDING BALANCED) -->
+  <div class="page-container bg-white p-[18mm] text-zinc-955 flex flex-col justify-start">
+    <!-- Right 50% Sunrise Radial Glow & Mixed Orbits Background (Mask Faded, Unclipped viewBox) -->
+    <div class="absolute inset-y-0 right-0 w-[140mm] pointer-events-none z-0">
+      <svg viewBox="0 -75 200 350" class="w-full h-full text-brandDark" fill="none" stroke="currentColor">
+        <defs>
+          <linearGradient id="orbitFadeRight8" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0%" stop-color="white" stop-opacity="1" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </linearGradient>
+          <mask id="orbitMaskRight8">
+            <rect x="0" y="-75" width="200" height="350" fill="url(#orbitFadeRight8)" stroke="none" />
+          </mask>
+          <radialGradient id="sunriseGlowRight8" cx="200" cy="100" r="150" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.15" />
+            <stop offset="40%" stop-color="#00F0FF" stop-opacity="0.08" />
+            <stop offset="100%" stop-color="#white" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        
+        <g mask="url(#orbitMaskRight8)">
+          <!-- Ambient Sunrise Glow -->
+          <rect x="0" y="-75" width="200" height="350" fill="url(#sunriseGlowRight8)" stroke="none" />
+          
+          <!-- Concentric Mixed Orbits -->
+          <circle cx="200" cy="100" r="30" stroke-width="0.3" />
+          <circle cx="200" cy="100" r="50" stroke-width="0.6" stroke-dasharray="2 2" />
+          <circle cx="200" cy="100" r="70" stroke-width="0.3" />
+          <circle cx="200" cy="100" r="95" stroke-width="1.2" stroke-dasharray="6 4" />
+          <circle cx="200" cy="100" r="120" stroke-width="0.4" />
+          <circle cx="200" cy="100" r="145" stroke-width="0.8" stroke-dasharray="1 3" />
+          <circle cx="200" cy="100" r="170" stroke-width="1.8" />
+          
+          <!-- Elliptical orbits -->
+          <ellipse cx="200" cy="100" rx="200" ry="80" stroke-width="0.5" transform="rotate(-20 200 100)" />
+          <ellipse cx="200" cy="100" rx="230" ry="110" stroke-width="0.8" stroke-dasharray="4 4" transform="rotate(30 200 100)" />
+          
+          <!-- planetary nodes -->
+          <circle cx="150" cy="100" r="3.5" fill="currentColor" />
+          <circle cx="105" cy="100" r="2" fill="currentColor" />
+          <circle cx="80" cy="100" r="4" fill="currentColor" />
+          <circle cx="30" cy="100" r="3" fill="#00F0FF" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Header -->
+    <div class="flex justify-between items-center border-b border-zinc-200 pb-4 relative z-10">
+      <span class="text-sm font-bold tracking-tighter uppercase text-black font-mono">
+        AXORAA© S E C T I O N _05 / / B I N D I N G _ T E R M S
+      </span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="mt-5 space-y-5 relative z-10 text-zinc-950 font-sans">
+      <div class="space-y-2.5 font-medium text-zinc-900 leading-relaxed bg-white/95 backdrop-blur-md p-4 rounded-xl border border-zinc-200 text-[9.5px]">
+        <p><strong>11. Warranty Period — 60 Days Only:</strong> Axoraa provides a 60-day warranty from the formal date of project delivery closure. This warranty is limited exclusively to fixing bugs, defects, or errors present in the originally delivered code that are attributable to Axoraa's development. This warranty explicitly does not cover issues arising from client-side code modifications, server configuration changes, third-party plugin/library updates, hosting migration, unauthorized access, or any alterations made by parties other than Axoraa.</p>
+        
+        <p><strong>12. Hosting & Uptime Disclaimer:</strong> Axoraa is not responsible for website/application downtime, data loss, security breaches, or performance degradation caused by the Client's hosting provider, server misconfigurations, cyber-attacks, DNS issues, or force majeure events. Post-delivery, the Client is solely responsible for choosing, maintaining, and securing their hosting infrastructure and backend systems.</p>
+        
+        <p><strong>13. Formal Change Request (CR) Process:</strong> Any changes to project scope, features, screens, design direction, or functionality after project commencement must be submitted as a formal Change Request (CR) in writing. Each CR will be evaluated for feasibility and impact. A separate quotation for the additional work will be provided within 3 business days. CRs are not guaranteed to be accepted — particularly if they fundamentally alter the project's architecture, technology stack, or agreed timelines.</p>
+        
+        <p><strong>14. Project Cancellation & Kill Fee:</strong> If the Client cancels the project after work has commenced: (a) All payments made up to the point of cancellation are non-refundable. (b) If cancellation occurs mid-milestone, the Client shall pay for the entire current milestone in full. (c) Axoraa will deliver all completed work up to the cancellation date in its current state — no warranties apply to partially completed work.</p>
+        
+        <p><strong>15. Portfolio & Showcase Rights:</strong> Axoraa reserves the right to display the completed project (screenshots, case studies, tech stack details) in its portfolio, website, social media accounts, and marketing materials for promotional purposes. If the Client requires a non-disclosure of the project, this must be communicated and agreed upon in writing before project commencement and may attract an additional confidentiality premium.</p>
+        
+        <p><strong>16. Governing Law & Dispute Resolution:</strong> This agreement shall be governed by and construed in accordance with the laws of India. Any disputes, claims, or controversies arising out of or relating to this quotation or the services rendered shall first be attempted to be resolved through good-faith negotiation within 30 calendar days. If unresolved, the dispute shall be referred to binding arbitration in Bengaluru, Karnataka, India, under the Arbitration and Conciliation Act, 1996. The language of arbitration shall be English.</p>
+      </div>
+
+      <!-- Binding Acceptance Text -->
+      <div class="bg-lightgray/95 backdrop-blur-md p-4 rounded-xl border border-zinc-200 space-y-2 text-zinc-950">
+        <h4 class="font-bold text-black uppercase text-xs font-mono font-sans">B I N D I N G &nbsp; A C C E P T A N C E</h4>
+        <p class="text-[9px] text-zinc-900 font-bold leading-relaxed font-sans">
+          By signing below, both parties confirm that they have read, understood, and unconditionally agree to all the terms, conditions, scope definitions, payment schedules, and policies outlined in this Project Quotation. This document, once signed by both parties, constitutes a legally binding agreement. This quotation is valid for 30 days from the date of issue.
+        </p>
+      </div>
+
+      <!-- Signatures Grid -->
+      <div class="grid grid-cols-2 gap-8 pt-4 font-mono text-[9px] text-zinc-950">
+        <div class="space-y-4">
+          <span class="font-bold text-black uppercase tracking-wider block">F O R &nbsp; A X O R A A &nbsp; ( S E R V I C E &nbsp; P R O V I D E R )</span>
+          <div class="space-y-2 text-zinc-900 font-bold font-mono">
+            <div>Name: Akshar</div>
+            <div>Designation: Co-Founder</div>
+            <div>Date: 22 / 07 / 2026</div>
+            <div class="pt-2">Signature: ________________________</div>
+          </div>
+        </div>
+
+        <div class="space-y-4 text-zinc-950">
+          <span class="font-bold text-black uppercase tracking-wider block">F O R &nbsp; C L I E N T</span>
+          <div class="space-y-2 text-zinc-900 font-bold font-mono">
+            <div>Name: ________________________</div>
+            <div>Designation: ________________________</div>
+            <div>Date: __ / __ / 2026</div>
+            <div class="pt-2">Signature: ________________________</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-zinc-200 pt-6 flex justify-between text-zinc-600 font-mono text-[10px] mt-auto">
+      <div>AXORAA STUDIOS</div>
+      <div>PAGE 09 // 09</div>
+    </div>
+  </div>
+
+</body>
+</html>
