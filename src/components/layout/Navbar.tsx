@@ -3,29 +3,37 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Magnetic from '../ui/Magnetic';
+import QuoteModal from '../ui/QuoteModal';
 import { premiumEase } from '../../lib/utils';
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [isDarkBg, setIsDarkBg] = useState(true);
   const [isScrolling, setIsScrolling] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   const navItems = [
-    { name: 'Work', path: '/#work', isHash: true },
-    { name: 'Process', path: '/#process', isHash: true },
-    { name: 'Collective', path: '/team', isHash: false },
-    { name: 'Pricing', path: '/pricing', isHash: false },
+    { name: 'Work', path: '/#work', isHash: true, isAction: false },
+    { name: 'Process', path: '/#process', isHash: true, isAction: false },
+    { name: 'Collective', path: '/team', isHash: false, isAction: false },
+    { name: 'Get Quote', path: '#quote', isHash: false, isAction: true },
   ];
 
   const mobileNavItems = [
-    { name: 'WORK', path: '/#work' },
-    { name: 'PROCESS', path: '/#process' },
-    { name: 'EXPERTISE', path: '/#expertise' },
-    { name: 'COLLECTIVE', path: '/team' },
-    { name: 'PRICING', path: '/pricing' },
+    { name: 'WORK', path: '/#work', isAction: false },
+    { name: 'PROCESS', path: '/#process', isAction: false },
+    { name: 'EXPERTISE', path: '/#expertise', isAction: false },
+    { name: 'COLLECTIVE', path: '/team', isAction: false },
+    { name: 'GET A QUOTE', path: '#quote', isAction: true },
   ];
+
+  useEffect(() => {
+    const handleOpenQuote = () => setQuoteModalOpen(true);
+    window.addEventListener('open-quote-modal', handleOpenQuote);
+    return () => window.removeEventListener('open-quote-modal', handleOpenQuote);
+  }, []);
 
   useEffect(() => {
     let scrollTimeout: any;
@@ -210,7 +218,16 @@ const Navbar: React.FC = () => {
           >
             {navItems.slice(2, 4).map((item) => (
               <Magnetic key={item.name} strength={0.1}>
-                {item.isHash ? (
+                {item.isAction ? (
+                  <button
+                    onClick={() => setQuoteModalOpen(true)}
+                    className={`transition-colors duration-300 p-2 -m-2 block font-medium uppercase tracking-wide cursor-pointer ${
+                      isDarkBg ? 'hover:text-[#4A6B00]' : 'hover:text-[#CCFF00]'
+                    }`}
+                  >
+                    {item.name}
+                  </button>
+                ) : item.isHash ? (
                   <a 
                     href={item.path} 
                     onClick={(e) => handleHashLinkClick(e, item.path)}
@@ -262,7 +279,18 @@ const Navbar: React.FC = () => {
             
             <div className="flex flex-col gap-6 text-6xl font-bold tracking-tighter overflow-y-auto pb-20">
               {mobileNavItems.map((item) => (
-                item.path.startsWith('/#') ? (
+                item.isAction ? (
+                  <button
+                    key={item.name}
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      setQuoteModalOpen(true);
+                    }}
+                    className="text-left hover:ml-8 hover:text-white transition-all duration-300 cursor-pointer"
+                  >
+                    {item.name},
+                  </button>
+                ) : item.path.startsWith('/#') ? (
                   <a 
                     key={item.name}
                     href={item.path} 
@@ -290,6 +318,12 @@ const Navbar: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Interactive Project Quote & Discovery Modal */}
+      <QuoteModal 
+        isOpen={quoteModalOpen} 
+        onClose={() => setQuoteModalOpen(false)} 
+      />
     </>
   );
 };
